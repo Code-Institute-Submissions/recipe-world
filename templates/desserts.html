@@ -1,15 +1,23 @@
-{% extends 'base.html' %}
-{% block content %}
-        {% for dessert in desserts %}
-        {{dessert.category_name}}</br>
-        {{dessert.dessert_name}}</br>
-        {{dessert.dessert_name}}</br>
-        {{dessert.author}}</br>
-        {% for ingredient in dessert.ingredients %}
-        {{ingredient}}</br>
-        {% endfor %}
-        {% for method in dessert.method %}
-        {{method}}</br>
-        {% endfor %}
-        {% endfor %}
-{% endblock %}
+{% extends 'base.html' %} {% block content %} {% for dessert in desserts %}
+<ul class="collapsible">
+    <li>
+        <div class="collapsible-header"><i class="material-icons">filter_drama</i>{{dessert.dessert_name}}</div>
+        <div class="collapsible-body">
+            <div class="container">
+                <div>Author: {{dessert.author}}</div>
+                Ingrediments:
+                <ul>
+                {% for ingredient in dessert.ingredients %}
+                <li style="list-style-type:circle;">{{ingredient}}</li>
+                {% endfor %}
+                </ul>
+                <ol>
+                {% for method in dessert.method %}
+                <li>{{method}}</li>
+                {% endfor %}
+                </ol>
+            </div>
+        </div>
+    </li>
+</ul>
+{% endfor %} {% endblock %}
