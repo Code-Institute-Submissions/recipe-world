@@ -1,13 +1,20 @@
 import os
-from flask import Flask
+from flask import Flask, render_template, redirect, url_for
+from flask_pymongo import PyMongo
+from bson.objectid import ObjectId
 
 app = Flask(__name__)
 
+app.config["MONGO_DBNAME"] = "recipeworlddb"
+app.config["MONGO_URI"] = "mongodb://krivan.peter:jel123szo@ds149122.mlab.com:49122/recipeworlddb"
 
-@app.route('/')
-def hello():
-    return 'Hello World ...again'
+mongo = PyMongo(app)
 
+@app.route("/")
+@app.route("/get_desserts")
+def get_desserts():
+    return render_template("desserts.html", 
+    desserts=mongo.db.desserts.find())
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),

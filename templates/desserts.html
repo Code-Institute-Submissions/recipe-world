@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+        {% for dessert in desserts %}
+        {{dessert.category_name}}</br>
+        {{dessert.dessert_name}}</br>
+        {{dessert.dessert_name}}</br>
+        {{dessert.author}}</br>
+        {% for ingredient in dessert.ingredients %}
+        {{ingredient}}</br>
+        {% endfor %}
+        {% for method in dessert.method %}
+        {{method}}</br>
+        {% endfor %}
+        {% endfor %}
+{% endblock %}
