@@ -1,14 +1,14 @@
-{% extends 'base.html' %} {% block content %} {% for breakfast in breakfasts %}
+{% extends 'base.html' %} {% block content %} {% for dessert in desserts %}
 <ul class="collapsible">
     <li>
-        <div class="collapsible-header">{{breakfast.name}}</div>
+        <div class="collapsible-header">{{dessert.name}}</div>
         <div class="collapsible-body">
             <div class="container">
-                <div class="row">Author: {{breakfast.author}}</div>
+                <div class="row">Author: {{dessert.author}}</div>
                 <div class="row">
                     Ingrediments:
                     <ul>
-                        {% for ingredient in breakfast.ingredients %}
+                        {% for ingredient in dessert.ingredients %}
                         <li style="list-style-type:circle;">{{ingredient}}</li>
                         {% endfor %}
                     </ul>
@@ -16,7 +16,7 @@
                 <div class="row">
                     Method:
                     <ol>
-                        {% for method in breakfast.method %}
+                        {% for method in dessert.method %}
                         <li>{{method}}</li>
                         {% endfor %}
                     </ol>

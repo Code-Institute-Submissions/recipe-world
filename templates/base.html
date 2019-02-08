@@ -9,14 +9,14 @@
 </head>
 <header>
     <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand">Recipe World</a>
+        <a class="navbar-brand" href="{{ url_for('index') }}">Recipe World</a>
         <div class="navbar-nav mr-auto">
             <div class="dropdown d-none d-md-block">
                 <button class="categories_dropbtn">Categories</button>
                 <div class="dropdown-content">
-                    <a href="#">Breakfast</a>
-                    <a href="#">Lunch</a>
-                    <a href="#">Dessert</a>
+                    <a href="{{ url_for('get_breakfasts') }}">Breakfast</a>
+                    <a href="{{ url_for('get_lunchs') }}">Main</a>
+                    <a href="{{ url_for('get_desserts') }}">Dessert</a>
                 </div>
             </div>
         </div>
@@ -35,9 +35,9 @@
             <div class="dropdown mr-auto d-block d-sm-block d-md-none d-lg-none">
                 <button class="categories_dropbtn"><span class="navbar-toggler-icon"></span></button>
                 <div class="dropdown-content">
-                    <a href="#">Breakfast</a>
-                    <a href="#">Lunch</a>
-                    <a href="#">Dessert</a>
+                    <a href="{{ url_for('get_breakfasts') }}"></a>Breakfast</a>
+                    <a href="{{ url_for('get_lunchs') }}">Main</a>
+                    <a href="{{ url_for('get_desserts') }}">Dessert</a>
                 </div>
             </div>
         </div>
