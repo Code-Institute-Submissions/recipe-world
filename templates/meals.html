@@ -1,13 +1,13 @@
 {% extends 'base.html' %} {% block content %} {% for food in foods %}
 <div class="container">
-    <div class="row">{{food.name}}</div>
     <div class="row">
-        <div class="col-6 limit">
-            <img class="img-responsive" src="{{food.pic_link}}" alt="{{food.name}}">
+        <div class="col-8 limit">
+            <a href="{{ url_for('get_food', food_name=food.name) }}"><img class="img-responsive" src="{{food.pic_url}}" alt="{{food.name}}"></a>
         </div>
-        <div class="col-6">
+        <div class="col-4">
+            <div class="row">{{food.name}}</div></br>
+            <div class="row"> {{food.description}}</div></br>
             <div class="row">Author: {{food.author}}</div>
-            <div class="row"> {{food.description}}</div>
         </div>
     </div>
 </div>
