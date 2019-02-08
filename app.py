@@ -13,22 +13,24 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/index")
 def index():
-    return render_template("index.html")
+    return render_template("index.html",
+    foods=mongo.db.foods.find())
 
 @app.route("/desserts")
 def get_desserts():
-    return render_template("dessert.html", 
-    desserts=mongo.db.desserts.find())
+    return render_template("meals.html", 
+    foods=mongo.db.foods.find({"category_name": "dessert"}))
     
 @app.route("/breakfasts")
 def get_breakfasts():
-    return render_template("breakfast.html", 
-    breakfasts=mongo.db.breakfasts.find())
+    return render_template("meals.html", 
+    foods=mongo.db.foods.find({"category_name": "breakfast"}))
 
 @app.route("/mains")
-def get_lunchs():
-    return render_template("main.html", 
-    mains=mongo.db.mains.find())
+def get_mains():
+    return render_template("meals.html", 
+    foods=mongo.db.foods.find({"category_name": "main"}))
+    
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
