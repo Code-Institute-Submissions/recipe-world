@@ -69,8 +69,17 @@
     height: 80%;
 }
 
+.form-control.search-bar {
+    width: 50%;
+    margin-right: 5px;
+}
+
 .search-form {
     margin-bottom: 10px;
+}
+
+.search-button {
+    margin-top: 0;
 }
 
 .material-icons {
