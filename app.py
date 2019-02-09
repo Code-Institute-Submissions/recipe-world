@@ -16,20 +16,20 @@ def index():
     return render_template("index.html",
     foods=mongo.db.foods.find())
 
-@app.route("/desserts")
-def get_desserts():
-    return render_template("meals.html", 
-    foods=mongo.db.foods.find({"category_name": "dessert"}))
-    
 @app.route("/breakfasts")
 def get_breakfasts():
-    return render_template("meals.html", 
-    foods=mongo.db.foods.find({"category_name": "breakfast"}))
+    return render_template("index.html", 
+    foods=mongo.db.foods.find({"category_name": "breakfast"}), title="Breakfasts")
 
 @app.route("/mains")
 def get_mains():
-    return render_template("meals.html", 
-    foods=mongo.db.foods.find({"category_name": "main"}))
+    return render_template("index.html", 
+    foods=mongo.db.foods.find({"category_name": "main"}), title="Mains")
+    
+@app.route("/desserts")
+def get_desserts():
+    return render_template("index.html", 
+    foods=mongo.db.foods.find({"category_name": "dessert"}), title="Desserts")
     
 @app.route('/<food_name>')
 def get_food(food_name):

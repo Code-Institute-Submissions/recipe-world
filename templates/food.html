@@ -1,31 +1,33 @@
 {% extends 'base.html' %} {% block content %}
-<div class="container">
-    <div class="row"><h1>{{food.name}}</h1></div>
-    <div class="row">
+<div class="container-fluid">
+    <div class="row food-page-margin">
+        <h1 class="food-page-title">{{food.name}}</h1>
+    </div>
+    <div class="row food-page-margin">
         <div class="col-8 limit">
             <a href="{{ url_for('get_food', food_name=food.name) }}"><img class="img-responsive" src="{{food.pic_url}}" alt="{{food.name}}"></a>
         </div>
         <div class="col-4">
-            <div class="row">Author: {{food.author}}</div>
-            </br>
-            <div class="row"> {{food.description}}</div>
-        </div>
-        <div class="row">
-            Ingrediments:
-            <ul>
-                {% for ingredient in food.ingredients %}
-                <li style="list-style-type:circle;">{{ingredient}}</li>
-                {% endfor %}
-            </ul>
-        </div>
-        <div class="row">
-            Method:
-            <ol>
-                {% for method in food.method %}
-                <li>{{method}}</li>
-                {% endfor %}
-            </ol>
+            <div><strong>Author:</strong><br>{{food.author}}</div>
         </div>
     </div>
+    <div class="food-page-margin food-description">{{food.description}}</div>
+    <div class="food-page-margin">
+        <h2 class="food-h2">Ingrediments:</h2>
+        <ul>
+            {% for ingredient in food.ingredients %}
+            <li style="list-style-type:circle;">{{ingredient}}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="row food-page-margin">
+        <h2 class="food-h2">Method:</h2>
+        <ol>
+            {% for method in food.method %}
+            <li>{{method}}</li>
+            {% endfor %}
+        </ol>
+    </div>
+</div>
 </div>
 {% endblock %}
