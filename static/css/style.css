@@ -148,6 +148,10 @@
     padding-left: 15px;
 }
 
+.pointer {
+    cursor: pointer;
+}
+
 @media(min-width: 576px) {
     .navbar-nav.navbar-center {
         position: absolute;

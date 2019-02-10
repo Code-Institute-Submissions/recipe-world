@@ -35,7 +35,7 @@ def get_desserts():
 def get_food(food_name):
     return render_template("food.html", 
     food=mongo.db.foods.find_one({"name": food_name}))
-    
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
