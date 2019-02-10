@@ -9,9 +9,11 @@
         </div>
         <div class="col-4">
             <div><strong>Author:</strong><br>{{food.author}}</div>
+            <br>
+            <div class="food-description d-none d-sm-none d-md-block">{{food.description}}</div>
         </div>
     </div>
-    <div class="food-page-margin food-description">{{food.description}}</div>
+    <div class="food-page-margin food-description d-block d-sm-block d-md-none d-lg-none">{{food.description}}</div>
     <div class="food-page-margin">
         <h2 class="food-h2">Ingrediments:</h2>
         <ul>
@@ -20,7 +22,7 @@
             {% endfor %}
         </ul>
     </div>
-    <div class="row food-page-margin">
+    <div class="food-page-margin">
         <h2 class="food-h2">Method:</h2>
         <ol>
             {% for method in food.method %}

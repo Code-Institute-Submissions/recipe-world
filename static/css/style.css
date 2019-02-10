@@ -133,7 +133,12 @@
 .food-page-title {
     font-size: 30px;
 }
-
+.featurette-divider{
+    margin-top: 35px;
+}
+.background-grey{
+    background-color: #F4F4F4;
+}
 @media(min-width: 576px) {
     .navbar-nav.navbar-center {
         position: absolute;

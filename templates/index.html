@@ -1,10 +1,10 @@
-{% extends 'base.html' %} {% block content %} {% for food in foods %}
-{% if title %}
+{% extends 'base.html' %} {% block content %} {% if title %}
 <h1 class="title">{{ title }}</h1>
-<hr class="featurette-divider">
-{% endif %}
+<hr class="featurette-divider"> {% else %}
+<h1 class="title">Find Your Favorite</h1>
+{% endif %} {% for food in foods %} {% if loop.index % 2 != 0 %}
 <div class="container-fluid d-none d-sm-block d-md-block">
-    <div class="row ">
+    <div class="row background-grey">
         <div class="col-6 limit">
             <a href="{{ url_for('get_food', food_name=food.name) }}"><img class="img-responsive" src="{{food.pic_url}}" alt="{{food.name}}"></a>
         </div>
@@ -17,10 +17,10 @@
             <br>
             <div class="like-fav-icons">
                 <span class="like-fav">{{food.likes}}
-                    <i class="material-icons thumb-up-icon align-bottom">thumb_up</i>
+                    <i class="material-icons thumb-up-icon">thumb_up</i>
                 </span>
                 <span class="like-fav">{{food.favorites}}
-                    <i class="material-icons favorite-icon align-bottom">favorite</i>
+                    <i class="material-icons favorite-icon">favorite</i>
                 </span>
             </div>
         </div>
@@ -33,13 +33,53 @@
         <a href="{{ url_for('get_food', food_name=food.name) }}"><img class="img-responsive" src="{{food.pic_url}}" alt="{{food.name}}"></a>
         <div class="like-fav-icons">
             <span class="like-fav">{{food.likes}}
-                <i class="material-icons thumb-up-icon align-bottom">thumb_up</i>
+                <i class="material-icons thumb-up-icon">thumb_up</i>
             </span>
             <span class="like-fav">{{food.favorites}}
-                <i class="material-icons favorite-icon align-bottom">favorite</i>
+                <i class="material-icons favorite-icon">favorite</i>
             </span>
         </div>
     </div>
     <hr class="featurette-divider">
 </div>
-{% endfor %} {% endblock %}
+{% else %}
+<div class="container-fluid d-none d-sm-block d-md-block">
+    <div class="row background-grey">
+        <div class="col-6">
+            <h2 class="food-name">{{food.name}}</h2>
+            <br>
+            <div class="row"> {{food.description}}</div>
+            <br>
+            <div class="row">Author: {{food.author}}</div>
+            <br>
+            <div class="like-fav-icons">
+                <span class="like-fav">{{food.likes}}
+                    <i class="material-icons thumb-up-icon">thumb_up</i>
+                </span>
+                <span class="like-fav">{{food.favorites}}
+                    <i class="material-icons favorite-icon">favorite</i>
+                </span>
+            </div>
+        </div>
+        <div class="col-6 limit">
+            <a href="{{ url_for('get_food', food_name=food.name) }}"><img class="img-responsive" src="{{food.pic_url}}" alt="{{food.name}}"></a>
+        </div>
+    </div>
+    <hr class="featurette-divider">
+</div>
+<div class="container-fluid food d-block d-sm-none d-md-none d-lg-none">
+    <div class="limit">
+        <h2 class="food-name">{{food.name}}</h2>
+        <a href="{{ url_for('get_food', food_name=food.name) }}"><img class="img-responsive" src="{{food.pic_url}}" alt="{{food.name}}"></a>
+        <div class="like-fav-icons">
+            <span class="like-fav">{{food.likes}}
+                <i class="material-icons thumb-up-icon">thumb_up</i>
+            </span>
+            <span class="like-fav">{{food.favorites}}
+                <i class="material-icons favorite-icon">favorite</i>
+            </span>
+        </div>
+    </div>
+    <hr class="featurette-divider">
+</div>
+{% endif %} {% endfor %} {% endblock %}
