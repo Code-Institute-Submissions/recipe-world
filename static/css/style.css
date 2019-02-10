@@ -82,12 +82,6 @@
     margin-top: 0;
 }
 
-.material-icons {
-    font-size: 30px;
-    bottom: 0;
-    text-align: center;
-}
-
 .like-fav-icons {
     width: 100%;
     height: 100%;
@@ -97,6 +91,13 @@
 .like-fav {
     margin-right: 10px;
     margin-left: 10px;
+}
+
+.material-icons {
+    font-size: 30px;
+    bottom: 0;
+    text-align: center;
+    vertical-align: bottom;
 }
 
 .material-icons.thumb-up-icon {
@@ -133,12 +134,20 @@
 .food-page-title {
     font-size: 30px;
 }
-.featurette-divider{
+
+.featurette-divider {
     margin-top: 35px;
 }
-.background-grey{
+
+.background-grey {
     background-color: #F4F4F4;
+    padding: 10px;
 }
+
+.food-number-odd {
+    padding-left: 15px;
+}
+
 @media(min-width: 576px) {
     .navbar-nav.navbar-center {
         position: absolute;
@@ -161,6 +170,6 @@
         height: 95%;
     }
     .material-icons {
-        font-size: 45px;
+        font-size: 35px;
     }
 }
