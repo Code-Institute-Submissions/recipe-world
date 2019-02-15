@@ -9,11 +9,11 @@
             <a href="{{ url_for('get_food', food_name=food.name) }}"><img class="img-responsive" src="{{food.pic_url}}" alt="{{food.name}}"></a>
         </div>
         <div class="col-6">
-            <h2 class="food-name">{{food.name}}</h2>
+            <h2 class="food-name">{{food.name|capitalize}}</h2>
             <br>
-            <div class="row"> {{food.description}}</div>
+            <div class="row"> {{food.description|capitalize}}</div>
             <br>
-            <div class="row">Author: {{food.author}}</div>
+            <div class="row">Author: {{food.author|capitalize}}</div>
             <br>
             <div class="like-fav-icons">
                 <span class="like-fav">{{food.likes}}
@@ -29,7 +29,7 @@
 </div>
 <div class="container-fluid food d-block d-sm-none d-md-none d-lg-none">
     <div class="limit">
-        <h2 class="food-name">{{food.name}}</h2>
+        <h2 class="food-name">{{food.name|capitalize}}</h2>
         <a href="{{ url_for('get_food', food_name=food.name) }}"><img class="img-responsive" src="{{food.pic_url}}" alt="{{food.name}}"></a>
         <div class="like-fav-icons">
             <span class="like-fav">{{food.likes}}
@@ -46,11 +46,11 @@
 <div class="container-fluid d-none d-sm-block d-md-block">
     <div class="row food-number-odd background-grey">
         <div class="col-6">
-            <h2 class="food-name">{{food.name}}</h2>
+            <h2 class="food-name">{{food.name|capitalize}}</h2>
             <br>
-            <div class="row"> {{food.description}}</div>
+            <div class="row"> {{food.description|capitalize}}</div>
             <br>
-            <div class="row">Author: {{food.author}}</div>
+            <div class="row">Author: {{food.author|capitalize}}</div>
             <br>
             <div class="like-fav-icons">
                 <span class="like-fav">{{food.likes}}
@@ -69,7 +69,7 @@
 </div>
 <div class="container-fluid food d-block d-sm-none d-md-none d-lg-none">
     <div class="limit">
-        <h2 class="food-name">{{food.name}}</h2>
+        <h2 class="food-name">{{food.name|capitalize}}</h2>
         <a href="{{ url_for('get_food', food_name=food.name) }}"><img class="img-responsive" src="{{food.pic_url}}" alt="{{food.name}}"></a>
         <div class="like-fav-icons">
             <span class="like-fav">{{food.likes}}

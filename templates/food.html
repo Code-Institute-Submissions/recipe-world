@@ -1,24 +1,24 @@
 {% extends 'base.html' %} {% block content %}
 <div class="container-fluid">
     <div class="row food-page-margin">
-        <h1 class="food-page-title">{{food.name}}</h1>
+        <h1 class="food-page-title">{{food.name|capitalize}}</h1>
     </div>
     <div class="row food-page-margin">
         <div class="col-8 limit">
             <a href="{{ url_for('get_food', food_name=food.name) }}"><img class="img-responsive" src="{{food.pic_url}}" alt="{{food.name}}"></a>
         </div>
         <div class="col-4">
-            <div><strong>Author:</strong><br>{{food.author}}</div>
+            <div><strong>Author:</strong><br>{{food.author|capitalize}}</div>
             <br>
-            <div class="food-description d-none d-sm-none d-md-block">{{food.description}}</div>
+            <div class="food-description d-none d-sm-none d-md-block">{{food.description|capitalize}}</div>
         </div>
     </div>
-    <div class="food-page-margin food-description d-block d-sm-block d-md-none d-lg-none">{{food.description}}</div>
+    <div class="food-page-margin food-description d-block d-sm-block d-md-none d-lg-none">{{food.description|capitalize}}</div>
     <div class="food-page-margin">
         <h2 class="food-h2">Ingrediments:</h2>
         <ul>
             {% for ingredient in food.ingredients %}
-            <li style="list-style-type:circle;">{{ingredient}}</li>
+            <li style="list-style-type:circle;">{{ingredient|capitalize}}</li>
             {% endfor %}
         </ul>
     </div>
@@ -26,7 +26,7 @@
         <h2 class="food-h2">Method:</h2>
         <ol>
             {% for method in food.method %}
-            <li>{{method}}</li>
+            <li>{{method|capitalize}}</li>
             {% endfor %}
         </ol>
     </div>
