@@ -15,6 +15,8 @@ mongo = PyMongo(app)
 @app.route("/index")
 def index():
     foods=mongo.db.foods.find()
+    if "username" in session:
+        return render_template("index.html", foods=foods, username=session["username"])   
     return render_template("index.html", foods=foods)
 
 @app.route("/breakfasts")
@@ -41,6 +43,7 @@ def get_food(food_name):
 def sign_up():
     exist = ""
     username =  request.form["username"];
+    session["username"] = username
     email = request.form["email"];
     if mongo.db.users.find({"username": username}).count() >= 1 and mongo.db.users.find({"email": email}).count() == 0:
         exist = "username_exists"
@@ -52,9 +55,9 @@ def sign_up():
         exist = "email_and_username_exist"
         return exist
     else:
-        mongo.db.users.insert({ "username": username , "email": email, "favorites": "" } )
+        mongo.db.users.insert({ "username": username , "email": email, "favorites": "" })
         foods=mongo.db.foods.find()
-        return render_template("index.html", foods=foods)
+        return render_template("index.html", foods=foods, username=session["username"])
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),

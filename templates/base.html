@@ -13,7 +13,7 @@
         <a class="navbar-brand" href="{{ url_for('index') }}">Recipe World</a>
         <div class="navbar-nav mr-auto">
             <div class="dropdown d-none d-md-block">
-                <button class="categories-dropbtn">Categories</button>
+                <button class="categories-dropbtn pointer">Categories</button>
                 <div class="dropdown-content">
                     <a href="{{ url_for('get_breakfasts') }}">Breakfast</a>
                     <a href="{{ url_for('get_mains') }}">Main</a>
@@ -30,7 +30,17 @@
         <div class="navbar navbar-light bg-light">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a type="button" class="pointer nav-link" id="sign-in-btn" data-toggle="modal" data-target="#signInModal">Sign Up</a>
+                    {% if username %}
+                    <div class="row dropdown d-none d-md-block">
+                        <div class="col-12">Signed in as:</div>
+                        <button class="col-12 categories-dropbtn username pointer">{{username}}</button>
+                        <div class="dropdown-content">
+                            <a href="{{ url_for('get_breakfasts') }}">Breakfast</a>
+                            <a href="{{ url_for('get_mains') }}">Main</a>
+                            <a href="{{ url_for('get_desserts') }}">Dessert</a>
+                        </div>
+                    </div> {% else %}
+                    <a type="button" class="pointer nav-link" id="sign-in-btn" data-toggle="modal" data-target="#signInModal">Sign Up</a> {% endif %}
                 </li>
             </ul>
             <div class="dropdown d-block d-sm-block d-md-none d-lg-none" style="float:right;">

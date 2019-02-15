@@ -160,7 +160,9 @@
 .small-device-search {
     margin-top: 10px;
 }
-
+.username{
+    color: #3a9fbf;
+}
 @media(min-width: 576px) {
     .navbar-nav.navbar-center {
         position: absolute;

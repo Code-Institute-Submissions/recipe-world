@@ -24,6 +24,7 @@ $(document).ready(function() {
 			else{
 				$('#usernameErrorAlert').hide();
 				$('#emailErrorAlert').hide();
+				window.location.reload(); 
 			}
 		});
 		event.preventDefault();
