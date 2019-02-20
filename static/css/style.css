@@ -7,6 +7,13 @@
     border: none;
 }
 
+.submenu-dropbtn {
+    color: black;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+}
+
 /* Dropdown Content */
 
 .dropdown {
@@ -57,6 +64,22 @@
     background-color: #CDE7F0;
 }
 
+.dropdown-subcontent {
+    display: none;
+    position: relative;
+    background-color: #f1f1f1;
+    min-width: 150px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+.sub-dropdown:hover .dropdown-subcontent{
+    display: block;
+    text-align: right;
+    left: auto;
+    right: 0;
+}
+/*---------------------------------------------------*/
+
 .center {
     width: 100%;
     justify-content: center;
@@ -66,9 +89,12 @@
 .btn {
     margin-top: 5px;
 }
-.btn.focus, .btn:focus{
-    box-shadow: 0 0 0 rgba(0,0,0);
+
+.btn.focus,
+.btn:focus {
+    box-shadow: 0 0 0 rgba(0, 0, 0);
 }
+
 #sign-in-btn {
     padding: 5px;
     margin-right: 10px;
@@ -168,7 +194,8 @@
     cursor: pointer;
 }
 
-.menu-dropbtn {
+.menu-dropbtn,
+.submenu-dropbtn {
     background-color: rgb(248, 249, 250);
 }
 
