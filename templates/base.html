@@ -13,7 +13,7 @@
         <a class="navbar-brand" href="{{ url_for('index') }}">Recipe World</a>
         <div class="navbar-nav mr-auto">
             <div class="dropdown d-none d-md-block">
-                <button class="categories-dropbtn pointer">Categories</button>
+                <button class="menu-dropbtn pointer">Categories</button>
                 <div class="dropdown-content">
                     <a href="{{ url_for('get_breakfasts') }}">Breakfast</a>
                     <a href="{{ url_for('get_mains') }}">Main</a>
@@ -33,24 +33,46 @@
                     {% if username %}
                     <div class="row dropdown d-none d-md-block">
                         <div class="col-12">Signed in as:</div>
-                        <button class="col-12 categories-dropbtn username pointer">{{username}}</button>
+                        <button class="col-12 menu-dropbtn username pointer">{{username}}</button>
                         <div class="dropdown-content">
-                            <a href="{{ url_for('get_breakfasts') }}">Breakfast</a>
-                            <a href="{{ url_for('get_mains') }}">Main</a>
-                            <a href="{{ url_for('get_desserts') }}">Dessert</a>
+                            <a href="{{ url_for('get_breakfasts') }}">New Recipe</a>
+                            <a href="{{ url_for('get_mains') }}">Your recipes</a>
+                            <a href="{{ url_for('get_desserts') }}">Favorites </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="{{ url_for('get_desserts') }}">Sign Out</a>
                         </div>
-                    </div> {% else %}
-                    <a type="button" class="pointer nav-link" id="sign-in-btn" data-toggle="modal" data-target="#signInModal">Sign Up</a> {% endif %}
+                    </div>
+                    <div class="dropdown d-block d-sm-block d-md-none d-lg-none">
+                        <button class="menu-dropbtn"><span class="navbar-toggler-icon"></span></button>
+                        <div class="dropdown-content">
+                            <div class="dropdown">
+                                <button class="btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a href="{{ url_for('get_breakfasts') }}">Breakfast</a>
+                                    <a href="{{ url_for('get_mains') }}">Main</a>
+                                    <a href="{{ url_for('get_desserts') }}">Dessert</a>
+                                </div>
+                            </div>
+                            <a href="{{ url_for('get_breakfasts') }}">New Recipe</a>
+                            <a href="{{ url_for('get_mains') }}">Your recipes</a>
+                            <a href="{{ url_for('get_desserts') }}">Favorites </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="{{ url_for('get_desserts') }}">Sign Out</a>
+                        </div>
+                    </div>
+                    {% else %}
+                    <a type="button" class="pointer nav-link" id="sign-in-btn" data-toggle="modal" data-target="#signInModal">Sign Up</a>
                 </li>
             </ul>
             <div class="dropdown d-block d-sm-block d-md-none d-lg-none" style="float:right;">
-                <button class="categories-dropbtn"><span class="navbar-toggler-icon"></span></button>
+                <button class="menu-dropbtn"><span class="navbar-toggler-icon"></span></button>
                 <div class="dropdown-content">
                     <a href="{{ url_for('get_breakfasts') }}">Breakfast</a>
                     <a href="{{ url_for('get_mains') }}">Main</a>
                     <a href="{{ url_for('get_desserts') }}">Dessert</a>
                 </div>
             </div>
+            {% endif %}
         </div>
     </nav>
     <div class="container-fluid small-device-search d-block d-sm-block d-md-none d-lg-none">
