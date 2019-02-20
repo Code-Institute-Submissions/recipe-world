@@ -22,16 +22,18 @@
                 <input type="file" class="form-control-file" id="picInput">
             </div>
         </div>
-        <div class="form-group row">
-            <label for="ingredients" class="col-sm-2 col-form-label">Ingrediments</label>
-            <div class="col-sm-5">
-                <input type="text" class="form-control" id="ingredients">
+        <div class="form-group">
+            <div class="row">
+                <label for="ingredients" class="col-sm-2 col-form-label">Ingrediments</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="ingredients">
+                </div>
+                <div class="col-sm-2">
+                    <button class="btn edit_recipe_btn add_field_button"><i class="material-icons">local_hospital</i></button>
+                    <!--<button class="btn edit_recipe_btn remove_field"><i class="material-icons">do_not_disturb_on</i></button>-->
+                </div>
             </div>
-            <div class="col-sm-2">
-                <button class="btn edit_recipe_btn" onclick="add()"><i class="material-icons">local_hospital</i></button>
-                <button class="btn edit_recipe_btn" onclick="remove()"><i class="material-icons">do_not_disturb_on</i></button>
-                <div id="new_chq"></div>
-                <input type="hidden" value="1" id="total_chq">
+            <div class="form-group input_fields_wrap">
             </div>
         </div>
         <div class="form-group row">
