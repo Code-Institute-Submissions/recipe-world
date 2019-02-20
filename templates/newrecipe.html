@@ -1,0 +1,48 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <h1 class="food-page-title">Edit Recipe</h1>
+    </div>
+    <form>
+        <div class="form-group row">
+            <label for="foodName" class="col-sm-2 col-form-label">Food Name</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="foodName" placeholder="Food Name">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="author" class="col-sm-2 col-form-label">Author</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="author" value="{{username}}">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="picInput" class="col-sm-2 col-form-label">Upload a picture</label>
+            <div class="col-sm-8">
+                <input type="file" class="form-control-file" id="picInput">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="ingredients" class="col-sm-2 col-form-label">Ingrediments</label>
+            <div class="col-sm-5">
+                <input type="text" class="form-control" id="ingredients">
+            </div>
+            <div class="col-sm-2">
+                <button class="btn edit_recipe_btn" onclick="add()"><i class="material-icons">local_hospital</i></button>
+                <button class="btn edit_recipe_btn" onclick="remove()"><i class="material-icons">do_not_disturb_on</i></button>
+                <div id="new_chq"></div>
+                <input type="hidden" value="1" id="total_chq">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="method" class="col-sm-2 col-form-label">Method</label>
+            <div class="col-sm-7">
+                <input type="text" class="form-control" id="method">
+            </div>
+        </div>
+        <div class="form-group row justify-content-center">
+            <button type="submit" class="btn btn-success">Save</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

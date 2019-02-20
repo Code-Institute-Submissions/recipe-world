@@ -59,6 +59,12 @@ def sign_up():
         foods=mongo.db.foods.find()
         return render_template("index.html", foods=foods, username=session["username"])
 
+@app.route("/new_recipe")
+def new_recipe():
+    username = session["username"]
+    return render_template("newrecipe.html", username = username)
+
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
