@@ -67,11 +67,27 @@ def sign_up():
         foods=mongo.db.foods.find()
         return render_template("index.html", foods=foods, username=session["username"])
 
-@app.route("/new_recipe")
+@app.route("/new_recipe", methods=["GET", "POST"])
 def new_recipe():
     username = session["username"]
+    foods=mongo.db.foods.find()
+    if request.method == "POST":
+        foodname = request.form["foodname"].lower()
+        category_name = request.form["categoryselect"].lower()
+        author = request.form["author"].lower()
+        description = request.form["shortdesc"].lower()
+        
+        ingredients1 = request.form["ingredients1"]
+        ingredients2 = request.form.getlist("ingredients2")
+        ingredients2.insert(0, ingredients1)
+        
+        method1 = request.form["method1"]
+        method2 = request.form.getlist("method2")
+        method2.insert(0, method1)
+        
+        print(foodname, category_name, author, description, ingredients2, method2)
+        return render_template("index.html", foods=foods, username=session["username"]) 
     return render_template("newrecipe.html", username = username)
-
 
 
 if __name__ == '__main__':

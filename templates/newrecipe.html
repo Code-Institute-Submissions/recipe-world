@@ -3,12 +3,12 @@
     <div class="row justify-content-center">
         <h1 class="title">Edit Recipe</h1>
     </div>
-    <form>
+    <form method="POST">
         <div class="form-group container">
             <div class="row">
-                <label for="foodName" class="col-12 offset-md-2 col-md-2 form-control-label">Food Name</label>
+                <label for="foodname" class="col-12 offset-md-2 col-md-2 form-control-label">Food Name</label>
                 <div class="col-12 col-md-6">
-                    <input type="text" class="form-control" id="foodName">
+                    <input type="text" class="form-control" id="foodname" name="foodname">
                 </div>
             </div>
         </div>
@@ -16,7 +16,19 @@
             <div class="row">
                 <label for="author" class="col-12 offset-md-2 col-md-2 form-control-label">Author</label>
                 <div class="col-12 col-md-6">
-                    <input type="text" class="form-control" id="author" value="{{username}}">
+                    <input type="text" class="form-control" id="author" name="author" value="{{username}}">
+                </div>
+            </div>
+        </div>
+        <div class="form-group container">
+            <div class="row">
+                <label for="categoryselect" class="col-12 offset-md-2 col-md-2 form-control-label">Select Category</label>
+                <div class="col-10 col-md-6">
+                    <select class="form-control" id="categoryselect" name="categoryselect">
+                      <option>Breakfast</option>
+                      <option>Main</option>
+                      <option>Dessert</option>
+                    </select>
                 </div>
             </div>
         </div>
@@ -24,45 +36,41 @@
             <div class="row">
                 <label for="shortdesc" class="col-12 offset-md-2 col-md-2 form-control-label">Short Description</label>
                 <div class="col-10 col-md-6">
-                    <textarea class="form-control" id="shortdesc" placeholder="Make a batch on a Sunday for a quick and easy breakfast on-the-go for the rest of the week."></textarea>
+                    <textarea class="form-control" id="shortdesc" name="shortdesc" placeholder="Make a batch on a Sunday for a quick and easy breakfast on-the-go for the rest of the week."></textarea>
                 </div>
-            </div>
-            <div class="form-group ingredients_input_fields_wrap">
             </div>
         </div>
         <div class="form-group container">
             <div class="row">
                 <label for="picInput" class="col-12 offset-md-2 col-md-2 form-control-label">Picture</label>
                 <div class="col-12 col-md-6">
-                    <input type="file" class="form-control-file" id="picInput">
+                    <input type="file" class="form-control-file" id="picInput" name="picInput">
                 </div>
             </div>
         </div>
         <div class="form-group container">
             <div class="row">
-                <label for="ingredients" class="col-12 offset-md-2 col-md-2 form-control-label">Ingrediments</label>
+                <label for="ingredients" class="col-12 offset-md-2 col-md-2 form-control-label">Ingredients</label>
                 <div class="col-10 col-md-6">
-                    <input type="text" class="form-control" id="ingredients" placeholder="E.g.: 100g/3½oz butter">
+                    <input type="text" class="form-control" name="ingredients1" placeholder="E.g.: 100g/3½oz butter">
                 </div>
                 <div class="col-1">
-                    <button class="btn edit_recipe_btn add_ingrediments_field_button"><i class="material-icons">local_hospital</i></button>
+                    <button class="btn edit_recipe_btn add_ingredients_field_button"><i class="material-icons">local_hospital</i></button>
                 </div>
             </div>
-            <div class="form-group ingredients_input_fields_wrap">
-            </div>
+            <div class="form-group ingredients_input_fields_wrap"></div>
         </div>
         <div class="form-group container">
             <div class="row">
                 <label for="method" class="col-12 offset-md-2 col-md-2 form-control-label">Method</label>
                 <div class="col-10 col-md-6">
-                    <textarea class="form-control" id="method" placeholder="E.g.: Preheat the oven to 180c/160c fan/gas 4, and line a 24x24cm/9x9in baking tin with greaseproof paper."></textarea>
+                    <textarea class="form-control" id="method" name="method1" placeholder="E.g.: Preheat the oven to 180c/160c fan/gas 4, and line a 24x24cm/9x9in baking tin with greaseproof paper."></textarea>
                 </div>
                 <div class="col-1">
                     <button class="btn edit_recipe_btn add_method_field_button"><i class="material-icons">local_hospital</i></button>
                 </div>
             </div>
-            <div class="form-group method_input_fields_wrap">
-            </div>
+            <div class="form-group method_input_fields_wrap"></div>
         </div>
         <div class="form-group row justify-content-center">
             <button type="submit" class="btn btn-success">Save</button>
