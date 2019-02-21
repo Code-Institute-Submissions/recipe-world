@@ -22,22 +22,30 @@ def index():
 @app.route("/breakfasts")
 def get_breakfasts():
     foods=mongo.db.foods.find({"category_name": "breakfast"})
+    if "username" in session:
+        return render_template("index.html", foods=foods, title="Breakfasts", username=session["username"])
     return render_template("index.html", foods=foods, title="Breakfasts")
 
 @app.route("/mains")
 def get_mains():
-    return render_template("index.html", 
-    foods=mongo.db.foods.find({"category_name": "main"}), title="Mains")
+    foods=mongo.db.foods.find({"category_name": "main"})
+    if "username" in session:
+        return render_template("index.html", foods=foods, title="Mains", username=session["username"])
+    return render_template("index.html", foods=foods, title="Mains")
     
 @app.route("/desserts")
 def get_desserts():
-    return render_template("index.html", 
-    foods=mongo.db.foods.find({"category_name": "dessert"}), title="Desserts")
+    foods=mongo.db.foods.find({"category_name": "dessert"})
+    if "username" in session:
+        return render_template("index.html", foods=foods, title="Desserts", username=session["username"])    
+    return render_template("index.html", foods=foods, title="Desserts")
     
 @app.route("/<food_name>")
 def get_food(food_name):
-    return render_template("food.html", 
-    food=mongo.db.foods.find_one({"name": food_name}))
+    food=mongo.db.foods.find_one({"name": food_name})
+    if "username" in session:
+        return render_template("food.html", food=food, username=session["username"])    
+    return render_template("food.html", food=food)
 
 @app.route("/sign_up", methods=['POST'])
 def sign_up():
