@@ -24,7 +24,7 @@
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #f1f1f1;
+    background-color: rgb(248, 249, 250);;
     min-width: 150px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
@@ -60,14 +60,15 @@
     right: 0;
 }
 
-.dropdown:hover .menu-dropbtn {
+.dropdown:hover .menu-dropbtn,
+.dropdown .submenu-dropbtn:hover{
     background-color: #CDE7F0;
 }
 
 .dropdown-subcontent {
     display: none;
     position: relative;
-    background-color: #f1f1f1;
+    background-color: white;
     min-width: 150px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;

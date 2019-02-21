@@ -36,7 +36,7 @@ $(document).ready(function() {
             $(method_wrapper).append(
                 '<div class="row">' +
                 '<div class="col-10 offset-md-4 col-md-6">' +
-                '<input type="text" class="form-control" id="method">' +
+                '<textarea class="form-control" id="method"></textarea>' +
                 '</div>' +
                 '<div class="col-1">' +
                 '<button class="btn edit_recipe_btn remove_field"><i class="material-icons">do_not_disturb_on</i></button>' +
