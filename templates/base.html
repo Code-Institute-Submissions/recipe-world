@@ -13,7 +13,7 @@
         <a class="navbar-brand" href="{{ url_for('index') }}">Recipe World</a>
         <div class="navbar-nav mr-auto">
             <div class="dropdown d-none d-md-block">
-                <button class="menu-dropbtn pointer">Categories</button>
+                <span style"margin-right: 20px;"><button class="menu-dropbtn pointer">Categories</button></span>
                 <div class="dropdown-content">
                     <a href="{{ url_for('get_breakfasts') }}">Breakfast</a>
                     <a href="{{ url_for('get_mains') }}">Main</a>
@@ -22,7 +22,7 @@
             </div>
         </div>
         <div class="nav navbar-nav navbar-center d-none d-md-block">
-            <form method="POST" class="form-inline">
+            <form method="POST" class="form-inline search-bar">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="searched_food" name="searched_food">
                 <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
             </form>

@@ -72,12 +72,14 @@
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
 }
-.sub-dropdown:hover .dropdown-subcontent{
+
+.sub-dropdown:hover .dropdown-subcontent {
     display: block;
     text-align: right;
     left: auto;
     right: 0;
 }
+
 /*---------------------------------------------------*/
 
 .center {
@@ -99,7 +101,8 @@
     padding: 5px;
     margin-right: 10px;
 }
-.edit_recipe_btn{
+
+.edit_recipe_btn {
     margin: 0;
     padding: 0;
 }
@@ -117,7 +120,7 @@
 
 .form-control.search-bar {
     width: 50%;
-    margin-right: 5px;
+    margin-right: 0px;
 }
 
 .search-form {
@@ -175,6 +178,7 @@
 .title {
     text-align: center;
     margin: 25px;
+    font-size: 30px;
 }
 
 .food-page-title {
@@ -223,6 +227,9 @@
         padding-bottom: 0px;
         text-align: center;
         margin-bottom: 0px;
+    }
+    .search-bar {
+        margin-left: 50px;
     }
     .material-icons {
         font-size: 35px;

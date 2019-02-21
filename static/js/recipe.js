@@ -13,10 +13,10 @@ $(document).ready(function() {
             x++; //text box increment
             $(ingredients_wrapper).append(
                 '<div class="row">' +
-                '<div class="offset-2 col-sm-6">' +
+                '<div class="col-10 offset-md-4 col-md-6">' +
                 '<input type="text" class="form-control" id="ingredients">' +
                 '</div>' +
-                '<div class="col-sm-2">' +
+                '<div class="col-1">' +
                 '<button class="btn edit_recipe_btn remove_field"><i class="material-icons">do_not_disturb_on</i></button>' +
                 '</div>' +
                 '</div>');
@@ -35,10 +35,10 @@ $(document).ready(function() {
             x++; //text box increment
             $(method_wrapper).append(
                 '<div class="row">' +
-                '<div class="offset-2 col-sm-6">' +
+                '<div class="col-10 offset-md-4 col-md-6">' +
                 '<input type="text" class="form-control" id="method">' +
                 '</div>' +
-                '<div class="col-sm-2">' +
+                '<div class="col-1">' +
                 '<button class="btn edit_recipe_btn remove_field"><i class="material-icons">do_not_disturb_on</i></button>' +
                 '</div>' +
                 '</div>');
