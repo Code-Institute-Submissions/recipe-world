@@ -56,8 +56,11 @@ def get_food(food_name):
 @app.route("/my_recipes")
 def get_my_recipes():
     username = session["username"]
-    foods=mongo.db.foods.find({"uploaded_by": username})
-    return render_template("index.html", foods=foods, title="My Recipes", username=username)
+    if mongo.db.foods.find({"username": username}).count() < 1:
+        return render_template("index.html", title="My Recipes", username=username)
+    else:
+        foods=mongo.db.foods.find({"uploaded_by": username})
+        return render_template("index.html", foods=foods, title="My Recipes", username=username)
     
 @app.route("/sign_up", methods=['POST'])
 def sign_up():

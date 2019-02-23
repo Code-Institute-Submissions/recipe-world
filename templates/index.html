@@ -1,9 +1,8 @@
-{% extends 'base.html' %} 
-{% block content %} {% if title %}
+{% extends 'base.html' %} {% block content %} {% if title %}
 <h1 class="title">{{ title }}</h1>
 <hr class="featurette-divider"> {% else %}
 <h1 class="title">Find Your Favorite</h1>
-{% endif %} {% for food in foods %} {% if loop.index % 2 != 0 %}
+{% endif %} {% if foods %} {% for food in foods %} {% if loop.index % 2 != 0 %}
 <div class="container-fluid d-none d-sm-block d-md-block">
     <div class="row">
         <div class="col-6 limit">
@@ -83,4 +82,15 @@
     </div>
     <hr class="featurette-divider">
 </div>
-{% endif %} {% endfor %} {% endblock %}
+{% endif %} {% endfor %}{% else %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="food-name">You have not uploaded any recipe yet.</h2>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <a class="btn btn-success" href="{{ url_for('new_recipe') }}" role="button" style="text-align: center;">New Recipe</a>
+    </div>
+</div>
+{% endif %} {% endblock %}
