@@ -8,7 +8,7 @@
             <div class="row">
                 <label for="foodname" class="col-12 offset-md-2 col-md-2 form-control-label">Food Name</label>
                 <div class="col-12 col-md-6">
-                    <input type="text" class="form-control" id="foodname" name="foodname">
+                    <input type="text" class="form-control" id="foodname" name="foodname" required>
                 </div>
             </div>
         </div>
@@ -16,7 +16,7 @@
             <div class="row">
                 <label for="author" class="col-12 offset-md-2 col-md-2 form-control-label">Author</label>
                 <div class="col-12 col-md-6">
-                    <input type="text" class="form-control" id="author" name="author" value="{{username}}">
+                    <input type="text" class="form-control" id="author" name="author" value="{{username}}" required>
                 </div>
             </div>
         </div>
@@ -36,13 +36,15 @@
             <div class="row">
                 <label for="shortdesc" class="col-12 offset-md-2 col-md-2 form-control-label">Short Description</label>
                 <div class="col-10 col-md-6">
-                    <textarea class="form-control" id="shortdesc" name="shortdesc" placeholder="Make a batch on a Sunday for a quick and easy breakfast on-the-go for the rest of the week."></textarea>
+                    <textarea class="form-control" id="shortdesc" name="shortdesc" placeholder="Make a batch on a Sunday for a quick and easy breakfast on-the-go for the rest of the week." required></textarea>
                 </div>
             </div>
         </div>
         <div class="form-group container">
             <div class="row">
-                <label for="picInput" class="col-12 offset-md-2 col-md-2 form-control-label">Picture</label>
+                <label for="picInput" class="col-12 offset-md-2 col-md-2 form-control-label">Picture
+                <i class="material-icons" data-toggle="tooltip" data-placement="bottom" title="Your file can not be larger than 2 MB">info_outline</i>
+                </label>
                 <div class="col-12 col-md-6">
                     <input type="file" class="form-control-file" name="picInput">
                 </div>
@@ -52,10 +54,10 @@
             <div class="row">
                 <label for="ingredients" class="col-12 offset-md-2 col-md-2 form-control-label">Ingredients</label>
                 <div class="col-10 col-md-6">
-                    <input type="text" class="form-control" name="ingredients1" placeholder="E.g.: 100g/3½oz butter">
+                    <input type="text" class="form-control" name="ingredients1" placeholder="E.g.: 100g/3½oz butter" required>
                 </div>
                 <div class="col-1">
-                    <button class="btn edit_recipe_btn add_ingredients_field_button"><i class="material-icons">local_hospital</i></button>
+                    <button class="btn edit_recipe_btn add_ingredients_field_button"><i class="material-icons new_line">local_hospital</i></button>
                 </div>
             </div>
             <div class="form-group ingredients_input_fields_wrap"></div>
@@ -64,10 +66,10 @@
             <div class="row">
                 <label for="method" class="col-12 offset-md-2 col-md-2 form-control-label">Method</label>
                 <div class="col-10 col-md-6">
-                    <textarea class="form-control" id="method" name="method1" placeholder="E.g.: Preheat the oven to 180c/160c fan/gas 4, and line a 24x24cm/9x9in baking tin with greaseproof paper."></textarea>
+                    <textarea class="form-control" id="method" name="method1" required placeholder="E.g.: Preheat the oven to 180c/160c fan/gas 4, and line a 24x24cm/9x9in baking tin with greaseproof paper."></textarea>
                 </div>
                 <div class="col-1">
-                    <button class="btn edit_recipe_btn add_method_field_button"><i class="material-icons">local_hospital</i></button>
+                    <button class="btn edit_recipe_btn add_method_field_button"><i class="material-icons new_line">local_hospital</i></button>
                 </div>
             </div>
             <div class="form-group method_input_fields_wrap"></div>

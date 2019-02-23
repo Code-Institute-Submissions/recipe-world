@@ -5,7 +5,7 @@
 <h1 class="title">Find Your Favorite</h1>
 {% endif %} {% for food in foods %} {% if loop.index % 2 != 0 %}
 <div class="container-fluid d-none d-sm-block d-md-block">
-    <div class="row background-grey">
+    <div class="row">
         <div class="col-6 limit">
             <a href="{{ url_for('get_food', food_name=food.name) }}"><img class="img-responsive" src="{{food.pic_url}}" alt="{{food.name}}"></a>
         </div>
@@ -45,7 +45,7 @@
 </div>
 {% else %}
 <div class="container-fluid d-none d-sm-block d-md-block">
-    <div class="row food-number-odd background-grey">
+    <div class="row food-number-odd">
         <div class="col-6">
             <h2 class="food-name">{{food.name|capitalize}}</h2>
             <br>

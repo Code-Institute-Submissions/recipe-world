@@ -1,4 +1,4 @@
-/* Dropdown Button */
+/* --------Dropdown Button-------- */
 
 .menu-dropbtn {
     color: black;
@@ -14,7 +14,7 @@
     border: none;
 }
 
-/* Dropdown Content */
+/* --------Dropdown Content-------- */
 
 .dropdown {
     position: relative;
@@ -24,7 +24,7 @@
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: rgb(248, 249, 250);;
+    background-color: rgb(248, 249, 250);
     min-width: 150px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
@@ -61,7 +61,7 @@
 }
 
 .dropdown:hover .menu-dropbtn,
-.dropdown .submenu-dropbtn:hover{
+.dropdown .submenu-dropbtn:hover {
     background-color: #CDE7F0;
 }
 
@@ -144,18 +144,24 @@
 }
 
 .material-icons {
-    font-size: 30px;
+    font-size: 20px;
     bottom: 0;
     text-align: center;
     vertical-align: bottom;
 }
 
-.material-icons.thumb-up-icon {
+.thumb-up-icon {
     color: #3a7ebf;
+    font-size: 30px;
 }
 
-.material-icons.favorite-icon {
+.favorite-icon {
     color: red;
+    font-size: 30px;
+}
+
+.new_line{
+    font-size: 30px;  
 }
 
 .food-name {
@@ -183,16 +189,12 @@
 }
 
 .food-page-title {
+    margin-top: 15px;
     font-size: 30px;
 }
 
 .featurette-divider {
     margin-top: 35px;
-}
-
-.background-grey {
-    background-color: rgb(248, 249, 250);
-    padding: 10px;
 }
 
 .food-number-odd {
@@ -232,7 +234,8 @@
     .search-bar {
         margin-left: 50px;
     }
-    .material-icons {
+    .thumb-up-icon,
+    .favorite-icon{
         font-size: 35px;
     }
 }

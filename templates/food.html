@@ -9,7 +9,7 @@
             <a href="{{ url_for('get_food', food_name=food.name) }}"><img class="img-responsive" src="{{food.pic_url}}" alt="{{food.name}}"></a>
         </div>
         <div class="col-4">
-            <div><strong>Author:</strong><br>{{food.author|capitalize}}</div>
+            <div><strong>Author:</strong><br>{{food.author}}</div>
             <br>
             <div class="food-description d-none d-sm-none d-md-block">{{food.description|capitalize}}</div>
         </div>

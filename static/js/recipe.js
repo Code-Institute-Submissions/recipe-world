@@ -16,10 +16,10 @@ $(document).ready(function() {
             $(ingredients_wrapper).append(
                 '<div class="row">' +
                 '<div class="col-10 offset-md-4 col-md-6">' +
-                '<input type="text" class="form-control" name="ingredients2">' +
+                '<input type="text" class="form-control" name="ingredients2" required>' +
                 '</div>' +
                 '<div class="col-1">' +
-                '<button class="btn edit_recipe_btn remove_field"><i class="material-icons">do_not_disturb_on</i></button>' +
+                '<button class="btn edit_recipe_btn remove_field"><i class="material-icons new_line">do_not_disturb_on</i></button>' +
                 '</div>' +
                 '</div>');
         }
@@ -38,10 +38,10 @@ $(document).ready(function() {
             $(method_wrapper).append(
                 '<div class="row">' +
                 '<div class="col-10 offset-md-4 col-md-6">' +
-                '<textarea class="form-control" name="method2"></textarea>' +
+                '<textarea class="form-control" name="method2" required></textarea>' +
                 '</div>' +
                 '<div class="col-1">' +
-                '<button class="btn edit_recipe_btn remove_field"><i class="material-icons">do_not_disturb_on</i></button>' +
+                '<button class="btn edit_recipe_btn remove_field"><i class="material-icons new_line">do_not_disturb_on</i></button>' +
                 '</div>' +
                 '</div>');
         }
