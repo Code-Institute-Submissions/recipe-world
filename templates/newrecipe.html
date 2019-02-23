@@ -3,7 +3,7 @@
     <div class="row justify-content-center">
         <h1 class="title">Edit Recipe</h1>
     </div>
-    <form method="POST">
+    <form enctype="multipart/form-data" method="POST">
         <div class="form-group container">
             <div class="row">
                 <label for="foodname" class="col-12 offset-md-2 col-md-2 form-control-label">Food Name</label>
@@ -44,7 +44,7 @@
             <div class="row">
                 <label for="picInput" class="col-12 offset-md-2 col-md-2 form-control-label">Picture</label>
                 <div class="col-12 col-md-6">
-                    <input type="file" class="form-control-file" id="picInput" name="picInput">
+                    <input type="file" class="form-control-file" name="picInput">
                 </div>
             </div>
         </div>
