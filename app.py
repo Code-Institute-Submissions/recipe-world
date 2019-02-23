@@ -53,6 +53,12 @@ def get_food(food_name):
         return render_template("food.html", food=food, username=session["username"])    
     return render_template("food.html", food=food)
 
+@app.route("/my_recipes")
+def get_my_recipes():
+    username = session["username"]
+    foods=mongo.db.foods.find({"uploaded_by": username})
+    return render_template("index.html", foods=foods, title="My Recipes", username=username)
+    
 @app.route("/sign_up", methods=['POST'])
 def sign_up():
     exist = ""
@@ -78,19 +84,23 @@ def allowed_file(filename):
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 def upload_file():
-    file = request.files['picInput']
-    # if user does not select file, browser also
-    # submit an empty part without filename
-    if file.filename == '':
+    try:
+        file = request.files['picInput']
+        # if user does not select file, browser also
+        # submit an empty part without filename
+        if file.filename == '':
+            pic_url = ""
+            return pic_url
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            pic_url = "static/user_images/" + filename
+            return pic_url
         pic_url = ""
         return pic_url
-    if file and allowed_file(file.filename):
-        filename = secure_filename(file.filename)
-        file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        pic_url = "static/user_images/" + filename
-        return pic_url
-    pic_url = ""
-    return pic_url
+    except:
+        pic_url = ""
+        return False
 
 @app.route("/new_recipe", methods=["GET", "POST"])
 def new_recipe():
@@ -113,10 +123,12 @@ def new_recipe():
         pic_url = ""
         pic_url = upload_file()
         
+        uploaded_by = username
         food = dict(
             category_name = category_name,
             name = foodname,
             author = author,
+            uploaded_by = uploaded_by,
             pic_url = pic_url,
             likes = 0,
             favorites = 0,
@@ -125,9 +137,9 @@ def new_recipe():
             method = method2
             )
         mongo.db.foods.insert(food)
-        food=mongo.db.foods.find_one({"name": foodname})
-        return render_template("food.html", food=food, username=session["username"]) 
-    return render_template("newrecipe.html", username = username)
+        foods=mongo.db.foods.find({"uploaded_by": username})
+        return render_template("index.html", foods=foods, title="My Recipes", username=username)
+    return render_template("newrecipe.html", username=username)
 
 
 if __name__ == '__main__':

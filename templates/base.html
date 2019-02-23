@@ -36,7 +36,7 @@
                         <button class="col-12 menu-dropbtn username pointer">{{username}}</button>
                         <div class="dropdown-content">
                             <a href="{{ url_for('new_recipe') }}">New Recipe</a>
-                            <a href="{{ url_for('get_mains') }}">Your recipes</a>
+                            <a href="{{ url_for('get_my_recipes') }}">My recipes</a>
                             <a href="{{ url_for('get_desserts') }}">Favorites </a>
                             <div class="dropdown-divider"></div>
                             <a href="{{ url_for('get_desserts') }}">Sign Out</a>
@@ -54,7 +54,7 @@
                                 </div>
                             </div>
                             <a href="{{ url_for('new_recipe') }}">New Recipe</a>
-                            <a href="{{ url_for('get_mains') }}">Your recipes</a>
+                            <a href="{{ url_for('get_my_recipes') }}">My recipes</a>
                             <a href="{{ url_for('get_desserts') }}">Favorites </a>
                             <div class="dropdown-divider"></div>
                             <a href="{{ url_for('get_desserts') }}">Sign Out</a>
