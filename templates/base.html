@@ -39,7 +39,7 @@
                             <a href="{{ url_for('get_my_recipes') }}">My recipes</a>
                             <a href="{{ url_for('get_desserts') }}">Favorites </a>
                             <div class="dropdown-divider"></div>
-                            <a href="{{ url_for('sign_out') }}">Sign Out</a>
+                            <a type="button" class="pointer" id="sign-out-btn" data-toggle="modal" data-target="#signOutModal">Sign Out</a>
                         </div>
                     </div>
                     <div class="dropdown d-block d-sm-block d-md-none d-lg-none">
@@ -59,7 +59,7 @@
                             <a href="{{ url_for('get_my_recipes') }}">My recipes</a>
                             <a href="{{ url_for('get_desserts') }}">Favorites </a>
                             <div class="dropdown-divider"></div>
-                            <a href="{{ url_for('sign_out') }}">Sign Out</a>
+                            <a type="button" class="pointer" id="sign-out-btn" data-toggle="modal" data-target="#signOutModal">Sign Out</a>
                         </div>
                     </div>
                     {% else %}
@@ -86,7 +86,7 @@
 </header>
 
 <body>
-    <!-- Modal -->
+    <!-- Sign Up Modal -->
     <div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="signInModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -114,6 +114,32 @@
                         </div>
                         <div class="modal-footer">
                             <button id="submitBtn" type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <body>
+    <!-- Sign Out Modal -->
+    <div class="modal fade" id="signOutModal" tabindex="-1" role="dialog" aria-labelledby="signOutModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="signOutModalLabel">Are you sure?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="signOutForm" action="/sign_out">
+                        <div class="form-group">
+                            <label>If you sign out you will not be able to sign in again with the same name and e-mail address.</label>
+                        </div>
+                        <div class="modal-footer">
+                            <button id="signOutBtn" type="submit" class="btn btn-primary">Submit</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         </div>
                     </form>
                 </div>
