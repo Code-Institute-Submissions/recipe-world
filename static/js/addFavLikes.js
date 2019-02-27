@@ -23,10 +23,11 @@ $(document).ready(function() {
             url: "/add_favorites"
         }).done(function(favorites_exist) {
             if (favorites_exist == "favorites_exist") {
-                $(clicked_fav).children().css('color', 'blue');
+                $(clicked_fav).children().css('color', 'pink');
+                window.location.reload();
             }
             else if (favorites_exist == "") {
-                $(clicked_fav).children().css('color', 'pink');
+                $(clicked_fav).children().css('color', 'red');
             }
         });
     });

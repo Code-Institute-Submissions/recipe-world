@@ -183,6 +183,8 @@ def add_favorites():
     favoritesdb = mongo.db.foods.find({"favorites": username}).count()
     userdb = mongo.db.users.find({"favorites":foodname}).count()
     if favoritesdb >= 1 and userdb >= 1:
+        mongo.db.users.update_one({"username": username}, {"$pull": {"favorites": foodname}})
+        mongo.db.foods.update_one({"name": foodname}, {"$pull": {"favorites": username}})
         favorites_exist = "favorites_exist"
         return favorites_exist
     else:
