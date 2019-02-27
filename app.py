@@ -55,13 +55,24 @@ def get_food(food_name):
 
 @app.route("/my_recipes")
 def get_my_recipes():
+    recipe_page = True
     username = session["username"]
     if mongo.db.foods.find({"username": username}).count() < 1:
-        return render_template("index.html", title="My Recipes", username=username)
+        return render_template("index.html", title="My Recipes", recipe_page=recipe_page, username=username)
     else:
         foods=mongo.db.foods.find({"uploaded_by": username})
         return render_template("index.html", foods=foods, title="My Recipes", username=username)
-    
+
+@app.route("/my_favorites")
+def get_my_favorites():
+    favorite_page = True
+    username = session["username"]
+    if mongo.db.foods.find({"favorites": username}).count() < 1:
+        return render_template("index.html", title="My Favorites", favorite_page=favorite_page, username=username)
+    else:
+        foods=mongo.db.foods.find({"favorites": username})
+        return render_template("index.html", foods=foods, title="My Favorites", username=username)
+
 @app.route("/sign_up", methods=['POST'])
 def sign_up():
     exist = ""
@@ -78,7 +89,7 @@ def sign_up():
         exist = "email_and_username_exist"
         return exist
     else:
-        mongo.db.users.insert({ "username": username , "email": email, "favorites": "" })
+        mongo.db.users.insert({ "username": username , "email": email, "favorites": [] })
         foods=mongo.db.foods.find()
         return render_template("index.html", foods=foods, username=session["username"])
 
@@ -152,13 +163,21 @@ def sign_out():
  
 @app.route("/add_favorites", methods=["GET"])
 def add_favorites():
-    foods=mongo.db.foods.find()
+    favorites_exist = ""
     username = session["username"]
     foodname = request.args.get('foodname', None)
-    #mongo.db.users.update_one({"username": username}, {"$push": {"favorites": foodname}})
-    mongo.db.foods.update_one({"name": foodname}, {"$push": {"favorites": username}})
-    return render_template("index.html", foods=foods)
-    
+    foods = mongo.db.foods.find()
+    favoritesdb = mongo.db.foods.find({"favorites": username}).count()
+    userdb = mongo.db.users.find({"favorites":foodname}).count()
+    if favoritesdb >= 1 and userdb >= 1:
+        favorites_exist = "favorites_exist"
+        return favorites_exist
+    else:
+        mongo.db.users.update_one({"username": username}, {"$push": {"favorites": foodname}})
+        mongo.db.foods.update_one({"name": foodname}, {"$push": {"favorites": username}})
+        favorites_exist = ""
+        return favorites_exist
+   
     
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),

@@ -1,8 +1,12 @@
-{% extends 'base.html' %} {% block content %} {% if title %}
+{% extends 'base.html' %} {% block content %}
+{% if title %}
 <h1 class="title">{{ title }}</h1>
 <hr class="featurette-divider"> {% else %}
 <h1 class="title">Find Your Favorite</h1>
-{% endif %} {% if foods %} {% for food in foods %} {% if loop.index % 2 != 0 %}
+{% endif %}
+{% if foods %} 
+    {% for food in foods %}
+        {% if loop.index % 2 != 0 %}
 <div class="container-fluid d-none d-sm-block d-md-block">
     <div class="row">
         <div class="col-6 limit">
@@ -42,7 +46,7 @@
     </div>
     <hr class="featurette-divider">
 </div>
-{% else %}
+        {% else %}
 <div class="container-fluid d-none d-sm-block d-md-block">
     <div class="row food-number-odd">
         <div class="col-6">
@@ -82,7 +86,10 @@
     </div>
     <hr class="featurette-divider">
 </div>
-{% endif %} {% endfor %}{% else %}
+        {% endif %}
+    {% endfor %}
+{% else %}
+    {% if recipe_page %}
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
@@ -93,4 +100,14 @@
         <a class="btn btn-success" href="{{ url_for('new_recipe') }}" role="button" style="text-align: center;">New Recipe</a>
     </div>
 </div>
-{% endif %} {% endblock %}
+    {% elif favorite_page %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="food-name">You do not have any favorite recipe.</h2>
+        </div>
+    </div>
+</div>
+    {% endif %}
+{% endif %}
+{% endblock %}
