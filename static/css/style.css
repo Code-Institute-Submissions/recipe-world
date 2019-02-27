@@ -160,8 +160,8 @@
     font-size: 30px;
 }
 
-.new_line{
-    font-size: 30px;  
+.new_line {
+    font-size: 30px;
 }
 
 .food-name {
@@ -234,8 +234,11 @@
     .search-bar {
         margin-left: 50px;
     }
+    .food-description {
+        margin-bottom: 0px;
+    }
     .thumb-up-icon,
-    .favorite-icon{
+    .favorite-icon {
         font-size: 35px;
     }
 }

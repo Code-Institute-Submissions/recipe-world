@@ -144,7 +144,12 @@ def new_recipe():
         return render_template("index.html", foods=foods, title="My Recipes", username=username)
     return render_template("newrecipe.html", username=username)
 
-
+@app.route("/sign_out")
+def sign_out():
+    session.pop('username', None)
+    foods=mongo.db.foods.find()
+    return render_template("index.html", foods=foods)
+    
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
