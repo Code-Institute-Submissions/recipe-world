@@ -161,12 +161,25 @@ def sign_out():
     foods=mongo.db.foods.find()
     return render_template("index.html", foods=foods)
  
+@app.route("/check_favorites", methods=["GET"])
+def check_favorites():
+    favorites_exist = ""
+    username = session["username"]
+    foodname = request.args.get('foodname', None)
+    favoritesdb = mongo.db.foods.find({"favorites": username}).count()
+    userdb = mongo.db.users.find({"favorites":foodname}).count()
+    if favoritesdb >= 1 and userdb >= 1:
+        favorites_exist = "favorites_exist"
+        return favorites_exist
+    else:
+        favorites_exist = ""
+        return favorites_exist
+
 @app.route("/add_favorites", methods=["GET"])
 def add_favorites():
     favorites_exist = ""
     username = session["username"]
     foodname = request.args.get('foodname', None)
-    foods = mongo.db.foods.find()
     favoritesdb = mongo.db.foods.find({"favorites": username}).count()
     userdb = mongo.db.users.find({"favorites":foodname}).count()
     if favoritesdb >= 1 and userdb >= 1:
