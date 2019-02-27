@@ -134,7 +134,7 @@ def new_recipe():
             uploaded_by = uploaded_by,
             pic_url = pic_url,
             likes = 0,
-            favorites = 0,
+            favorites = [],
             description = description,
             ingredients = ingredients2,
             method = method2
@@ -149,6 +149,16 @@ def sign_out():
     session.pop('username', None)
     foods=mongo.db.foods.find()
     return render_template("index.html", foods=foods)
+ 
+@app.route("/add_favorites", methods=["GET"])
+def add_favorites():
+    foods=mongo.db.foods.find()
+    username = session["username"]
+    foodname = request.args.get('foodname', None)
+    #mongo.db.users.update_one({"username": username}, {"$push": {"favorites": foodname}})
+    mongo.db.foods.update_one({"name": foodname}, {"$push": {"favorites": username}})
+    return render_template("index.html", foods=foods)
+    
     
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
