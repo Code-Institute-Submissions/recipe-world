@@ -45,9 +45,11 @@
                     <div class="dropdown d-block d-sm-block d-md-none d-lg-none">
                         <button class="menu-dropbtn"><span class="navbar-toggler-icon"></span></button>
                         <div class="dropdown-content">
-                            <div class="sub-dropdown">
-                                <button class="submenu-dropbtn pointer">Categories</button>
-                                <div class="dropdown-subcontent">
+                            <div class="dropbtn">
+                                <button class="pointer submenu-dropbtn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Categories
+                                  </button>
+                                <div class="dropdown-menu dropdown-subcontent">
                                     <a href="{{ url_for('get_breakfasts') }}">Breakfast</a>
                                     <a href="{{ url_for('get_mains') }}">Main</a>
                                     <a href="{{ url_for('get_desserts') }}">Dessert</a>
