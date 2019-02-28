@@ -165,8 +165,8 @@ def sign_out():
 def check_favorites():
     favorites_exist = ""
     username = session["username"]
-    foodname = request.args.get('foodname', None)
-    userdb = mongo.db.users.find({"$and":[{"username":username}, { "favorites": foodname }]}).count()
+    foodid = request.args.get('foodid', None)
+    userdb = mongo.db.users.find({"$and":[{"username":username}, { "favorites": foodid }]}).count()
     if userdb >= 1:
         favorites_exist = "favorites_exist"
         return favorites_exist
@@ -178,24 +178,23 @@ def check_favorites():
 def add_favorites():
     favorites_exist = ""
     username = session["username"]
-    foodname = request.args.get('foodname', None)
-    
-    userdb = mongo.db.users.find({"$and":[{"username":username}, { "favorites": foodname }]}).count()
-    #userdb = mongo.db.users.find({"favorites":foodname}).count()
+    foodid = request.args.get('foodid', None)
+    print(foodid)
+    userdb = mongo.db.users.find({"$and":[{"username":username}, { "favorites": foodid }]}).count()
     if userdb >= 1:
-        mongo.db.users.update_one({"username": username}, {"$pull": {"favorites": foodname}})
-        mongo.db.foods.update_one({"name": foodname}, {"$pull": {"favorites": username}})
-        favorites = mongo.db.foods.find({"name": foodname})
-        for element in favorites:
-             number_of_favorites = len(element["favorites"])
-        favorites_exist = "favorites" + str(number_of_favorites)
+        mongo.db.users.update_one({"username": username}, {"$pull": {"favorites": foodid}})
+        mongo.db.foods.update_one({"_id" : ObjectId(foodid)}, {"$pull": {"favorites": username}})
+        food = mongo.db.foods.find({"_id" : ObjectId(foodid)})
+        for element in food:
+            number_of_favorites = len(element["favorites"])
+            favorites_exist = "favorites" + str(number_of_favorites)
     else:
-        mongo.db.users.update_one({"username": username}, {"$push": {"favorites": foodname}})
-        mongo.db.foods.update_one({"name": foodname}, {"$push": {"favorites": username}})
-        favorites = mongo.db.foods.find({"name": foodname})
-        for element in favorites:
-             number_of_favorites = len(element["favorites"])
-        favorites_exist = "favorinot" + str(number_of_favorites)
+        mongo.db.users.update_one({"username": username}, {"$push": {"favorites": foodid}})
+        mongo.db.foods.update_one({"_id" : ObjectId(foodid)}, {"$push": {"favorites": username}})
+        food = mongo.db.foods.find({"_id" : ObjectId(foodid)})
+        for element in food:
+            number_of_favorites = len(element["favorites"])
+            favorites_exist = "favorinot" + str(number_of_favorites)
     return favorites_exist
    
     

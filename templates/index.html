@@ -15,6 +15,7 @@
             <br>
             <div class="row">Author: {{food.author|capitalize}}</div>
             <br>
+            <div class="row food_id" style="display: none;">{{food._id}}</div>
             <div class="like-fav-icons">
                 <span class="like-fav">
                     <span>{{food.likes}}</span>
@@ -32,6 +33,7 @@
 <div class="container-fluid food d-block d-sm-none d-md-none d-lg-none">
     <div class="limit">
         <h2 class="food-name">{{food.name|capitalize}}</h2>
+        <div class="row food_id" style="display: none;">{{food._id}}</div>
         <a href="{{ url_for('get_food', food_name=food.name) }}"><img class="img-responsive" src="{{food.pic_url}}" alt="{{food.name}}"></a>
         <div class="like-fav-icons">
             <span class="like-fav">
@@ -56,6 +58,7 @@
             <br>
             <div class="row">Author: {{food.author|capitalize}}</div>
             <br>
+            <div class="row food_id" style="display: none;">{{food._id}}</div>
             <div class="like-fav-icons">
                 <span class="like-fav">
                     <span>{{food.likes}}</span>
@@ -76,6 +79,7 @@
 <div class="container-fluid food d-block d-sm-none d-md-none d-lg-none">
     <div class="limit">
         <h2 class="food-name">{{food.name|capitalize}}</h2>
+        <div class="row food_id" style="display: none;">{{food._id}}</div>
         <a href="{{ url_for('get_food', food_name=food.name) }}"><img class="img-responsive" src="{{food.pic_url}}" alt="{{food.name}}"></a>
         <div class="like-fav-icons">
             <span class="like-fav">
