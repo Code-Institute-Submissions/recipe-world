@@ -166,9 +166,8 @@ def check_favorites():
     favorites_exist = ""
     username = session["username"]
     foodname = request.args.get('foodname', None)
-    favoritesdb = mongo.db.foods.find({"favorites": username}).count()
-    userdb = mongo.db.users.find({"favorites":foodname}).count()
-    if favoritesdb >= 1 and userdb >= 1:
+    userdb = mongo.db.users.find({"$and":[{"username":username}, { "favorites": foodname }]}).count()
+    if userdb >= 1:
         favorites_exist = "favorites_exist"
         return favorites_exist
     else:
@@ -180,18 +179,24 @@ def add_favorites():
     favorites_exist = ""
     username = session["username"]
     foodname = request.args.get('foodname', None)
-    favoritesdb = mongo.db.foods.find({"favorites": username}).count()
-    userdb = mongo.db.users.find({"favorites":foodname}).count()
-    if favoritesdb >= 1 and userdb >= 1:
+    
+    userdb = mongo.db.users.find({"$and":[{"username":username}, { "favorites": foodname }]}).count()
+    #userdb = mongo.db.users.find({"favorites":foodname}).count()
+    if userdb >= 1:
         mongo.db.users.update_one({"username": username}, {"$pull": {"favorites": foodname}})
         mongo.db.foods.update_one({"name": foodname}, {"$pull": {"favorites": username}})
-        favorites_exist = "favorites_exist"
-        return favorites_exist
+        favorites = mongo.db.foods.find({"name": foodname})
+        for element in favorites:
+             number_of_favorites = len(element["favorites"])
+        favorites_exist = "favorites" + str(number_of_favorites)
     else:
         mongo.db.users.update_one({"username": username}, {"$push": {"favorites": foodname}})
         mongo.db.foods.update_one({"name": foodname}, {"$push": {"favorites": username}})
-        favorites_exist = ""
-        return favorites_exist
+        favorites = mongo.db.foods.find({"name": foodname})
+        for element in favorites:
+             number_of_favorites = len(element["favorites"])
+        favorites_exist = "favorinot" + str(number_of_favorites)
+    return favorites_exist
    
     
 if __name__ == '__main__':
