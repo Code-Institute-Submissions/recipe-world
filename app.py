@@ -57,7 +57,7 @@ def get_food(food_name):
 def get_my_recipes():
     recipe_page = True
     username = session["username"]
-    if mongo.db.foods.find({"username": username}).count() < 1:
+    if mongo.db.foods.find({"uploaded_by": username}).count() < 1:
         return render_template("index.html", title="My Recipes", recipe_page=recipe_page, username=username)
     else:
         foods=mongo.db.foods.find({"uploaded_by": username})
@@ -103,18 +103,18 @@ def upload_file():
         # if user does not select file, browser also
         # submit an empty part without filename
         if file.filename == '':
-            pic_url = ""
+            pic_url = "/static/image/no_pic.png"
             return pic_url
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             pic_url = "static/user_images/" + filename
             return pic_url
-        pic_url = ""
+        pic_url = "/static/image/no_pic.png"
         return pic_url
     except:
-        pic_url = ""
-        return False
+        pic_url = "/static/image/no_pic.png"
+        return pic_url
 
 @app.route("/new_recipe", methods=["GET", "POST"])
 def new_recipe():
@@ -134,7 +134,6 @@ def new_recipe():
         method2 = request.form.getlist("method2")
         method2.insert(0, method1)
         
-        pic_url = ""
         pic_url = upload_file()
         
         uploaded_by = username
