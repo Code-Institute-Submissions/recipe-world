@@ -17,10 +17,6 @@
             <br>
             <div class="row food_id" style="display: none;">{{food._id}}</div>
             <div class="like-fav-icons">
-                <span class="like-fav">
-                    <span>{{food.likes}}</span>
-                <button class="btn add_likes_btn"><i class="material-icons thumb-up-icon">thumb_up</i></button>
-                </span>
                 <span class="like-fav" id="favorite-span">
                     <span>{{food.favorites|length}}</span>
                 <button class="btn add_favorites_btn"><i class="material-icons favorite-icon">favorite</i></button>
@@ -36,10 +32,6 @@
         <div class="row food_id" style="display: none;">{{food._id}}</div>
         <a href="{{ url_for('get_food', food_name=food.name) }}"><img class="img-responsive" src="{{food.pic_url}}" alt="{{food.name}}"></a>
         <div class="like-fav-icons">
-            <span class="like-fav">
-                    <span>{{food.likes}}</span>
-            <button class="btn add_likes_btn"><i class="material-icons thumb-up-icon">thumb_up</i></button>
-            </span>
             <span class="like-fav" id="favorite-span">
                     <span>{{food.favorites|length}}</span>
             <button class="btn add_favorites_btn"><i class="material-icons favorite-icon">favorite</i></button>
@@ -60,10 +52,6 @@
             <br>
             <div class="row food_id" style="display: none;">{{food._id}}</div>
             <div class="like-fav-icons">
-                <span class="like-fav">
-                    <span>{{food.likes}}</span>
-                <button class="btn add_likes_btn"><i class="material-icons thumb-up-icon">thumb_up</i></button>
-                </span>
                 <span class="like-fav" id="favorite-span">
                     <span>{{food.favorites|length}}</span>
                 <button class="btn add_favorites_btn"><i class="material-icons favorite-icon">favorite</i></button>
@@ -82,10 +70,6 @@
         <div class="row food_id" style="display: none;">{{food._id}}</div>
         <a href="{{ url_for('get_food', food_name=food.name) }}"><img class="img-responsive" src="{{food.pic_url}}" alt="{{food.name}}"></a>
         <div class="like-fav-icons">
-            <span class="like-fav">
-                    <span>{{food.likes}}</span>
-            <button class="btn add_likes_btn"><i class="material-icons thumb-up-icon">thumb_up</i></button>
-            </span>
             <span class="like-fav" id="favorite-span">
                     <span>{{food.favorites|length}}</span>
             <button class="btn add_favorites_btn"><i class="material-icons favorite-icon">favorite</i></button>
