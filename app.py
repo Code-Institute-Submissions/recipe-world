@@ -25,27 +25,26 @@ def index():
     if "username" in session:
         return render_template("index.html", foods=foods, username=session["username"])   
     return render_template("index.html", foods=foods)
+    
+def index_collect(title, foods):
+    if "username" in session:
+        return render_template("index.html", foods=foods, title=title, username=session["username"])   
+    return render_template("index.html", foods=foods, title=title)
 
 @app.route("/breakfasts")
 def get_breakfasts():
     foods=mongo.db.foods.find({"category_name": "breakfast"})
-    if "username" in session:
-        return render_template("index.html", foods=foods, title="Breakfasts", username=session["username"])
-    return render_template("index.html", foods=foods, title="Breakfasts")
+    return index_collect("Breakfasts", foods)
 
 @app.route("/mains")
 def get_mains():
     foods=mongo.db.foods.find({"category_name": "main"})
-    if "username" in session:
-        return render_template("index.html", foods=foods, title="Mains", username=session["username"])
-    return render_template("index.html", foods=foods, title="Mains")
+    return index_collect("Mains", foods)
     
 @app.route("/desserts")
 def get_desserts():
     foods=mongo.db.foods.find({"category_name": "dessert"})
-    if "username" in session:
-        return render_template("index.html", foods=foods, title="Desserts", username=session["username"])    
-    return render_template("index.html", foods=foods, title="Desserts")
+    return index_collect("Desserts", foods)
     
 @app.route("/<food_name>")
 def get_food(food_name):
@@ -62,7 +61,7 @@ def get_my_recipes():
         return render_template("index.html", title="My Recipes", recipe_page=recipe_page, username=username)
     else:
         foods=mongo.db.foods.find({"uploaded_by": username})
-        return render_template("index.html", foods=foods, title="My Recipes", username=username)
+        return index_collect("My Recipes", foods)
 
 @app.route("/my_favorites")
 def get_my_favorites():
@@ -90,7 +89,7 @@ def sign_up():
         exist = "email_and_username_exist"
         return exist
     else:
-        mongo.db.users.insert({ "username": username , "email": email, "favorites": [] })
+        mongo.db.users.insert({ "username": username , "email": email, "favorites": [], "my_recipes":[] })
         foods=mongo.db.foods.find()
         return render_template("index.html", foods=foods, username=session["username"])
 
@@ -155,6 +154,7 @@ def new_recipe():
             foodid = element["_id"]
         pic_url = upload_file(foodid)
         mongo.db.foods.update_one({"_id": ObjectId(foodid)}, {"$set": {"pic_url": pic_url}})
+        mongo.db.users.update_one({"username": username}, {"$push": {"my_recipes": foodid}})
         foods=mongo.db.foods.find({"uploaded_by": username})
         return render_template("index.html", foods=foods, title="My Recipes", username=username)
     return render_template("newrecipe.html", username=username)
