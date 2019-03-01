@@ -22,29 +22,33 @@ mongo = PyMongo(app)
 @app.route("/index")
 def index():
     foods=mongo.db.foods.find()
+    meals=mongo.db.foods.find()
     if "username" in session:
-        return render_template("index.html", foods=foods, username=session["username"])   
-    return render_template("index.html", foods=foods)
+        return render_template("index.html", foods=foods, meals=meals, username=session["username"])   
+    return render_template("index.html", foods=foods, meals=meals,)
     
-def index_collect(title, foods):
+def index_collect(title, foods, meals):
     if "username" in session:
-        return render_template("index.html", foods=foods, title=title, username=session["username"])   
-    return render_template("index.html", foods=foods, title=title)
+        return render_template("index.html", foods=foods, meals=meals, title=title, username=session["username"])   
+    return render_template("index.html", foods=foods, meals=meals, title=title)
 
 @app.route("/breakfasts")
 def get_breakfasts():
     foods=mongo.db.foods.find({"category_name": "breakfast"})
-    return index_collect("Breakfasts", foods)
+    meals=mongo.db.foods.find({"category_name": "breakfast"})
+    return index_collect("Breakfasts", foods, meals)
 
 @app.route("/mains")
 def get_mains():
     foods=mongo.db.foods.find({"category_name": "main"})
-    return index_collect("Mains", foods)
+    meals=mongo.db.foods.find({"category_name": "main"})
+    return index_collect("Mains", foods, meals)
     
 @app.route("/desserts")
 def get_desserts():
     foods=mongo.db.foods.find({"category_name": "dessert"})
-    return index_collect("Desserts", foods)
+    meals=mongo.db.foods.find({"category_name": "dessert"})
+    return index_collect("Desserts", foods, meals)
     
 @app.route("/<food_name>")
 def get_food(food_name):
@@ -61,7 +65,8 @@ def get_my_recipes():
         return render_template("index.html", title="My Recipes", recipe_page=recipe_page, username=username)
     else:
         foods=mongo.db.foods.find({"uploaded_by": username})
-        return index_collect("My Recipes", foods)
+        meals=mongo.db.foods.find({"uploaded_by": username})
+        return index_collect("My Recipes", foods, meals)
 
 @app.route("/my_favorites")
 def get_my_favorites():
@@ -71,7 +76,8 @@ def get_my_favorites():
         return render_template("index.html", title="My Favorites", favorite_page=favorite_page, username=username)
     else:
         foods=mongo.db.foods.find({"favorites": username})
-        return render_template("index.html", foods=foods, title="My Favorites", username=username)
+        meals=mongo.db.foods.find({"favorites": username})
+        return index_collect("My Favorites", foods, meals)
 
 @app.route("/sign_up", methods=['POST'])
 def sign_up():

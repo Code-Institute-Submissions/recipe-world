@@ -2,7 +2,38 @@
 <h1 class="title">{{ title }}</h1>
 <hr class="featurette-divider"> {% else %}
 <h1 class="title">Find Your Favorite</h1>
-{% endif %} {% if foods %} {% for food in foods %} {% if loop.index % 3 != 0 and loop.index % 2 != 0 %}
+{% endif %}
+{% if meals %}
+<div class="container-fluid d-none d-sm-none d-md-none d-lg-block">
+    <div class="row">
+{% for food in meals %}
+        <div class="col-4">
+            <div class="col-12 limit">
+                <a href="{{ url_for('get_food', food_name=food.name) }}"><img class="img-responsive" src="{{food.pic_url}}" alt="{{food.name}}"></a>
+            </div>
+            <div class="col-12">
+                <h2 class="food-name">{{food.name|capitalize}}</h2>
+                <br>
+                <div class="row"> {{food.description|capitalize}}</div>
+                <br>
+                <div class="row">Author: {{food.author}}</div>
+                <div class="row food_id" style="display: none;">{{food._id}}</div>
+                <div class="like-fav-icons">
+                    <span class="like-fav" id="favorite-span">
+                <span>{{food.favorites|length}}</span>
+                    <button class="btn add_favorites_btn"><i class="material-icons favorite-icon">favorite</i></button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+
+{% if foods %}
+{% for food in foods %}
+{% if loop.index % 3 != 0 and loop.index % 2 != 0 %}
 <div class="container-fluid d-lg-none">
     <div class="row">
         <div class="col-sm-6 limit d-none d-sm-block d-md-block">
@@ -10,6 +41,7 @@
         </div>
         <div class="col-12 col-sm-6">
             <h2 class="food-name">{{food.name|capitalize}}</h2>
+            <br>
             <div class="row d-none d-sm-block d-md-block"> {{food.description|capitalize}}</div>
             <br>
             <div class="row d-none d-sm-block d-md-block">Author: {{food.author}}</div>
@@ -32,6 +64,7 @@
 <div class="container-fluid d-lg-none">
     <div class="row">
         <h2 class="col-12 food-name">{{food.name|capitalize}}</h2>
+        <br>
         <div class="col-12">
             <div class="row limit d-none d-sm-block d-md-block">
                 <a href="{{ url_for('get_food', food_name=food.name) }}"><img class="img-responsive" src="{{food.pic_url}}" alt="{{food.name}}"></a>
@@ -58,6 +91,7 @@
     <div class="row">
         <div class="col-12 col-sm-6">
             <h2 class="food-name">{{food.name|capitalize}}</h2>
+            <br>
             <div class="row d-none d-sm-block d-md-block"> {{food.description|capitalize}}</div>
             <div class="row d-none d-sm-block d-md-block">Author: {{food.author}}</div>
             <div class="row food_id" style="display: none;">{{food._id}}</div>
