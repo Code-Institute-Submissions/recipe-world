@@ -98,22 +98,11 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-'''def existing_file(filename):
-    list_of_pic_names = []
-    path = "static/user_images/"
-    dirs = os.listdir( path )
-    for file in dirs:
-        list_of_pic_names.append(file)
-    if filename in list_of_pic_names:
-        return True
-    else:
-        return False'''
-        
 def upload_file(foodid):
     try:
         file = request.files['picInput']
         if file.filename == '':
-            pic_url = "/static/image/no_pic.png"
+            pic_url = "/static/images/no_pic.png"
             return pic_url
         elif file and allowed_file(file.filename):
             filename_split = file.filename.rsplit(".", 1)
@@ -124,10 +113,10 @@ def upload_file(foodid):
             pic_url = "static/user_images/" + filename
             return pic_url
         else:
-            pic_url = "/static/user_images/no_pic.png"
+            pic_url = "/static/images/no_pic.png"
             return pic_url
     except:
-        pic_url = "/static/user_images/no_pic.png"
+        pic_url = "/static/images/no_pic.png"
         return pic_url
 
 @app.route("/new_recipe", methods=["GET", "POST"])
