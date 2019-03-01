@@ -15,6 +15,7 @@ $(document).ready(function() {
 
     var add_favorites_btn = $(".add_favorites_btn");
     $(add_favorites_btn).click(function(e) {
+        var pathname = window.location.pathname;
         var clicked_fav = $(this);
         var foodid = $(this).parent().parent().siblings(".food_id").html();
         $.ajax({
@@ -26,7 +27,9 @@ $(document).ready(function() {
             if (favorites_exist.includes("favorites")) {
                 $(clicked_fav).children().css('color', 'pink');
                 $(clicked_fav).siblings("span").html(number_of_favorites);
-                window.location.reload();
+                if (pathname == "/my_favorites") {
+                    window.location.reload();
+                }
             }
             else if (favorites_exist.includes("favorinot")) {
                 $(clicked_fav).children().css('color', 'red');
