@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
+ 
 <head>
+    <meta charset="UTF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}" type=text/css>
@@ -22,8 +23,8 @@
             </div>
         </div>
         <div class="nav navbar-nav navbar-center d-none d-md-block">
-            <form id="searchForm" class="form-inline search-bar" action="/search_for" method="POST">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search_text" name="search_text" required>
+            <form class="form-inline search-bar" action="/search_for" method="POST">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search_text" required>
                 <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
             </form>
         </div>
@@ -78,8 +79,8 @@
         </div>
     </nav>
     <div class="container-fluid small-device-search d-block d-sm-block d-md-none d-lg-none">
-        <form method="POST" class="form-inline center search-form">
-            <input class="form-control search-bar" type="search" placeholder="Search" aria-label="Search" id="searched_food" name="searched_food">
+        <form class="form-inline center search-form" action="/search_for" method="POST">
+            <input class="form-control search-bar" type="search" placeholder="Search" aria-label="Search" name="search_text">
             <button class="btn btn-success search-button" type="submit">Search</button>
         </form>
     </div>

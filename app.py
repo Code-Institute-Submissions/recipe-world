@@ -82,8 +82,8 @@ def get_my_favorites():
 @app.route("/sign_up", methods=["POST"])
 def sign_up():
     exist = ""
-    username =  request.form["username"];
-    session["username"] = username
+    session["username"] = request.form["username"];
+    username = session["username"]
     email = request.form["email"];
     if mongo.db.users.find({"username": username}).count() >= 1 and mongo.db.users.find({"email": email}).count() == 0:
         exist = "username_exists"
@@ -170,9 +170,7 @@ def search_for():
     search_text = request.form["search_text"];
     foods = mongo.db.foods.find({"$text": {"$search": search_text}}).limit(10)
     meals = mongo.db.foods.find({"$text": {"$search": search_text}}).limit(10)
-    if "username" in session:
-        return render_template("index.html", foods=foods, meals=meals, title="Your hits", username=session["username"])   
-    return render_template("index.html", foods=foods, meals=meals, title="Your hits")
+    return index_collect("Your hits", foods, meals)
 
 @app.route("/sign_out")
 def sign_out():
