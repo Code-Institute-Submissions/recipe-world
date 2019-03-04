@@ -22,8 +22,8 @@
             </div>
         </div>
         <div class="nav navbar-nav navbar-center d-none d-md-block">
-            <form method="POST" class="form-inline search-bar">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="searched_food" name="searched_food">
+            <form id="searchForm" class="form-inline search-bar" action="/search_for" method="POST">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search_text" name="search_text" required>
                 <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
             </form>
         </div>
@@ -120,39 +120,39 @@
             </div>
         </div>
     </div>
-    
+
     <body>
-    <!-- Sign Out Modal -->
-    <div class="modal fade" id="signOutModal" tabindex="-1" role="dialog" aria-labelledby="signOutModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="signOutModalLabel">Are you sure?</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <!-- Sign Out Modal -->
+        <div class="modal fade" id="signOutModal" tabindex="-1" role="dialog" aria-labelledby="signOutModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="signOutModalLabel">Are you sure?</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
-                </div>
-                <div class="modal-body">
-                    <form id="signOutForm" action="/sign_out">
-                        <div class="form-group">
-                            <label>If you sign out you will not be able to sign in again with the same name and e-mail address.</label>
-                        </div>
-                        <div class="modal-footer">
-                            <button id="signOutBtn" type="submit" class="btn btn-primary">Submit</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
-                    </form>
+                    </div>
+                    <div class="modal-body">
+                        <form id="signOutForm" action="/sign_out">
+                            <div class="form-group">
+                                <label>If you sign out you will not be able to sign in again with the same name and e-mail address.</label>
+                            </div>
+                            <div class="modal-footer">
+                                <button id="signOutBtn" type="submit" class="btn btn-primary">Submit</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    {% block content %} {% endblock %}
-    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js " integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut " crossorigin="anonymous "></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js " integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k " crossorigin="anonymous "></script>
-    <script src="{{ url_for('static', filename='js/signUp.js')}}"></script>
-    <script src="{{ url_for('static', filename='js/recipe.js')}}"></script>
-    <script src="{{ url_for('static', filename='js/addFavLikes.js')}}"></script>
-</body>
+        {% block content %} {% endblock %}
+        <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js " integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut " crossorigin="anonymous "></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js " integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k " crossorigin="anonymous "></script>
+        <script src="{{ url_for('static', filename='js/signUp.js')}}"></script>
+        <script src="{{ url_for('static', filename='js/recipe.js')}}"></script>
+        <script src="{{ url_for('static', filename='js/addFavLikes.js')}}"></script>
+    </body>
 
 </html>

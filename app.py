@@ -79,7 +79,7 @@ def get_my_favorites():
         meals=mongo.db.foods.find({"favorites": username})
         return index_collect("My Favorites", foods, meals)
 
-@app.route("/sign_up", methods=['POST'])
+@app.route("/sign_up", methods=["POST"])
 def sign_up():
     exist = ""
     username =  request.form["username"];
@@ -164,6 +164,15 @@ def new_recipe():
         foods=mongo.db.foods.find({"uploaded_by": username})
         return render_template("index.html", foods=foods, title="My Recipes", username=username)
     return render_template("newrecipe.html", username=username)
+    
+@app.route("/search_for", methods=["POST"])
+def search_for():
+    search_text = request.form["search_text"];
+    foods = mongo.db.foods.find({"$text": {"$search": search_text}}).limit(10)
+    meals = mongo.db.foods.find({"$text": {"$search": search_text}}).limit(10)
+    if "username" in session:
+        return render_template("index.html", foods=foods, meals=meals, title="Your hits", username=session["username"])   
+    return render_template("index.html", foods=foods, meals=meals, title="Your hits")
 
 @app.route("/sign_out")
 def sign_out():
