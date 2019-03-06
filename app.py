@@ -25,12 +25,13 @@ def index():
     meals=mongo.db.foods.find()
     if "username" in session:
         return render_template("index.html", foods=foods, meals=meals, username=session["username"])   
-    return render_template("index.html", foods=foods, meals=meals,)
+    return render_template("index.html", foods=foods, meals=meals)
     
 def index_collect(title, foods, meals):
     if "username" in session:
         return render_template("index.html", foods=foods, meals=meals, title=title, username=session["username"])   
-    return render_template("index.html", foods=foods, meals=meals, title=title)
+    else:
+        return render_template("index.html", foods=foods, meals=meals, title=title)
 
 @app.route("/breakfasts")
 def get_breakfasts():
@@ -85,6 +86,7 @@ def sign_up():
     session["username"] = request.form["username"];
     username = session["username"]
     email = request.form["email"];
+    mongo.db.users.create_index([("username", "text")])
     if mongo.db.users.find({"username": username}).count() >= 1 and mongo.db.users.find({"email": email}).count() == 0:
         exist = "username_exists"
         return exist
@@ -167,53 +169,66 @@ def new_recipe():
     
 @app.route("/search_for", methods=["POST"])
 def search_for():
+    no_results = True
     search_text = request.form["search_text"];
-    foods = mongo.db.foods.find({"$text": {"$search": search_text}}).limit(10)
-    meals = mongo.db.foods.find({"$text": {"$search": search_text}}).limit(10)
-    return index_collect("Your hits", foods, meals)
+    if mongo.db.foods.find({"$text": {"$search": search_text}}).limit(10).count() < 1:
+        if "username" in session:
+            return render_template("index.html", title="The results of your search", no_results=no_results, username=session["username"])
+        else:
+            return render_template("index.html", title="The results of your search", no_results=no_results)
+    else:
+        foods = mongo.db.foods.find({"$text": {"$search": search_text}}).limit(10)
+        meals = mongo.db.foods.find({"$text": {"$search": search_text}}).limit(10)
+        return index_collect("The results of your search", foods, meals)
 
 @app.route("/sign_out")
 def sign_out():
     session.pop('username', None)
-    foods=mongo.db.foods.find()
-    return render_template("index.html", foods=foods)
+    return index()
  
 @app.route("/check_favorites", methods=["GET"])
 def check_favorites():
     favorites_exist = ""
-    username = session["username"]
-    foodid = request.args.get('foodid', None)
-    userdb = mongo.db.users.find({"$and":[{"username":username}, { "favorites": foodid }]}).count()
-    if userdb >= 1:
-        favorites_exist = "favorites_exist"
-        return favorites_exist
+    if "username" in session:
+        username = session["username"]
+        foodid = request.args.get('foodid', None)
+        userdb = mongo.db.users.find({"$and":[{"username":username}, { "favorites": foodid }]}).count()
+        if userdb >= 1:
+            favorites_exist = "favorites_exist"
+            return favorites_exist
+        else:
+            favorites_exist = ""
+            return favorites_exist
     else:
-        favorites_exist = ""
+        favorites_exist = "no_user"
         return favorites_exist
 
 @app.route("/add_favorites", methods=["GET"])
 def add_favorites():
     favorites_exist = ""
-    username = session["username"]
-    foodid = request.args.get('foodid', None)
-    userdb = mongo.db.users.find({"$and":[{"username":username}, { "favorites": foodid }]}).count()
-    if userdb >= 1:
-        mongo.db.users.update_one({"username": username}, {"$pull": {"favorites": foodid}})
-        mongo.db.foods.update_one({"_id" : ObjectId(foodid)}, {"$pull": {"favorites": username}})
-        food = mongo.db.foods.find({"_id" : ObjectId(foodid)})
-        for element in food:
-            number_of_favorites = len(element["favorites"])
-            favorites_exist = "favorites" + str(number_of_favorites)
+    if "username" in session:
+        username = session["username"]
+        foodid = request.args.get('foodid', None)
+        userdb = mongo.db.users.find({"$and":[{"username":username}, { "favorites": foodid }]}).count()
+        if userdb >= 1:
+            mongo.db.users.update_one({"username": username}, {"$pull": {"favorites": foodid}})
+            mongo.db.foods.update_one({"_id" : ObjectId(foodid)}, {"$pull": {"favorites": username}})
+            food = mongo.db.foods.find({"_id" : ObjectId(foodid)})
+            for element in food:
+                number_of_favorites = len(element["favorites"])
+                favorites_exist = "favorites" + str(number_of_favorites)
+        else:
+            mongo.db.users.update_one({"username": username}, {"$push": {"favorites": foodid}})
+            mongo.db.foods.update_one({"_id" : ObjectId(foodid)}, {"$push": {"favorites": username}})
+            food = mongo.db.foods.find({"_id" : ObjectId(foodid)})
+            for element in food:
+                number_of_favorites = len(element["favorites"])
+                favorites_exist = "favorinot" + str(number_of_favorites)
+        return favorites_exist
     else:
-        mongo.db.users.update_one({"username": username}, {"$push": {"favorites": foodid}})
-        mongo.db.foods.update_one({"_id" : ObjectId(foodid)}, {"$push": {"favorites": username}})
-        food = mongo.db.foods.find({"_id" : ObjectId(foodid)})
-        for element in food:
-            number_of_favorites = len(element["favorites"])
-            favorites_exist = "favorinot" + str(number_of_favorites)
-    return favorites_exist
+        favorites_exist = "no_user"
+        return favorites_exist
    
-    
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
- 
+
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
@@ -87,42 +87,43 @@
 </header>
 
 <body>
-    <!-- Sign Up Modal -->
-    <div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="signInModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="signInModalLabel">Sign Up Now</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <section>
+        <!-- Sign Up Modal -->
+        <div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="signInModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="signInModalLabel">Sign Up Now</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
-                </div>
-                <div class="modal-body">
-                    <form id="signUpForm">
-                        <div class="form-group">
-                            <label for="inputUsername">Username:</label>
-                            <input type="username" class="form-control" id="inputUsername" required>
-                            <div class="alert alert-danger" role="alert" id="usernameErrorAlert" style="display:none;">
-                                This username is already in use
+                    </div>
+                    <div class="modal-body">
+                        <form id="signUpForm">
+                            <div class="form-group">
+                                <label for="inputUsername">Username:</label>
+                                <input type="username" class="form-control" id="inputUsername" required>
+                                <div class="alert alert-danger" role="alert" id="usernameErrorAlert" style="display:none;">
+                                    This username is already in use
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputEmail">Email address:</label>
-                            <input type="email" class="form-control" id="inputEmail" required>
-                            <div class="alert alert-danger" role="alert" id="emailErrorAlert" style="display:none;">
-                                This email address is already in use
+                            <div class="form-group">
+                                <label for="inputEmail">Email address:</label>
+                                <input type="email" class="form-control" id="inputEmail" required>
+                                <div class="alert alert-danger" role="alert" id="emailErrorAlert" style="display:none;">
+                                    This email address is already in use
+                                </div>
                             </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button id="submitBtn" type="submit" class="btn btn-primary">Submit</button>
-                        </div>
-                    </form>
+                            <div class="modal-footer">
+                                <button id="submitBtn" type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <body>
+    </section>
+    <section>
         <!-- Sign Out Modal -->
         <div class="modal fade" id="signOutModal" tabindex="-1" role="dialog" aria-labelledby="signOutModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -147,13 +148,14 @@
                 </div>
             </div>
         </div>
-        {% block content %} {% endblock %}
-        <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js " integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut " crossorigin="anonymous "></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js " integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k " crossorigin="anonymous "></script>
-        <script src="{{ url_for('static', filename='js/signUp.js')}}"></script>
-        <script src="{{ url_for('static', filename='js/recipe.js')}}"></script>
-        <script src="{{ url_for('static', filename='js/addFavLikes.js')}}"></script>
-    </body>
+    </section>
+    {% block content %} {% endblock %}
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js " integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut " crossorigin="anonymous "></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js " integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k " crossorigin="anonymous "></script>
+    <script src="{{ url_for('static', filename='js/signUp.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/recipe.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/addFavLikes.js')}}"></script>
+</body>
 
 </html>
