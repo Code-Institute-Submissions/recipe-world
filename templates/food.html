@@ -6,7 +6,9 @@
     </div>
     <div class="row food-page-margin">
         <div class="col-8 limit">
-            <a href="{{ url_for('get_food', food_name=food.name) }}"><img class="img-responsive" src="{{food.pic_url}}" alt="{{food.name}}"></a>
+            <a href="{{ url_for('get_food', food_name=food.name) }}">
+                <img class="img-responsive" src="{{food.pic_url}}" alt="{{food.name}}">
+            </a>
         </div>
         <div class="col-4">
             <div><strong>Author:</strong><br>{{food.author}}</div>

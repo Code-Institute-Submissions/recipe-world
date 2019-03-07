@@ -21,35 +21,34 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/index")
 def index():
-    foods=mongo.db.foods.find()
-    meals=mongo.db.foods.find()
+    cuisines=mongo.db.cuisines.find()
     if "username" in session:
-        return render_template("index.html", foods=foods, meals=meals, username=session["username"])   
-    return render_template("index.html", foods=foods, meals=meals)
+        return render_template("index.html", cuisines=cuisines, username=session["username"])   
+    return render_template("index.html", cuisines=cuisines)
     
-def index_collect(title, foods, meals):
+def food_collect(title, foods, meals):
     if "username" in session:
-        return render_template("index.html", foods=foods, meals=meals, title=title, username=session["username"])   
+        return render_template("foodcollection.html", foods=foods, meals=meals, title=title, username=session["username"])   
     else:
-        return render_template("index.html", foods=foods, meals=meals, title=title)
+        return render_template("foodcollection.html", foods=foods, meals=meals, title=title)
 
 @app.route("/breakfasts")
 def get_breakfasts():
-    foods=mongo.db.foods.find({"category_name": "breakfast"})
-    meals=mongo.db.foods.find({"category_name": "breakfast"})
-    return index_collect("Breakfasts", foods, meals)
+    foods=mongo.db.foods.find({"mealtype_name": "breakfast"})
+    meals=mongo.db.foods.find({"mealtype_name": "breakfast"})
+    return food_collect("Breakfasts", foods, meals)
 
 @app.route("/mains")
 def get_mains():
-    foods=mongo.db.foods.find({"category_name": "main"})
-    meals=mongo.db.foods.find({"category_name": "main"})
-    return index_collect("Mains", foods, meals)
+    foods=mongo.db.foods.find({"mealtype_name": "main"})
+    meals=mongo.db.foods.find({"mealtype_name": "main"})
+    return food_collect("Mains", foods, meals)
     
 @app.route("/desserts")
 def get_desserts():
-    foods=mongo.db.foods.find({"category_name": "dessert"})
-    meals=mongo.db.foods.find({"category_name": "dessert"})
-    return index_collect("Desserts", foods, meals)
+    foods=mongo.db.foods.find({"mealtype_name": "dessert"})
+    meals=mongo.db.foods.find({"mealtype_name": "dessert"})
+    return food_collect("Desserts", foods, meals)
     
 @app.route("/<food_name>")
 def get_food(food_name):
@@ -58,27 +57,33 @@ def get_food(food_name):
         return render_template("food.html", food=food, username=session["username"])    
     return render_template("food.html", food=food)
 
+@app.route("/<cuis_name>")
+def get_cuis(cuis_name):
+    foods=mongo.db.foods.find({"cuisine_name": cuis_name})
+    meals=mongo.db.foods.find({"cuisine_name": cuis_name})
+    return food_collect(cuis_name, foods, meals)
+
 @app.route("/my_recipes")
 def get_my_recipes():
     recipe_page = True
     username = session["username"]
     if mongo.db.foods.find({"uploaded_by": username}).count() < 1:
-        return render_template("index.html", title="My Recipes", recipe_page=recipe_page, username=username)
+        return render_template("foodcollection.html", title="My Recipes", recipe_page=recipe_page, username=username)
     else:
         foods=mongo.db.foods.find({"uploaded_by": username})
         meals=mongo.db.foods.find({"uploaded_by": username})
-        return index_collect("My Recipes", foods, meals)
+        return food_collect("My Recipes", foods, meals)
 
 @app.route("/my_favorites")
 def get_my_favorites():
     favorite_page = True
     username = session["username"]
     if mongo.db.foods.find({"favorites": username}).count() < 1:
-        return render_template("index.html", title="My Favorites", favorite_page=favorite_page, username=username)
+        return render_template("foodcollection.html", title="My Favorites", favorite_page=favorite_page, username=username)
     else:
         foods=mongo.db.foods.find({"favorites": username})
         meals=mongo.db.foods.find({"favorites": username})
-        return index_collect("My Favorites", foods, meals)
+        return food_collect("My Favorites", foods, meals)
 
 @app.route("/sign_up", methods=["POST"])
 def sign_up():
@@ -99,7 +104,7 @@ def sign_up():
     else:
         mongo.db.users.insert({ "username": username , "email": email, "favorites": [], "my_recipes":[] })
         foods=mongo.db.foods.find()
-        return render_template("index.html", foods=foods, username=session["username"])
+        return index()
 
 def allowed_file(filename):
     return '.' in filename and \
@@ -132,7 +137,8 @@ def new_recipe():
     foods=mongo.db.foods.find()
     if request.method == "POST":
         foodname = request.form["foodname"].lower()
-        category_name = request.form["categoryselect"].lower()
+        mealtype_name = request.form["mealtypeselect"].lower()
+        cuisine_name = request.form["cuisineselect"].lower()
         author = request.form["author"]
         description = request.form["shortdesc"].lower()
         
@@ -146,11 +152,11 @@ def new_recipe():
         
         uploaded_by = username
         food = dict(
-            category_name = category_name,
+            mealtype_name = mealtype_name,
             name = foodname,
             author = author,
             uploaded_by = uploaded_by,
-            #pic_url = pic_url,
+            cuisine_name = cuisine_name,
             favorites = [],
             description = description,
             ingredients = ingredients2,
@@ -164,7 +170,7 @@ def new_recipe():
         mongo.db.foods.update_one({"_id": ObjectId(foodid)}, {"$set": {"pic_url": pic_url}})
         mongo.db.users.update_one({"username": username}, {"$push": {"my_recipes": foodid}})
         foods=mongo.db.foods.find({"uploaded_by": username})
-        return render_template("index.html", foods=foods, title="My Recipes", username=username)
+        return get_my_recipes()
     return render_template("newrecipe.html", username=username)
     
 @app.route("/search_for", methods=["POST"])
@@ -173,13 +179,13 @@ def search_for():
     search_text = request.form["search_text"];
     if mongo.db.foods.find({"$text": {"$search": search_text}}).limit(10).count() < 1:
         if "username" in session:
-            return render_template("index.html", title="The results of your search", no_results=no_results, username=session["username"])
+            return render_template("foodcollection.html", title="The results of your search", no_results=no_results, username=session["username"])
         else:
-            return render_template("index.html", title="The results of your search", no_results=no_results)
+            return render_template("foodcollection.html", title="The results of your search", no_results=no_results)
     else:
         foods = mongo.db.foods.find({"$text": {"$search": search_text}}).limit(10)
         meals = mongo.db.foods.find({"$text": {"$search": search_text}}).limit(10)
-        return index_collect("The results of your search", foods, meals)
+        return food_collect("The results of your search", foods, meals)
 
 @app.route("/sign_out")
 def sign_out():

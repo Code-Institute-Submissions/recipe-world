@@ -7,7 +7,7 @@
         <div class="form-group container">
             <div class="row">
                 <label for="foodname" class="col-12 offset-md-2 col-md-2 form-control-label">Food Name</label>
-                <div class="col-12 col-md-6">
+                <div class="col-10 col-md-6">
                     <input type="text" class="form-control" id="foodname" name="foodname" required>
                 </div>
             </div>
@@ -15,19 +15,37 @@
         <div class="form-group container">
             <div class="row">
                 <label for="author" class="col-12 offset-md-2 col-md-2 form-control-label">Author</label>
-                <div class="col-12 col-md-6">
+                <div class="col-10 col-md-6">
                     <input type="text" class="form-control" id="author" name="author" value="{{username}}" required>
                 </div>
             </div>
         </div>
         <div class="form-group container">
             <div class="row">
-                <label for="categoryselect" class="col-12 offset-md-2 col-md-2 form-control-label">Select Category</label>
+                <label for="mealtypeselect" class="col-12 offset-md-2 col-md-2 form-control-label">Select Meal Type</label>
                 <div class="col-10 col-md-6">
-                    <select class="form-control" id="categoryselect" name="categoryselect">
+                    <select class="form-control" name="mealtypeselect">
                       <option>Breakfast</option>
                       <option>Main</option>
                       <option>Dessert</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="form-group container">
+            <div class="row">
+                <label for="cuisineselect" class="col-12 offset-md-2 col-md-2 form-control-label">Select Cuisine</label>
+                <div class="col-10 col-md-6">
+                    <select class="form-control" name="cuisineselect">
+                      <option>Mexican</option>
+                      <option>Italian</option>
+                      <option>French</option>
+                      <option>Canadian</option>
+                      <option>American</option>
+                      <option>Japanese</option>
+                      <option>Korean</option>
+                      <option>Indian</option>
+                      <option>Chinese</option>
                     </select>
                 </div>
             </div>
