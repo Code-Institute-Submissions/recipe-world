@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% block content %} {% if title %}
-<h1 class="title">{{ title }}</h1>
+<h1 class="title">{{ title|capitalize }}</h1>
 <hr class="featurette-divider"> {% else %}
 <h1 class="title">Find Your Favorite</h1>
 {% endif %} {% if meals %}

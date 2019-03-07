@@ -55,9 +55,10 @@ def get_food(food_name):
     food=mongo.db.foods.find_one({"name": food_name})
     if "username" in session:
         return render_template("food.html", food=food, username=session["username"])    
-    return render_template("food.html", food=food)
+    else:
+        return render_template("food.html", food=food)
 
-@app.route("/<cuis_name>")
+@app.route("/cuisine/<cuis_name>")
 def get_cuis(cuis_name):
     foods=mongo.db.foods.find({"cuisine_name": cuis_name})
     meals=mongo.db.foods.find({"cuisine_name": cuis_name})

@@ -12,10 +12,10 @@
     <div class="carousel">
         {% for cuisine in cuisines %}
         <div>
-            <a href="{{ url_for('get_cuis', cuis_name=cuisine.cuisine_name)}}">
+            <a href="{{ url_for('get_cuis', cuis_name=cuisine.cuisine_name )}}">
                 <img class="d-block w-100" src="{{cuisine.pic_url}}" alt="{{cuisine.cuisine_name}}">
             </a>
-            <h3 class="h3-responsive">{{cuisine.cusisine_name}}</h3>
+            <h3 class="h3-responsive">{{cuisine.cuisine_name}}</h3>
         </div>
         {% endfor%}
     </div>
