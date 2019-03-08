@@ -3,11 +3,11 @@
 <hr class="featurette-divider"> {% else %}
 <h1 class="title">Find Your Favorite</h1>
 {% endif %} {% if cuisines %}
-<div class="wrapper">
+<div class="carousel-wrapper">
     <div class="carousel">
         {% for cuisine in cuisines %}
         <div>
-            <h2 class="cuisine-name">{{cuisine.cuisine_name}}</h2>
+            <div class="cuisine-name"><b>{{cuisine.cuisine_name|capitalize}}</b></div>
             <a href="{{ url_for('get_cuis', cuis_name=cuisine.cuisine_name )}}">
                 <img class="w-100 cuis-image" src="{{cuisine.pic_url}}" alt="{{cuisine.cuisine_name}}">
             </a>
@@ -16,4 +16,6 @@
     </div>
 </div>
 
-{%endif%} {% endblock %}
+{%endif%}
+
+{% endblock %}

@@ -22,9 +22,11 @@ mongo = PyMongo(app)
 @app.route("/index")
 def index():
     cuisines=mongo.db.cuisines.find()
+    foods = mongo.db.foods.find()
+    meals = mongo.db.foods.find()
     if "username" in session:
-        return render_template("index.html", cuisines=cuisines, username=session["username"])   
-    return render_template("index.html", cuisines=cuisines)
+        return render_template("foodcollection.html", cuisines=cuisines, foods=foods, meals=meals, username=session["username"])   
+    return render_template("foodcollection.html", cuisines=cuisines, foods=foods, meals=meals)
     
 def food_collect(title, foods, meals):
     if "username" in session:

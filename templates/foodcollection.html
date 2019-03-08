@@ -2,26 +2,43 @@
 <h1 class="title">{{ title|capitalize }}</h1>
 <hr class="featurette-divider"> {% else %}
 <h1 class="title">Find Your Favorite</h1>
-{% endif %} {% if meals %}
+{% endif %} {% if cuisines %}
+<div class="carousel-wrapper">
+    <div class="carousel">
+        {% for cuisine in cuisines %}
+        <div>
+            <div class="cuisine-name"><b>{{cuisine.cuisine_name|capitalize}}</b></div>
+            <a href="{{ url_for('get_cuis', cuis_name=cuisine.cuisine_name )}}">
+                <img class="w-100 cuis-image" src="{{cuisine.pic_url}}" alt="{{cuisine.cuisine_name}}">
+            </a>
+        </div>
+        {% endfor%}
+    </div>
+</div>
+
+{%endif%} {% if meals %}
 <div class="container-fluid d-none d-sm-none d-md-none d-lg-block">
     <div class="row">
         {% for food in meals %}
-        <div class="col-4">
-            <div class="col-12 limit">
-                <a href="{{ url_for('get_food', food_name=food.name) }}"><img class="img-responsive" src="../{{food.pic_url}}" alt="{{food.name}}"></a>
-            </div>
-            <div class="col-12">
-                <h2 class="food-name">{{food.name|capitalize}}</h2>
-                <br>
-                <div class="row"> {{food.description|capitalize}}</div>
-                <br>
-                <div class="row">Author: {{food.author}}</div>
-                <div class="row food_id" style="display: none;">{{food._id}}</div>
-                <div class="like-fav-icons">
-                    <span class="like-fav">
+        <div class="col-3">
+            <div class="food-wrapper">
+                <div class="col-12 food-summary">
+                    <h2 class="food-name">{{food.name|capitalize}}</h2>
+                    <div class="col-12 limit">
+                        <a href="{{ url_for('get_food', food_name=food.name) }}"><img class="img-responsive" src="../{{food.pic_url}}" alt="{{food.name}}"></a>
+                    </div>
+                    <div class="col-12 food-description">
+                        <div class="row"> {{food.description|capitalize}}</div>
+                        <br>
+                        <div class="row"><b>Author:</b>{{food.author}}</div>
+                        <div class="row food_id" style="display: none;">{{food._id}}</div>
+                        <div class="like-fav-icons">
+                            <span class="like-fav">
                         <span>{{food.favorites|length}}</span>
-                    <button class="btn add_favorites_btn"><i class="material-icons favorite-icon">favorite</i></button>
-                    </span>
+                            <button class="btn add_favorites_btn"><i class="material-icons favorite-icon">favorite</i></button>
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -81,13 +81,12 @@
     right: 0;
 }
 
-/*---------------------------------------------------*/
-
-.center {
-    width: 100%;
-    justify-content: center;
-    text-align: center;
+.menu-dropbtn,
+.submenu-dropbtn {
+    background-color: rgb(248, 249, 250);
 }
+
+/* --------Buttons-------- */
 
 .btn {
     margin-top: 5px;
@@ -108,29 +107,11 @@
     padding: 0;
 }
 
-.limit {
-    text-align: center;
-    max-height: 230px;
-    max-width: 400px;
-}
-
-.limit img {
-    max-width: 100%;
-    max-height: 80%;
-}
-
-.form-control.search-bar {
-    width: 50%;
-    margin-right: 0px;
-}
-
-.search-form {
-    margin-bottom: 10px;
-}
-
 .search-button {
     margin-top: 0;
 }
+
+/* --------Favorite icon-------- */
 
 .like-fav-icons {
     width: 100%;
@@ -144,14 +125,7 @@
 
 .material-icons {
     font-size: 20px;
-    bottom: 0;
     text-align: center;
-    vertical-align: bottom;
-}
-
-.thumb-up-icon {
-    color: #3a7ebf;
-    font-size: 30px;
 }
 
 .favorite-icon {
@@ -159,8 +133,41 @@
     font-size: 30px;
 }
 
+/* --------Form elements-------- */
+
+.form-control.search-bar {
+    width: 50%;
+    margin-right: 0px;
+}
+
+.search-form {
+    margin-bottom: 10px;
+}
+
+
 .new_line {
     font-size: 30px;
+}
+
+.small-device-search {
+    margin-top: 10px;
+}
+
+.center {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+}
+
+.limit {
+    text-align: center;
+    max-height: 230px;
+    max-width: 400px;
+}
+
+.limit img {
+    max-width: 100%;
+    max-height: 80%;
 }
 
 .food-name {
@@ -177,8 +184,21 @@
     font-size: 25px;
 }
 
+.food-wrapper {
+    background-color: rgb(248, 249, 250);
+    border-radius: 20px;
+}
+
+.food-summary {
+    padding: 0;
+    text-align: center;
+}
+
 .food-description {
+    text-align: center;
     margin-bottom: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 .title {
@@ -204,18 +224,11 @@
     cursor: pointer;
 }
 
-.menu-dropbtn,
-.submenu-dropbtn {
-    background-color: rgb(248, 249, 250);
-}
-
-.small-device-search {
-    margin-top: 10px;
-}
-
 .username {
     color: #3a9fbf;
 }
+
+/* --------Carousel (slider) -------- */
 
 .cuisine-name {
     text-align: center;
@@ -231,16 +244,21 @@
     position: absolute;
     top: 50%;
     left: 0;
-    color: #BFAFB2;
 }
-.slick-next{
+
+.slick-next {
     position: absolute;
     z-index: 1;
     top: 50%;
     right: 0;
-    color: #BFAFB2;
 }
 
+.carousel-wrapper {
+    background-color: rgb(248, 249, 250);
+    margin-bottom: 25px;
+}
+
+/* --------Media Queries -------- */
 @media(min-width: 576px) {
     .navbar-nav.navbar-center {
         position: absolute;

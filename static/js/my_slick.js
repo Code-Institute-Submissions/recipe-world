@@ -1,7 +1,7 @@
 $(document).ready(function() {
-    $('.carousel').slick({
+    $(".carousel").slick({
         arrows: true,
-        dots: true,
+        dots: false,
         infinite: true,
         speed: 300,
         slidesToShow: 5,
@@ -12,6 +12,6 @@ $(document).ready(function() {
             settings: {
                 slidesToShow: 3
             }
-        }]
+        }],
     });
 });
