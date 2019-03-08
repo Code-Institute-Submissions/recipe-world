@@ -8,7 +8,7 @@
         {% for food in meals %}
         <div class="col-4">
             <div class="col-12 limit">
-                <a href="{{ url_for('get_food', food_name=food.name) }}"><img class="img-responsive" src="{{food.pic_url}}" alt="{{food.name}}"></a>
+                <a href="{{ url_for('get_food', food_name=food.name) }}"><img class="img-responsive" src="../{{food.pic_url}}" alt="{{food.name}}"></a>
             </div>
             <div class="col-12">
                 <h2 class="food-name">{{food.name|capitalize}}</h2>
@@ -32,7 +32,7 @@
 <div class="container-fluid d-lg-none">
     <div class="row">
         <div class="col-sm-6 limit d-none d-sm-block d-md-block">
-            <a href="{{ url_for('get_food', food_name=food.name) }}"><img class="img-responsive" src="{{food.pic_url}}" alt="{{food.name}}"></a>
+            <a href="{{ url_for('get_food', food_name=food.name) }}"><img class="img-responsive" src="../{{food.pic_url}}" alt="{{food.name}}"></a>
         </div>
         <div class="col-12 col-sm-6">
             <h2 class="food-name">{{food.name|capitalize}}</h2>
@@ -42,7 +42,7 @@
             <div class="row d-none d-sm-block d-md-block">Author: {{food.author}}</div>
             <div class="row food_id" style="display: none;">{{food._id}}</div>
             <div class="col-12 col-sm-6 limit d-block d-sm-none d-md-none">
-                <a href="{{ url_for('get_food', food_name=food.name) }}"><img class="img-responsive" src="{{food.pic_url}}" alt="{{food.name}}"></a>
+                <a href="{{ url_for('get_food', food_name=food.name) }}"><img class="img-responsive" src="../{{food.pic_url}}" alt="{{food.name}}"></a>
             </div>
             <div class="like-fav-icons">
                 <span class="like-fav" id="favorite-span">
@@ -61,10 +61,10 @@
         <h2 class="col-12 food-name">{{food.name|capitalize}}</h2>
         <div class="col-12">
             <div class="row limit d-none d-sm-block d-md-block">
-                <a href="{{ url_for('get_food', food_name=food.name) }}"><img class="img-responsive" src="{{food.pic_url}}" alt="{{food.name}}"></a>
+                <a href="{{ url_for('get_food', food_name=food.name) }}"><img class="img-responsive" src="../{{food.pic_url}}" alt="{{food.name}}"></a>
             </div>
             <div class="col-12 col-sm-6 limit d-block d-sm-none d-md-none">
-                <a href="{{ url_for('get_food', food_name=food.name) }}"><img class="img-responsive" src="{{food.pic_url}}" alt="{{food.name}}"></a>
+                <a href="{{ url_for('get_food', food_name=food.name) }}"><img class="img-responsive" src="../{{food.pic_url}}" alt="{{food.name}}"></a>
             </div>
             <div class="col-12 d-none d-sm-block d-md-block"> {{food.description|capitalize}}</div>
             <br>
@@ -90,7 +90,7 @@
             <div class="row d-none d-sm-block d-md-block">Author: {{food.author}}</div>
             <div class="row food_id" style="display: none;">{{food._id}}</div>
             <div class="col-12 col-sm-6 limit d-block d-sm-none d-md-none">
-                <a href="{{ url_for('get_food', food_name=food.name) }}"><img class="img-responsive" src="{{food.pic_url}}" alt="{{food.name}}"></a>
+                <a href="{{ url_for('get_food', food_name=food.name) }}"><img class="img-responsive" src="../{{food.pic_url}}" alt="{{food.name}}"></a>
             </div>
             <div class="like-fav-icons">
                 <span class="like-fav" id="favorite-span">
@@ -100,7 +100,7 @@
             </div>
         </div>
         <div class="col-12 col-sm-6 limit d-none d-sm-block d-md-block">
-            <a href="{{ url_for('get_food', food_name=food.name) }}"><img class="img-responsive" src="{{food.pic_url}}" alt="{{food.name}}"></a>
+            <a href="{{ url_for('get_food', food_name=food.name) }}"><img class="img-responsive" src="../{{food.pic_url}}" alt="{{food.name}}"></a>
         </div>
     </div>
     <hr class="featurette-divider d-lg-none">
