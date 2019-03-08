@@ -1,25 +1,19 @@
-{% extends 'base.html' %} {% block content %}
-{% if title %}
+{% extends 'base.html' %} {% block content %} {% if title %}
 <h1 class="title">{{ title }}</h1>
-<hr class="featurette-divider">
-{% else %}
+<hr class="featurette-divider"> {% else %}
 <h1 class="title">Find Your Favorite</h1>
-{% endif %}
-
-{% if cuisines %}
+{% endif %} {% if cuisines %}
 <div class="wrapper">
-    <h2>Choose a cuisine</h2>
     <div class="carousel">
         {% for cuisine in cuisines %}
         <div>
+            <h2 class="cuisine-name">{{cuisine.cuisine_name}}</h2>
             <a href="{{ url_for('get_cuis', cuis_name=cuisine.cuisine_name )}}">
-                <img class="d-block w-100" src="{{cuisine.pic_url}}" alt="{{cuisine.cuisine_name}}">
+                <img class="w-100 cuis-image" src="{{cuisine.pic_url}}" alt="{{cuisine.cuisine_name}}">
             </a>
-            <h3 class="h3-responsive">{{cuisine.cuisine_name}}</h3>
         </div>
         {% endfor%}
     </div>
 </div>
 
-{%endif%}
-{% endblock %}
+{%endif%} {% endblock %}

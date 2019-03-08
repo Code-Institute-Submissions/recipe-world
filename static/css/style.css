@@ -217,6 +217,30 @@
     color: #3a9fbf;
 }
 
+.cuisine-name {
+    text-align: center;
+    font-size: 15px;
+}
+
+.cuis-image {
+    border-radius: 50%;
+}
+
+.slick-prev {
+    z-index: 1;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    color: #BFAFB2;
+}
+.slick-next{
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    right: 0;
+    color: #BFAFB2;
+}
+
 @media(min-width: 576px) {
     .navbar-nav.navbar-center {
         position: absolute;
@@ -239,5 +263,11 @@
     .thumb-up-icon,
     .favorite-icon {
         font-size: 35px;
+    }
+}
+
+@media(min-width: 992px) {
+    .cuis-image {
+        border-radius: 0%;
     }
 }
