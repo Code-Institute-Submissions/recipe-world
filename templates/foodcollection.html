@@ -2,7 +2,8 @@
 <h1 class="title">{{ title|capitalize }}</h1>
 <hr class="featurette-divider"> {% else %}
 <h1 class="title">Find Your Favorite</h1>
-{% endif %} {% if cuisines %}
+{% endif %}
+{% if cuisines %}
 <div class="carousel-wrapper">
     <div class="carousel">
         {% for cuisine in cuisines %}
