@@ -8,6 +8,18 @@
     background-color: #fbecd2 !important;
 }
 
+/* --------Modals-------- */
+
+.modal-content {
+    background-color: #fbecd2;
+}
+
+.modal-header,
+.modal-body,
+.modal-footer {
+    border-color: black;
+}
+
 /* --------Dropdown Button-------- */
 
 .menu-dropbtn {
@@ -131,6 +143,12 @@
     color: black;
 }
 
+.search-button:focus {
+    outline: 0;
+    border-color: grey;
+    box-shadow: 0 0 0 0;
+}
+
 /* --------Favorite icon-------- */
 
 .like-fav-icons {
@@ -166,14 +184,27 @@
 
 .search-bar input {
     color: black;
-    border-color: black;
+    border-color: grey;
 }
 
 .search-bar input:focus {
-  outline: 0;
-  border-color: black;
-  box-shadow: 0 0 0 0;
+    outline: 0;
+    border-color: grey;
+    box-shadow: 0 0 0 0;
 }
+
+#signUpForm input {
+    color: black;
+    border-color: grey;
+}
+
+#signUpForm input {
+    outline: 0;
+    border-color: grey;
+    box-shadow: 0 0 0 0;
+}
+
+/*----------------------------------------*/
 
 .breakline {
     margin-top: 15px;
