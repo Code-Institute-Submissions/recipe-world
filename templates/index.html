@@ -4,11 +4,12 @@
 <h1 class="title">Find Your Favorite</h1>
 {% endif %}
 {% if cuisines %}
+<hr class="featurette-divider cusine-divider">
 <div class="carousel-wrapper">
     <div class="carousel">
         {% for cuisine in cuisines %}
         <div>
-            <div class="cuisine-name"><b>{{cuisine.cuisine_name|capitalize}}</b></div>
+            <div class="cuisine-name"><b>{{cuisine.cuisine_name|capitalize}} - {{cuisine.foods|length}}</b></div>
             <a href="{{ url_for('get_cuis', cuis_name=cuisine.cuisine_name )}}">
                 <img class="w-100 cuis-image" src="{{cuisine.pic_url}}" alt="{{cuisine.cuisine_name}}">
             </a>
@@ -16,9 +17,9 @@
         {% endfor%}
     </div>
 </div>
-<hr class="featurette-divider">
+<hr class="featurette-divider cuisine-divider">
 {%endif%} {% if meals %}
-<div class="container-fluid d-none d-sm-none d-md-none d-lg-block">
+<div class="container-fluid d-none d-sm-none d-md-none d-lg-block meals">
     <div class="row">
         {% for food in meals %}
         <div class="col-3 wrapper">
@@ -47,7 +48,7 @@
     </div>
 </div>
 {% endif %} {% if foods %} {% for food in foods %} {% if loop.index % 3 != 0 and loop.index % 2 != 0 %}
-<div class="container-fluid d-lg-none">
+<div class="container-fluid meals d-lg-none">
     <div class="row">
         <div class="col-sm-6 limit d-none d-sm-block d-md-block">
             <a href="{{ url_for('get_food', food_name=food.name) }}"><img class="img-responsive" src="../{{food.pic_url}}" alt="{{food.name}}"></a>
@@ -73,7 +74,7 @@
 </div>
 <hr class="featurette-divider d-lg-none">
 {% elif loop.index % 3 == 0 %}
-<div class="container-fluid d-lg-none">
+<div class="container-fluid meals d-lg-none">
     <div class="row">
         <h2 class="col-12 food-name">{{food.name|capitalize}}</h2>
         <div class="col-12">
@@ -98,7 +99,7 @@
     <hr class="featurette-divider d-lg-none">
 </div>
 {% elif loop.index % 2 == 0 and loop.index % 3 != 0 %}
-<div class="container-fluid d-lg-none">
+<div class="container-fluid meals d-lg-none">
     <div class="row">
         <div class="col-12 col-sm-6">
             <h2 class="food-name">{{food.name|capitalize}}</h2>

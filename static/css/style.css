@@ -1,4 +1,12 @@
+html,
+body {
+    height: 100%;
+    background-color: #c8bca8;
+}
+
 .page-wrapper {
+    display: block;
+    overflow: auto;
     height: 100%;
     max-width: 100%;
     background-color: #fbecd2;
@@ -105,6 +113,7 @@
     left: auto;
     right: 0;
 }
+
 /* --------Buttons-------- */
 
 .btn {
@@ -122,15 +131,18 @@
     color: black;
     text-decoration: none;
 }
+
 .home-button:focus {
     color: black;
     text-decoration: none;
 }
+
 .home-button:hover {
     color: black;
     text-decoration: none;
     background-color: #fff8dc;
 }
+
 #sign-in-btn {
     padding: 5px;
     margin-right: 10px;
@@ -244,7 +256,9 @@
     margin-left: 10px;
     margin-right: 10px;
 }
-
+.method-end{
+    margin-bottom: 40px;
+}
 .food-h2 {
     font-size: 25px;
 }
@@ -302,6 +316,15 @@
 
 .username {
     color: #3a9fbf;
+}
+
+.meals {
+    margin-top: 20px;
+}
+
+.cuisine-divider {
+    background-color: grey;
+    margin: 10px 0px 10px 0px;
 }
 
 /* --------Carousel (slider) -------- */
@@ -377,6 +400,5 @@
     .page-wrapper {
         max-width: 85%;
         margin: auto;
-        background-color: #fbecd2;
     }
 }

@@ -137,7 +137,6 @@ def upload_file(foodid):
 @app.route("/new_recipe", methods=["GET", "POST"])
 def new_recipe():
     username = session["username"]
-    foods=mongo.db.foods.find()
     if request.method == "POST":
         foodname = request.form["foodname"].lower()
         mealtype_name = request.form["mealtypeselect"].lower()
@@ -172,6 +171,7 @@ def new_recipe():
         pic_url = upload_file(foodid)
         mongo.db.foods.update_one({"_id": ObjectId(foodid)}, {"$set": {"pic_url": pic_url}})
         mongo.db.users.update_one({"username": username}, {"$push": {"my_recipes": foodid}})
+        mongo.db.cuisines.update_one({"cuisine_name": cuisine_name}, {"$push": {"foods": ObjectId(foodid)}})
         foods=mongo.db.foods.find({"uploaded_by": username})
         return get_my_recipes()
     return render_template("newrecipe.html", username=username)
