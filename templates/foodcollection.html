@@ -15,7 +15,8 @@
         {% endfor%}
     </div>
 </div>
-<hr class="featurette-divider"> {%endif%} {% if meals %}
+<hr class="featurette-divider">
+{%endif%} {% if meals %}
 <div class="container-fluid d-none d-sm-none d-md-none d-lg-block">
     <div class="row">
         {% for food in meals %}
@@ -27,9 +28,9 @@
                         <a href="{{ url_for('get_food', food_name=food.name) }}"><img class="img-responsive" src="../{{food.pic_url}}" alt="{{food.name}}"></a>
                     </div>
                     <div class="col-12 food-description">
-                        <div class="row"> {{food.description|capitalize}}</div>
-                        <br>
-                        <div class="row"><b>Author:</b>{{food.author}}</div>
+                        <div class="food-description row">{{food.description|capitalize}}</div>
+                        <div class="breakline"></div>
+                        <div class="food-description row"><b>Author:</b>{{food.author}}</div>
                         <div class="row food_id" style="display: none;">{{food._id}}</div>
                         <div class="like-fav-icons">
                             <span class="like-fav">
@@ -52,10 +53,10 @@
         </div>
         <div class="col-12 col-sm-6">
             <h2 class="food-name">{{food.name|capitalize}}</h2>
-            <br>
+            <div class="breakline d-none d-sm-block d-md-block"></div>
             <div class="row d-none d-sm-block d-md-block"> {{food.description|capitalize}}</div>
-            <br>
-            <div class="row d-none d-sm-block d-md-block">Author: {{food.author}}</div>
+            <div class="breakline d-none d-sm-block d-md-block"></div>
+            <div class="row d-none d-sm-block d-md-block"><b>Author:</b> {{food.author}}</div>
             <div class="row food_id" style="display: none;">{{food._id}}</div>
             <div class="col-12 col-sm-6 limit d-block d-sm-none d-md-none">
                 <a href="{{ url_for('get_food', food_name=food.name) }}"><img class="img-responsive" src="../{{food.pic_url}}" alt="{{food.name}}"></a>
@@ -69,7 +70,8 @@
         </div>
     </div>
 </div>
-<hr class="featurette-divider d-lg-none"> {% elif loop.index % 3 == 0 %}
+<hr class="featurette-divider d-lg-none">
+{% elif loop.index % 3 == 0 %}
 <div class="container-fluid d-lg-none">
     <div class="row">
         <h2 class="col-12 food-name">{{food.name|capitalize}}</h2>
@@ -81,8 +83,8 @@
                 <a href="{{ url_for('get_food', food_name=food.name) }}"><img class="img-responsive" src="../{{food.pic_url}}" alt="{{food.name}}"></a>
             </div>
             <div class="col-12 d-none d-sm-block d-md-block"> {{food.description|capitalize}}</div>
-            <br>
-            <div class="col-12 d-none d-sm-block d-md-block">Author: {{food.author}}</div>
+            <div class="breakline d-none d-sm-block d-md-block"></div>
+            <div class="col-12 d-none d-sm-block d-md-block"><b>Author:</b> {{food.author}}</div>
             <div class="food_id" style="display: none;">{{food._id}}</div>
             <div class="like-fav-icons">
                 <span class="like-fav" id="favorite-span">
@@ -99,9 +101,11 @@
     <div class="row">
         <div class="col-12 col-sm-6">
             <h2 class="food-name">{{food.name|capitalize}}</h2>
-            <br>
-            <div class="row d-none d-sm-block d-md-block"> {{food.description|capitalize}}</div>
-            <div class="row d-none d-sm-block d-md-block">Author: {{food.author}}</div>
+            <div class="breakline d-none d-sm-block d-md-block"></div>
+            <div class="row food-description d-none d-sm-block d-md-block"> {{food.description|capitalize}}</div>
+            <div class="breakline d-none d-sm-block d-md-block"></div>
+            <div class="row food-description d-none d-sm-block d-md-block"><b>Author:</b> {{food.author}}</div>
+            <div class="breakline d-none d-sm-block d-md-block"></div>
             <div class="row food_id" style="display: none;">{{food._id}}</div>
             <div class="col-12 col-sm-6 limit d-block d-sm-none d-md-none">
                 <a href="{{ url_for('get_food', food_name=food.name) }}"><img class="img-responsive" src="../{{food.pic_url}}" alt="{{food.name}}"></a>
