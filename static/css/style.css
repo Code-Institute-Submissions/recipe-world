@@ -182,28 +182,15 @@
     margin-bottom: 10px;
 }
 
-.search-bar input {
+.form-control {
     color: black;
     border-color: grey;
 }
-
-.search-bar input:focus {
+.form-control:focus {
     outline: 0;
     border-color: grey;
     box-shadow: 0 0 0 0;
 }
-
-#signUpForm input {
-    color: black;
-    border-color: grey;
-}
-
-#signUpForm input {
-    outline: 0;
-    border-color: grey;
-    box-shadow: 0 0 0 0;
-}
-
 /*----------------------------------------*/
 
 .breakline {
