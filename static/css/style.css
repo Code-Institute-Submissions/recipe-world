@@ -194,6 +194,11 @@ body {
     font-size: 30px;
 }
 
+.edit-icon {
+    color: blue;
+    font-size: 30px;
+}
+
 /* --------Form elements-------- */
 
 .form-control.search-bar {

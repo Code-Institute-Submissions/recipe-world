@@ -69,13 +69,17 @@ def get_cuis(cuis_name):
 @app.route("/my_recipes")
 def get_my_recipes():
     recipe_page = True
+    my_recipe = True
     username = session["username"]
     if mongo.db.foods.find({"uploaded_by": username}).count() < 1:
         return render_template("index.html", title="My Recipes", recipe_page=recipe_page, username=username)
     else:
         foods=mongo.db.foods.find({"uploaded_by": username})
         meals=mongo.db.foods.find({"uploaded_by": username})
-        return food_collect("My Recipes", foods, meals)
+        if "username" in session:
+            return render_template("index.html", foods=foods, meals=meals, title="My recipes", my_recipe=my_recipe, username=session["username"])   
+        else:
+            return render_template("index.html", foods=foods, meals=meals, title="My recipes", my_recipe=my_recipe)
 
 @app.route("/my_favorites")
 def get_my_favorites():
@@ -133,10 +137,22 @@ def upload_file(foodid):
     except:
         pic_url = "/static/images/no_pic.png"
         return pic_url
+        
+        
+@app.route("/edit_recipe/<food_id>", methods=["GET", "POST"])
+def edit_recipe(food_id):
+    username = session["username"]
+    food_id = food_id
+    food = mongo.db.foods.find_one({"_id" : ObjectId(food_id)})
+    mealtypes = mongo.db.mealtypes.find()
+    cuisines = mongo.db.cuisines.find()
+    return render_template("newrecipe.html", food = food, mealtypes=mealtypes, cuisines=cuisines, username=username)
 
 @app.route("/new_recipe", methods=["GET", "POST"])
 def new_recipe():
     username = session["username"]
+    mealtypes = mongo.db.mealtypes.find()
+    cuisines = mongo.db.cuisines.find()
     if request.method == "POST":
         foodname = request.form["foodname"].lower()
         mealtype_name = request.form["mealtypeselect"].lower()
@@ -174,7 +190,7 @@ def new_recipe():
         mongo.db.cuisines.update_one({"cuisine_name": cuisine_name}, {"$push": {"foods": ObjectId(foodid)}})
         foods=mongo.db.foods.find({"uploaded_by": username})
         return get_my_recipes()
-    return render_template("newrecipe.html", username=username)
+    return render_template("newrecipe.html", mealtypes=mealtypes, cuisines=cuisines, username=username)
     
 @app.route("/search_for", methods=["POST"])
 def search_for():

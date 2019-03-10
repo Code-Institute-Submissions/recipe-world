@@ -2,8 +2,7 @@
 <h1 class="title">{{ title|capitalize }}</h1>
 <hr class="featurette-divider"> {% else %}
 <h1 class="title">Find Your Favorite</h1>
-{% endif %}
-{% if cuisines %}
+{% endif %} {% if cuisines %}
 <hr class="featurette-divider cusine-divider">
 <div class="carousel-wrapper">
     <div class="carousel">
@@ -17,15 +16,16 @@
         {% endfor%}
     </div>
 </div>
-<hr class="featurette-divider cuisine-divider">
-{%endif%} {% if meals %}
+<hr class="featurette-divider cuisine-divider"> {%endif%} {% if meals %}
 <div class="container-fluid d-none d-sm-none d-md-none d-lg-block meals">
     <div class="row">
         {% for food in meals %}
         <div class="col-3 wrapper">
             <div class="food-wrapper">
                 <div class="col-12 food-summary">
-                    <h2 class="food-name">{{food.name|capitalize}}</h2>
+                    <h2 class="food-name">{{food.name|capitalize}} {% if my_recipe %}
+                        <a href="{{ url_for('edit_recipe', food_id=food._id)}}" class="btn edit_my_recipe_btn"><i class="material-icons edit-icon">edit</i></a> {% endif %}
+                    </h2>
                     <div class="col-12 limit">
                         <a href="{{ url_for('get_food', food_name=food.name) }}"><img class="img-responsive" src="../{{food.pic_url}}" alt="{{food.name}}"></a>
                     </div>
@@ -54,7 +54,8 @@
             <a href="{{ url_for('get_food', food_name=food.name) }}"><img class="img-responsive" src="../{{food.pic_url}}" alt="{{food.name}}"></a>
         </div>
         <div class="col-12 col-sm-6">
-            <h2 class="food-name">{{food.name|capitalize}}</h2>
+            <h2 class="food-name">{{food.name|capitalize}}{% if my_recipe %}
+                <button class="btn edit_my_recipe_btn"><i class="material-icons edit-icon">edit</i></button> {% endif %}</h2>
             <div class="breakline d-none d-sm-block d-md-block"></div>
             <div class="row d-none d-sm-block d-md-block"> {{food.description|capitalize}}</div>
             <div class="breakline d-none d-sm-block d-md-block"></div>
@@ -72,11 +73,11 @@
         </div>
     </div>
 </div>
-<hr class="featurette-divider d-lg-none">
-{% elif loop.index % 3 == 0 %}
+<hr class="featurette-divider d-lg-none"> {% elif loop.index % 3 == 0 %}
 <div class="container-fluid meals d-lg-none">
     <div class="row">
-        <h2 class="col-12 food-name">{{food.name|capitalize}}</h2>
+        <h2 class="col-12 food-name">{{food.name|capitalize}}{% if my_recipe %}
+            <button class="btn edit_my_recipe_btn"><i class="material-icons edit-icon">edit</i></button> {% endif %}</h2>
         <div class="col-12">
             <div class="row limit d-none d-sm-block d-md-block">
                 <a href="{{ url_for('get_food', food_name=food.name) }}"><img class="img-responsive" src="../{{food.pic_url}}" alt="{{food.name}}"></a>
@@ -102,7 +103,8 @@
 <div class="container-fluid meals d-lg-none">
     <div class="row">
         <div class="col-12 col-sm-6">
-            <h2 class="food-name">{{food.name|capitalize}}</h2>
+            <h2 class="food-name">{{food.name|capitalize}}{% if my_recipe %}
+                <button class="btn edit_my_recipe_btn"><i class="material-icons edit-icon">edit</i></button> {% endif %}</h2>
             <div class="breakline d-none d-sm-block d-md-block"></div>
             <div class="row left-space d-none d-sm-block d-md-block"> {{food.description|capitalize}}</div>
             <div class="breakline d-none d-sm-block d-md-block"></div>

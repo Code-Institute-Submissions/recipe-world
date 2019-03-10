@@ -1,4 +1,147 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} {% block content %}{% if food %}
+<div class="container">
+    <div class="row justify-content-center">
+        <h1 class="title">Edit Recipe</h1>
+    </div>
+    <form enctype="multipart/form-data" method="POST">
+        <div class="form-group container">
+            <div class="row">
+                <label for="foodname" class="col-12 offset-md-2 col-md-2 form-control-label">Food Name</label>
+                <div class="col-10 col-md-6">
+                    <input type="text" class="form-control" id="foodname" name="foodname" value="{{food.name|capitalize}}" required>
+                </div>
+            </div>
+        </div>
+        <div class="form-group container">
+            <div class="row">
+                <label for="author" class="col-12 offset-md-2 col-md-2 form-control-label">Author</label>
+                <div class="col-10 col-md-6">
+                    <input type="text" class="form-control" id="author" name="author" value="{{food.author}}" required>
+                </div>
+            </div>
+        </div>
+        <div class="form-group container">
+            <div class="row">
+                <label for="mealtypeselect" class="col-12 offset-md-2 col-md-2 form-control-label">Select Meal Type</label>
+                <div class="col-10 col-md-6">
+                    {% if mealtypes %}
+                    <select class="form-control" name="cuisineselect">
+                    {% for mealtype in mealtypes %}
+                    {% if food.mealtype == mealtype.mealtype_name %}
+                      <option selected>{{food.mealtype_name|capitalize}}</option>
+                    {% else %}
+                    <option>{{mealtype.mealtype_name|capitalize}}</option>
+                    {% endif %}
+                    {% endfor %}
+                    </select> {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="form-group container">
+            <div class="row">
+                <label for="cuisineselect" class="col-12 offset-md-2 col-md-2 form-control-label">Select Cuisine</label>
+                <div class="col-10 col-md-6">
+                    {% if cuisines %}
+                    <select class="form-control" name="cuisineselect">
+                    {% for cuisine in cuisines %}
+                    {% if food.cuisine_name == cuisine.cuisine_name %}
+                      <option selected>{{food.cuisine_name|capitalize}}</option>
+                    {% else %}
+                    <option>{{cuisine.cuisine_name|capitalize}}</option>
+                    {% endif %}
+                    {% endfor %}
+                    </select> {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="form-group container">
+            <div class="row">
+                <label for="shortdesc" class="col-12 offset-md-2 col-md-2 form-control-label">Short Description</label>
+                <div class="col-10 col-md-6">
+                    <textarea class="form-control" maxlength="150" id="shortdesc" name="shortdesc" required>{{food.description}}</textarea>
+                </div>
+            </div>
+        </div>
+        <div class="form-group container">
+            <div class="row">
+                <label for="picInput" class="col-12 offset-md-2 col-md-2 form-control-label">Picture
+                <i class="material-icons" data-toggle="tooltip" data-placement="bottom" title="Your file can not be larger than 2 MB">info_outline</i>
+                </label>
+                <div class="col-12 col-md-6">
+                    <input type="file" class="form-control-file" name="picInput">
+                </div>
+            </div>
+        </div>
+        <div class="form-group container">
+            <div class="row">
+                <label for="ingredients" class="col-12 offset-md-2 col-md-2 form-control-label">Ingredients</label> {% for line in food.ingredients %} {% if loop.first %}
+                <div class="col-11 col-md-6">
+                    <input type="text" class="form-control" name="ingredients1" value="{{line}}" required>
+                </div>
+                <div class="col-1">
+                    <button class="btn edit_recipe_btn remove_field"><i class="material-icons new_line">do_not_disturb_on</i></button>
+                </div>
+            </div>
+            {% elif not loop.first and not loop.last %}
+            <div class="row">
+                <div class="col-11 offset-md-4 col-md-6">
+                    <input type="text" class="form-control" name="ingredients2" value="{{line}}" required>
+                </div>
+                <div class="col-1">
+                    <button class="btn edit_recipe_btn remove_field"><i class="material-icons new_line">do_not_disturb_on</i></button>
+                </div>
+            </div>
+            {% elif loop.last %}
+            <div class="row">
+                <div class="col-10 offset-md-4 col-md-6">
+                    <input type="text" class="form-control" name="ingredients2" value="{{line}}" required>
+                </div>
+                <div class="col-2">
+                    <button class="btn edit_recipe_btn remove_field"><i class="material-icons new_line">do_not_disturb_on</i></button>
+                    <button class="btn edit_recipe_btn add_ingredients_field_button"><i class="material-icons new_line">local_hospital</i></button>
+                </div>
+            </div>
+            {% endif %} {% endfor %}
+        </div>
+        <div class="form-group ingredients_input_fields_wrap"></div>
+        <div class="form-group container">
+            <div class="row">
+                <label for="method" class="col-12 offset-md-2 col-md-2 form-control-label">Method</label> {% for line in food.method %} {% if loop.first %}
+                <div class="col-11 col-md-6">
+                    <textarea class="form-control" id="method" name="method1" required> {{line}}</textarea>
+                </div>
+                <div class="col-1">
+                    <button class="btn edit_recipe_btn remove_field"><i class="material-icons new_line">do_not_disturb_on</i></button>
+                </div>
+            </div>
+            {% elif not loop.first and not loop.last %}
+            <div class="row">
+                <div class="col-11 offset-md-4 col-md-6">
+                    <textarea class="form-control" name="method2" required>{{line}}</textarea>
+                </div>
+                <div class="col-1">
+                    <button class="btn edit_recipe_btn remove_field"><i class="material-icons new_line">do_not_disturb_on</i></button>
+                </div>
+            </div>
+            {% elif loop.last %}
+            <div class="row">
+                <div class="col-10 offset-md-4 col-md-6">
+                    <textarea class="form-control" name="method2" required>{{line}}</textarea>
+                </div>
+                <div class="col-2">
+                    <button class="btn edit_recipe_btn remove_field"><i class="material-icons new_line">do_not_disturb_on</i></button>
+                    <button class="btn edit_recipe_btn add_method_field_button"><i class="material-icons new_line">local_hospital</i></button>
+                </div>
+            </div>
+            {% endif %} {% endfor %}
+        </div>
+        <div class="form-group method_input_fields_wrap"></div>
+        <div class="form-group row justify-content-center">
+            <button type="submit" class="btn btn-success search-button">Save</button>
+        </div>
+    </form>
+</div>
+{% else %}
 <div class="container">
     <div class="row justify-content-center">
         <h1 class="title">Edit Recipe</h1>
@@ -36,17 +179,12 @@
             <div class="row">
                 <label for="cuisineselect" class="col-12 offset-md-2 col-md-2 form-control-label">Select Cuisine</label>
                 <div class="col-10 col-md-6">
+                    {% if cuisines %}
                     <select class="form-control" name="cuisineselect">
-                      <option>Mexican</option>
-                      <option>Italian</option>
-                      <option>French</option>
-                      <option>Canadian</option>
-                      <option>American</option>
-                      <option>Japanese</option>
-                      <option>Korean</option>
-                      <option>Indian</option>
-                      <option>Chinese</option>
-                    </select>
+                    {% for cuisine in cuisines %}
+                      <option>{{cuisine.cuisine_name|capitalize}}</option>
+                      {% endfor %}
+                    </select> {% endif %}
                 </div>
             </div>
         </div>
@@ -97,4 +235,4 @@
         </div>
     </form>
 </div>
-{% endblock %}
+{% endif %} {% endblock %}
