@@ -1,3 +1,12 @@
+.page-wrapper {
+    max-width: 100%;
+    background-color: #fbecd2;
+}
+
+.bg-light {
+    background-color: #fbecd2 !important;
+}
+
 /* --------Dropdown Button-------- */
 
 .menu-dropbtn {
@@ -24,7 +33,7 @@
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: rgb(248, 249, 250);
+    background-color: #fff8dc;
     min-width: 150px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
@@ -46,11 +55,11 @@
 }
 
 .dropdown-content a:hover {
-    background-color: #CDE7F0;
+    background-color: #fbecd2;
 }
 
 .dropdown-content .dropdown button:hover {
-    background-color: #CDE7F0;
+    background-color: #fbecd2;
 }
 
 .dropdown:hover .dropdown-content {
@@ -58,11 +67,12 @@
     display: block;
     left: auto;
     right: 0;
+    z-index: 2;
 }
 
 .dropdown:hover .menu-dropbtn,
 .dropdown .submenu-dropbtn:hover {
-    background-color: #CDE7F0;
+    background-color: #fff8dc;
 }
 
 .dropdown-subcontent {
@@ -83,7 +93,7 @@
 
 .menu-dropbtn,
 .submenu-dropbtn {
-    background-color: rgb(248, 249, 250);
+    background-color: #fbecd2;
 }
 
 /* --------Buttons-------- */
@@ -185,8 +195,9 @@
 }
 
 .food-wrapper {
-    background-color: rgb(248, 249, 250);
+    background-color: #fff8dc;
     border-radius: 20px;
+    margin-bottom: 10px;
 }
 
 .food-summary {
@@ -213,7 +224,7 @@
 }
 
 .featurette-divider {
-    margin-top: 35px;
+    margin-top: 25px;
 }
 
 .food-number-odd {
@@ -254,11 +265,11 @@
 }
 
 .carousel-wrapper {
-    background-color: rgb(248, 249, 250);
     margin-bottom: 25px;
 }
 
 /* --------Media Queries -------- */
+
 @media(min-width: 576px) {
     .navbar-nav.navbar-center {
         position: absolute;
@@ -287,5 +298,10 @@
 @media(min-width: 992px) {
     .cuis-image {
         border-radius: 0%;
+    }
+    .page-wrapper {
+        max-width: 85%;
+        margin: auto;
+        background-color: #fbecd2;
     }
 }

@@ -1,4 +1,4 @@
-{% extends 'base.html' %} {% block content %} {% if title %}
+ {% extends 'base.html' %} {% block content %} {% if title %}
 <h1 class="title">{{ title|capitalize }}</h1>
 <hr class="featurette-divider"> {% else %}
 <h1 class="title">Find Your Favorite</h1>
@@ -15,8 +15,7 @@
         {% endfor%}
     </div>
 </div>
-
-{%endif%} {% if meals %}
+<hr class="featurette-divider"> {%endif%} {% if meals %}
 <div class="container-fluid d-none d-sm-none d-md-none d-lg-block">
     <div class="row">
         {% for food in meals %}
@@ -70,9 +69,7 @@
         </div>
     </div>
 </div>
-<hr class="featurette-divider d-lg-none">
-</div>
-{% elif loop.index % 3 == 0 %}
+<hr class="featurette-divider d-lg-none"> {% elif loop.index % 3 == 0 %}
 <div class="container-fluid d-lg-none">
     <div class="row">
         <h2 class="col-12 food-name">{{food.name|capitalize}}</h2>
@@ -150,3 +147,4 @@
     </div>
 </div>
 {% endif %} {% endif %} {% endblock %}
+ 

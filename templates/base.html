@@ -5,162 +5,163 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='slick/slick.css')}}"/>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='slick/slick-theme.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='slick/slick.css')}}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='slick/slick-theme.css')}}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css')}}" type=text/css>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipe World</title>
 </head>
-<header>
-    <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand" href="{{ url_for('index') }}">Recipe World</a>
-        <div class="navbar-nav mr-auto">
-            <div class="dropdown d-none d-md-block">
-                <span><button class="menu-dropbtn pointer">Meal Type</button></span>
-                <div class="dropdown-content">
-                    <a href="{{ url_for('get_breakfasts') }}">Breakfast</a>
-                    <a href="{{ url_for('get_mains') }}">Main</a>
-                    <a href="{{ url_for('get_desserts') }}">Dessert</a>
+<div class="page-wrapper justify-content-center">
+    <header>
+        <nav class="navbar navbar-light bg-light">
+            <a class="navbar-brand" href="{{ url_for('index') }}">Recipe World</a>
+            <div class="navbar-nav mr-auto">
+                <div class="dropdown d-none d-md-block">
+                    <span><button class="menu-dropbtn pointer">Meal Type</button></span>
+                    <div class="dropdown-content">
+                        <a href="{{ url_for('get_breakfasts') }}">Breakfast</a>
+                        <a href="{{ url_for('get_mains') }}">Main</a>
+                        <a href="{{ url_for('get_desserts') }}">Dessert</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="nav navbar-nav navbar-center d-none d-md-block">
-            <form class="form-inline search-bar" action="/search_for" method="POST">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search_text" required>
-                <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+            <div class="nav navbar-nav navbar-center d-none d-md-block">
+                <form class="form-inline search-bar" action="/search_for" method="POST">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search_text" required>
+                    <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+            <div class="navbar navbar-light bg-light">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        {% if username %}
+                        <div class="row dropdown d-none d-md-block">
+                            <div class="col-12">Signed in as:</div>
+                            <button class="col-12 menu-dropbtn username pointer">{{username}}</button>
+                            <div class="dropdown-content">
+                                <a href="{{ url_for('new_recipe') }}">New Recipe</a>
+                                <a href="{{ url_for('get_my_recipes') }}">My recipes</a>
+                                <a href="{{ url_for('get_my_favorites') }}">My favorites</a>
+                                <div class="dropdown-divider"></div>
+                                <a type="button" class="pointer" id="sign-out-btn" data-toggle="modal" data-target="#signOutModal">Sign Out</a>
+                            </div>
+                        </div>
+                        <div class="dropdown d-block d-sm-block d-md-none d-lg-none">
+                            <button class="menu-dropbtn"><span class="navbar-toggler-icon"></span></button>
+                            <div class="dropdown-content">
+                                <div class="dropbtn">
+                                    <button class="pointer submenu-dropbtn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Categories
+                                  </button>
+                                    <div class="dropdown-menu dropdown-subcontent">
+                                        <a href="{{ url_for('get_breakfasts') }}">Breakfast</a>
+                                        <a href="{{ url_for('get_mains') }}">Main</a>
+                                        <a href="{{ url_for('get_desserts') }}">Dessert</a>
+                                    </div>
+                                </div>
+                                <a href="{{ url_for('new_recipe') }}">New Recipe</a>
+                                <a href="{{ url_for('get_my_recipes') }}">My recipes</a>
+                                <a href="{{ url_for('get_my_favorites') }}">My favorites</a>
+                                <div class="dropdown-divider"></div>
+                                <a type="button" class="pointer" id="sign-out-btn" data-toggle="modal" data-target="#signOutModal">Sign Out</a>
+                            </div>
+                        </div>
+                        {% else %}
+                        <a type="button" class="pointer nav-link" id="sign-in-btn" data-toggle="modal" data-target="#signInModal">Sign Up</a>
+                    </li>
+                </ul>
+                <div class="dropdown d-block d-sm-block d-md-none d-lg-none" style="float:right;">
+                    <button class="menu-dropbtn"><span class="navbar-toggler-icon"></span></button>
+                    <div class="dropdown-content">
+                        <a href="{{ url_for('get_breakfasts') }}">Breakfast</a>
+                        <a href="{{ url_for('get_mains') }}">Main</a>
+                        <a href="{{ url_for('get_desserts') }}">Dessert</a>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </nav>
+        <div class="container-fluid small-device-search d-block d-sm-block d-md-none d-lg-none">
+            <form class="form-inline center search-form" action="/search_for" method="POST">
+                <input class="form-control search-bar" type="search" placeholder="Search" aria-label="Search" name="search_text">
+                <button class="btn btn-success search-button" type="submit">Search</button>
             </form>
         </div>
-        <div class="navbar navbar-light bg-light">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    {% if username %}
-                    <div class="row dropdown d-none d-md-block">
-                        <div class="col-12">Signed in as:</div>
-                        <button class="col-12 menu-dropbtn username pointer">{{username}}</button>
-                        <div class="dropdown-content">
-                            <a href="{{ url_for('new_recipe') }}">New Recipe</a>
-                            <a href="{{ url_for('get_my_recipes') }}">My recipes</a>
-                            <a href="{{ url_for('get_my_favorites') }}">My favorites</a>
-                            <div class="dropdown-divider"></div>
-                            <a type="button" class="pointer" id="sign-out-btn" data-toggle="modal" data-target="#signOutModal">Sign Out</a>
-                        </div>
-                    </div>
-                    <div class="dropdown d-block d-sm-block d-md-none d-lg-none">
-                        <button class="menu-dropbtn"><span class="navbar-toggler-icon"></span></button>
-                        <div class="dropdown-content">
-                            <div class="dropbtn">
-                                <button class="pointer submenu-dropbtn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Meal Type
-                                  </button>
-                                <div class="dropdown-menu dropdown-subcontent">
-                                    <a href="{{ url_for('get_breakfasts') }}">Breakfast</a>
-                                    <a href="{{ url_for('get_mains') }}">Main</a>
-                                    <a href="{{ url_for('get_desserts') }}">Dessert</a>
-                                </div>
-                            </div>
-                            <a href="{{ url_for('new_recipe') }}">New Recipe</a>
-                            <a href="{{ url_for('get_my_recipes') }}">My recipes</a>
-                            <a href="{{ url_for('get_my_favorites') }}">My favorites</a>
-                            <div class="dropdown-divider"></div>
-                            <a type="button" class="pointer" id="sign-out-btn" data-toggle="modal" data-target="#signOutModal">Sign Out</a>
-                        </div>
-                    </div>
-                    {% else %}
-                    <a type="button" class="pointer nav-link" id="sign-in-btn" data-toggle="modal" data-target="#signInModal">Sign Up</a>
-                </li>
-            </ul>
-            <div class="dropdown d-block d-sm-block d-md-none d-lg-none" style="float:right;">
-                <button class="menu-dropbtn"><span class="navbar-toggler-icon"></span></button>
-                <div class="dropdown-content">
-                    <a href="{{ url_for('get_breakfasts') }}">Breakfast</a>
-                    <a href="{{ url_for('get_mains') }}">Main</a>
-                    <a href="{{ url_for('get_desserts') }}">Dessert</a>
-                </div>
-            </div>
-            {% endif %}
-        </div>
-    </nav>
-    <div class="container-fluid small-device-search d-block d-sm-block d-md-none d-lg-none">
-        <form class="form-inline center search-form" action="/search_for" method="POST">
-            <input class="form-control search-bar" type="search" placeholder="Search" aria-label="Search" name="search_text">
-            <button class="btn btn-success search-button" type="submit">Search</button>
-        </form>
-    </div>
-</header>
+    </header>
 
-<body>
-    <section>
-        <!-- Sign Up Modal -->
-        <div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="signInModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="signInModalLabel">Sign Up Now</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <body>
+        <section>
+            <!-- Sign Up Modal -->
+            <div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="signInModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="signInModalLabel">Sign Up Now</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
-                    </div>
-                    <div class="modal-body">
-                        <form id="signUpForm">
-                            <div class="form-group">
-                                <label for="inputUsername">Username:</label>
-                                <input type="username" class="form-control" id="inputUsername" required>
-                                <div class="alert alert-danger" role="alert" id="usernameErrorAlert" style="display:none;">
-                                    This username is already in use
+                        </div>
+                        <div class="modal-body">
+                            <form id="signUpForm">
+                                <div class="form-group">
+                                    <label for="inputUsername">Username:</label>
+                                    <input type="username" class="form-control" id="inputUsername" required>
+                                    <div class="alert alert-danger" role="alert" id="usernameErrorAlert" style="display:none;">
+                                        This username is already in use
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputEmail">Email address:</label>
-                                <input type="email" class="form-control" id="inputEmail" required>
-                                <div class="alert alert-danger" role="alert" id="emailErrorAlert" style="display:none;">
-                                    This email address is already in use
+                                <div class="form-group">
+                                    <label for="inputEmail">Email address:</label>
+                                    <input type="email" class="form-control" id="inputEmail" required>
+                                    <div class="alert alert-danger" role="alert" id="emailErrorAlert" style="display:none;">
+                                        This email address is already in use
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button id="submitBtn" type="submit" class="btn btn-primary">Submit</button>
-                            </div>
-                        </form>
+                                <div class="modal-footer">
+                                    <button id="submitBtn" type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <section>
-        <!-- Sign Out Modal -->
-        <div class="modal fade" id="signOutModal" tabindex="-1" role="dialog" aria-labelledby="signOutModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="signOutModalLabel">Are you sure?</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        </section>
+        <section>
+            <!-- Sign Out Modal -->
+            <div class="modal fade" id="signOutModal" tabindex="-1" role="dialog" aria-labelledby="signOutModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="signOutModalLabel">Are you sure?</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
-                    </div>
-                    <div class="modal-body">
-                        <form id="signOutForm" action="/sign_out">
-                            <div class="form-group">
-                                <label>If you sign out you will not be able to sign in again with the same name and e-mail address.</label>
-                            </div>
-                            <div class="modal-footer">
-                                <button id="signOutBtn" type="submit" class="btn btn-primary">Submit</button>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            </div>
-                        </form>
+                        </div>
+                        <div class="modal-body">
+                            <form id="signOutForm" action="/sign_out">
+                                <div class="form-group">
+                                    <label>If you sign out you will not be able to sign in again with the same name and e-mail address.</label>
+                                </div>
+                                <div class="modal-footer">
+                                    <button id="signOutBtn" type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    {% block content %} {% endblock %}
-    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js " integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut " crossorigin="anonymous "></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js " integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k " crossorigin="anonymous "></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/signUp.js')}}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/recipe.js')}}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/addFavLikes.js')}}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='slick/slick.min.js')}}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/my_slick.js')}}"></script>
-    </div>
-</body>
+        </section>
+        {% block content %} {% endblock %}
+        <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js " integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut " crossorigin="anonymous "></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js " integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k " crossorigin="anonymous "></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/signUp.js')}}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/recipe.js')}}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/addFavLikes.js')}}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='slick/slick.min.js')}}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/my_slick.js')}}"></script>
+    </body>
+</div>
 
 </html>
