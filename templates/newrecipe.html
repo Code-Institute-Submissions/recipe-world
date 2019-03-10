@@ -27,7 +27,7 @@
                     {% if mealtypes %}
                     <select class="form-control" name="cuisineselect">
                     {% for mealtype in mealtypes %}
-                    {% if food.mealtype == mealtype.mealtype_name %}
+                    {% if food.mealtype_name == mealtype.mealtype_name %}
                       <option selected>{{food.mealtype_name|capitalize}}</option>
                     {% else %}
                     <option>{{mealtype.mealtype_name|capitalize}}</option>

@@ -1,12 +1,9 @@
 html,
 body {
-    height: 100%;
-    background-color: #c8bca8;
+    background-color: #fbecd2;
 }
 
 .page-wrapper {
-    display: block;
-    overflow: auto;
     height: 100%;
     max-width: 100%;
     background-color: #fbecd2;
@@ -261,9 +258,11 @@ body {
     margin-left: 10px;
     margin-right: 10px;
 }
-.method-end{
+
+.method-end {
     margin-bottom: 40px;
 }
+
 .food-h2 {
     font-size: 25px;
 }
@@ -402,8 +401,17 @@ body {
 }
 
 @media(min-width: 1200px) {
+    html,
+    body {
+        height: 100%;
+        background-color: #c8bca8;
+    }
     .page-wrapper {
+        display: block;
+        overflow: auto;
+        height: 100%;
         max-width: 85%;
         margin: auto;
+        background-color: #fbecd2;
     }
 }
