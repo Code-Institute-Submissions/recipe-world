@@ -20,7 +20,7 @@
 <div class="container-fluid d-none d-sm-none d-md-none d-lg-block">
     <div class="row">
         {% for food in meals %}
-        <div class="col-3">
+        <div class="col-3 wrapper">
             <div class="food-wrapper">
                 <div class="col-12 food-summary">
                     <h2 class="food-name">{{food.name|capitalize}}</h2>
@@ -28,11 +28,11 @@
                         <a href="{{ url_for('get_food', food_name=food.name) }}"><img class="img-responsive" src="../{{food.pic_url}}" alt="{{food.name}}"></a>
                     </div>
                     <div class="col-12 food-description">
-                        <div class="food-description row">{{food.description|capitalize}}</div>
+                        <div class="left-space row">{{food.description|capitalize}}</div>
                         <div class="breakline"></div>
-                        <div class="food-description row"><b>Author:</b>{{food.author}}</div>
+                        <div class="left-space row"><b>Author:</b>{{food.author}}</div>
                         <div class="row food_id" style="display: none;">{{food._id}}</div>
-                        <div class="like-fav-icons">
+                        <div class="row like-fav-icons center">
                             <span class="like-fav">
                         <span>{{food.favorites|length}}</span>
                             <button class="btn add_favorites_btn"><i class="material-icons favorite-icon">favorite</i></button>
@@ -102,9 +102,9 @@
         <div class="col-12 col-sm-6">
             <h2 class="food-name">{{food.name|capitalize}}</h2>
             <div class="breakline d-none d-sm-block d-md-block"></div>
-            <div class="row food-description d-none d-sm-block d-md-block"> {{food.description|capitalize}}</div>
+            <div class="row left-space d-none d-sm-block d-md-block"> {{food.description|capitalize}}</div>
             <div class="breakline d-none d-sm-block d-md-block"></div>
-            <div class="row food-description d-none d-sm-block d-md-block"><b>Author:</b> {{food.author}}</div>
+            <div class="row left-space d-none d-sm-block d-md-block"><b>Author:</b> {{food.author}}</div>
             <div class="breakline d-none d-sm-block d-md-block"></div>
             <div class="row food_id" style="display: none;">{{food._id}}</div>
             <div class="col-12 col-sm-6 limit d-block d-sm-none d-md-none">

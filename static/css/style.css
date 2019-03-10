@@ -79,7 +79,7 @@
 .dropdown-subcontent {
     display: none;
     position: relative;
-    background-color: white;
+    background-color: #fff8dc;
     min-width: 150px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
@@ -134,8 +134,8 @@
 /* --------Favorite icon-------- */
 
 .like-fav-icons {
-    width: 100%;
     text-align: center;
+    width: 100%;
 }
 
 .like-fav {
@@ -207,15 +207,25 @@
     font-size: 25px;
 }
 
+.wrapper {
+    position: relative;
+    margin-bottom: 10px;
+}
+
 .food-wrapper {
+    height: 100%;
     background-color: #fff8dc;
     border-radius: 20px;
-    margin-bottom: 10px;
 }
 
 .food-summary {
     padding: 0;
     text-align: center;
+}
+
+.left-space {
+    margin-left: 10px;
+    padding-left: 10px;
 }
 
 .food-description {
