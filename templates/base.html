@@ -17,9 +17,10 @@
         <header>
             <nav class="navbar navbar-light bg-light">
                 <a class="navbar-brand" href="{{ url_for('index') }}">Recipe World</a>
+                <a class="home-button pointer" href="{{ url_for('index') }}" role="button">Home</a>
                 <div class="navbar-nav mr-auto">
-                    <div class="dropdown d-none d-md-block">
-                        <span><button class="menu-dropbtn pointer">Meal Type</button></span>
+                    <div class="dropdown d-none d-md-none d-lg-block">
+                        <span><button class="menu-dropbtn pointer">Meal Types</button></span>
                         <div class="dropdown-content">
                             <a href="{{ url_for('get_breakfasts') }}">Breakfast</a>
                             <a href="{{ url_for('get_mains') }}">Main</a>
@@ -41,6 +42,16 @@
                                 <div class="col-12">Signed in as:</div>
                                 <button class="col-12 menu-dropbtn username pointer">{{username}}</button>
                                 <div class="dropdown-content">
+                                    <div class="dropbtn d-none d-sm-none d-md-block d-lg-none">
+                                        <button class="pointer submenu-dropbtn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Meal Types
+                                        </button>
+                                        <div class="dropdown-menu dropdown-subcontent">
+                                            <a href="{{ url_for('get_breakfasts') }}">Breakfast</a>
+                                            <a href="{{ url_for('get_mains') }}">Main</a>
+                                            <a href="{{ url_for('get_desserts') }}">Dessert</a>
+                                        </div>
+                                    </div>
                                     <a href="{{ url_for('new_recipe') }}">New Recipe</a>
                                     <a href="{{ url_for('get_my_recipes') }}">My recipes</a>
                                     <a href="{{ url_for('get_my_favorites') }}">My favorites</a>
@@ -53,7 +64,7 @@
                                 <div class="dropdown-content">
                                     <div class="dropbtn">
                                         <button class="pointer submenu-dropbtn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Categories
+                                    Meal Types
                                   </button>
                                         <div class="dropdown-menu dropdown-subcontent">
                                             <a href="{{ url_for('get_breakfasts') }}">Breakfast</a>
