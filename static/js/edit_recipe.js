@@ -15,7 +15,7 @@ $(document).ready(function() {
                 '<input type="text" class="form-control" name="ingredients2" required>' +
                 '</div>' +
                 '<div class="col-2">' +
-                '<button type="button" class="btn edit_recipe_btn"><i class="material-icons new_line">do_not_disturb_on</i></button>' +
+                '<button type="button" class="btn edit_recipe_btn remove_recipe_btn"><i class="material-icons new_line">do_not_disturb_on</i></button>' +
                 '</div>' +
                 '</div>' +
                 '<div class="row">' +
@@ -29,5 +29,14 @@ $(document).ready(function() {
             $(".add_ing_btn").hide();
         }
     });
+    
+    $("div").on("click", ".remove_recipe_btn", function(e) {
+        e.preventDefault();
+        $(this).parent('div').parent('div').remove();
+        x--;
+        if (x <= max_ingredients_fields) {
+            $(".add_ing_btn").show();
+        }
+    })
 
 });
