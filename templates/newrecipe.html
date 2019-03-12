@@ -111,41 +111,43 @@
 
         <div class="form-group container">
             <div class="row">
-                <label for="method" class="col-12 offset-md-2 col-md-2 form-control-label">Method</label> {% for line in food.method %} {% if loop.first %}
+                <label for="method" class="col-12 offset-md-2 col-md-2 form-control-label">Method</label>
+                {% for line in food.method %} {% if loop.first %}
                 <div class="col-10 col-md-6">
                     <textarea class="form-control" id="method" name="method1" required> {{line}}</textarea>
                 </div>
                 <div class="col-2">
-                    <button class="btn remove_recipe_btn remove_field"><i class="material-icons new_line">do_not_disturb_on</i></button> {% if loop.first and loop.last %}
-                    <button class="btn edit_recipe_btn add_method_field_button"><i class="material-icons new_line">local_hospital</i></button> {% endif %}
+                    <button class="btn remove_recipe_btn"><i class="material-icons new_line">do_not_disturb_on</i></button>
+                    {% if loop.first and loop.last %}
+                    <button class="btn edit_recipe_btn add_met_btn"><i class="material-icons new_line">local_hospital</i></button> {% endif %}
                 </div>
             </div>
             {% elif not loop.first and not loop.last %}
             <div class="row">
                 <div class="col-10 offset-md-4 col-md-6">
-                    <textarea class="form-control" name="method2" required>{{line}}</textarea>
+                    <textarea class="form-control" name="method1" required>{{line}}</textarea>
                 </div>
                 <div class="col-2">
-                    <button class="btn remove_recipe_btn remove_field"><i class="material-icons new_line">do_not_disturb_on</i></button>
+                    <button class="btn remove_recipe_btn"><i class="material-icons new_line">do_not_disturb_on</i></button>
                 </div>
             </div>
             {% elif loop.last %}
             <div class="row">
                 <div class="col-10 offset-md-4 col-md-6">
-                    <textarea class="form-control" name="method2" required>{{line}}</textarea>
+                    <textarea class="form-control" name="method1" required>{{line}}</textarea>
                 </div>
                 <div class="col-2">
-                    <button class="btn remove_recipe_btn remove_field"><i class="material-icons new_line">do_not_disturb_on</i></button>
+                    <button class="btn remove_recipe_btn"><i class="material-icons new_line">do_not_disturb_on</i></button>
                 </div>
             </div>
             <div class="row">
                 <div class="col-8 offset-md-4 col-md-6">
-                    <button class="btn edit_recipe_btn add_method_field_button"><i class="material-icons new_line">local_hospital</i></button>
+                    <button class="btn edit_recipe_btn add_met_btn"><i class="material-icons new_line">local_hospital</i></button>
                 </div>
             </div>
             {% endif %} {% endfor %}
+            <div class="form-group met_fields_wrap"></div>
         </div>
-        <div class="form-group method_input_fields_wrap"></div>
         <div class="form-group row justify-content-center">
             <button type="submit" class="btn btn-success search-button">Save</button>
         </div>
