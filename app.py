@@ -144,6 +144,36 @@ def edit_recipe(food_id):
     username = session["username"]
     food_id = food_id
     food = mongo.db.foods.find_one({"_id" : ObjectId(food_id)})
+    if request.method == "POST":
+        foodname = request.form["foodname"].lower()
+        mealtype_name = request.form["mealtypeselect"].lower()
+        cuisine_name = request.form["cuisineselect"].lower()
+        author = request.form["author"]
+        description = request.form["shortdesc"].lower()
+        
+        ingredients1 = request.form.getlist('ingredients1')
+        ingredients2 = request.form.getlist('ingredients2')
+        
+        ingredients1.reverse()
+        for elem in ingredients1:
+            ingredients2.insert(0, elem)
+        
+        method1 = request.form.getlist('method1')
+        method2 = request.form.getlist('method2')
+        method1.reverse()
+        for elem in method1:
+            method2.insert(0, elem)
+        
+        mongo.db.foods.update_one(  {"_id" : ObjectId(food_id)},
+                                    {"$set": {
+                                        "name": foodname,
+                                        "mealtype_name": mealtype_name,
+                                        "author": author,
+                                        "cuisine_name": cuisine_name,
+                                        "description": description,
+                                        "ingredients": ingredients2,
+                                        "method": method2}})
+        return get_my_recipes() 
     mealtypes = mongo.db.mealtypes.find()
     cuisines = mongo.db.cuisines.find()
     return render_template("newrecipe.html", food = food, mealtypes=mealtypes, cuisines=cuisines, username=username)
