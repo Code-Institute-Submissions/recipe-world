@@ -146,9 +146,24 @@ body {
 }
 
 .edit_recipe_btn,
-.remove_recipe_btn{
+.remove_recipe_btn {
     margin: 0;
     padding: 0;
+}
+
+.add_favorites_btn {
+    vertical-align: middle;
+}
+
+.add_favorites_btn,
+.add_favorites_btn:hover,
+.add_favorites_btn:active,
+.add_favorites_btn:active:focus,
+.add_favorites_btn:visited,
+.add_favorites_btn:focus {
+    background-color: transparent;
+    border-color: transparent;
+    outline: none;
 }
 
 .search-button {

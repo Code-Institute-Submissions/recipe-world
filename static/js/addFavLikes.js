@@ -10,9 +10,12 @@ $(document).ready(function() {
             if (favorites_exist == "favorites_exist") {
                 $(given_fav).siblings().children(".like-fav").children().children().css("color", "red");
             }
-            else if (favorites_exist == "no_user"){
-                $(given_fav).siblings().children(".like-fav").children().prop("title", "First you need to sign up to favoritize a recipe");
-                $(given_fav).siblings().children(".like-fav").children().tooltip();
+            else if (favorites_exist == "no_user") {
+                $(given_fav).siblings().children(".like-fav").children(".add_favorites_btn").prop("title", "First you need to sign in to favoritize a recipe");
+                $(given_fav).siblings().children(".like-fav").children(".add_favorites_btn").tooltip();
+                $(".add_favorites_btn").click(function() {
+                    $('[data-toggle="tooltip"], .tooltip').tooltip("hide");
+                });
             }
         });
     });
