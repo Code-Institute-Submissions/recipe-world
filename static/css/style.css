@@ -154,13 +154,10 @@ body {
 .add_favorites_btn {
     vertical-align: middle;
 }
-
+.remove_recipe_btn,
 .add_favorites_btn,
-.add_favorites_btn:hover,
-.add_favorites_btn:active,
-.add_favorites_btn:active:focus,
-.add_favorites_btn:visited,
-.add_favorites_btn:focus {
+.edit_recipe_btn,
+.add_met_btn{
     background-color: transparent;
     border-color: transparent;
     outline: none;

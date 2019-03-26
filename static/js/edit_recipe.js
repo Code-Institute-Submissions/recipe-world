@@ -6,30 +6,44 @@ $(document).ready(function() {
     var max_methods_fields = 10;
     var ing_fields_wrap = $(".ing_fields_wrap");
     var met_fields_wrap = $(".met_fields_wrap");
-    /*var ings1 = $("input[name='ingredients1']").length;*/
-    var meths1 = $("input[name='methods1']").length;
     var x;
-    var y = meths1;
+    var y;
 
-    inpCounter("ingredients1", "ingredients2");
+    inpCounter("ingredients");
+    inpCounter("methods");
 
-    function inpCounter(searched) {
-        var elem1 = $("input[name='ingredients1']").length;
-        var elem2 = $("input[name='ingredients2']").length;
-        if (elem1 > 0 && elem2 == 0) {
-            x = elem1;
+    function inpCounter(search) {
+        if (search == "ingredients") {
+            var elem1 = $("input[name='ingredients1']").length;
+            var elem2 = $("input[name='ingredients2']").length;
+            if (elem1 > 0 && elem2 == 0) {
+                x = elem1;
+            }
+            else if (elem1 == 0 && elem2 > 0) {
+                x = elem2;
+            }
+            else if (elem1 != 0 && elem2 != 0) {
+                x = elem1 + elem2;
+            }
         }
-        else if (elem1 == 0 && elem2 > 0) {
-            x = elem2;
+        else if (search == "methods") {
+            var elem1 = $("textarea[name='method1']").length;
+            var elem2 = $("textarea[name='method2']").length;
+            if (elem1 > 0 && elem2 == 0) {
+                y = elem1;
+            }
+            else if (elem1 == 0 && elem2 > 0) {
+                y = elem2;
+            }
+            else if (elem1 != 0 && elem2 != 0) {
+                y = elem1 + elem2;
+            }
         }
-        else if (elem1 != 0 && elem2 != 0){
-            x = elem1 + elem2;
-        }
-        console.log(elem1, elem2 + " = " + x);
+
     }
     /*-----------------INGREDIENTS------------------------------*/
 
-    $(".container").on("click", ".add_ing_btn", function() {
+    $(".ing-container").on("click", ".add_ing_btn", function() {
         if (x < max_ingredients_fields) {
             x++;
             $(ing_fields_wrap).append(
@@ -51,25 +65,15 @@ $(document).ready(function() {
         if (x == max_ingredients_fields) {
             $(".add_ing_btn").hide();
         }
-        inpCounter();
-    });
-    
-    $("div").on("click", ".remove_recipe_btn", function(e) {
-        e.preventDefault();
-        $(this).parent('div').parent('div').remove();
-        x--;
-        if (x <= max_ingredients_fields) {
+        else if (x == 1){
             $(".add_ing_btn").show();
         }
-        inpCounter();
-        if (x == 1){
-            $(this).closest(".remove_recipe_btn").hide();
-        }
-    })
+        inpCounter("ingredients");
+    });
 
     /*-----------------METHODS------------------------------*/
 
-    $(".container").on("click", ".add_met_btn", function() {
+    $(".met-container").on("click", ".add_met_btn", function() {
         if (y < max_methods_fields) {
             y++;
             $(met_fields_wrap).append(
@@ -91,14 +95,21 @@ $(document).ready(function() {
         if (y == max_methods_fields) {
             $(".add_met_btn").hide();
         }
+        inpCounter("methods");
     });
-
-    $("div").on("click", ".remove_recipe_btn", function(e) {
+    
+    /*-----------------REMOVE FIELDS------------------------------*/
+        $("div").on("click", ".remove_recipe_btn", function(e) {
         e.preventDefault();
         $(this).parent('div').parent('div').remove();
-        y--;
-        if (y <= max_methods_fields) {
+        x--;
+        if (x <= max_ingredients_fields) {
+            $(".add_ing_btn").show();
+        }
+        if (y <= max_methods_fields){
             $(".add_met_btn").show();
         }
+        inpCounter("ingredients");
+        inpCounter("methods");
     })
 });
