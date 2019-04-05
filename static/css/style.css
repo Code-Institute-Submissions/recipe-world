@@ -3,11 +3,11 @@ body {
     background-color: #fbecd2;
 }
 
-.page-wrapper {
+/*.page-wrapper {
     height: 100%;
     max-width: 100%;
     background-color: #fbecd2;
-}
+}*/
 
 .bg-light {
     background-color: #fbecd2 !important;
@@ -154,10 +154,11 @@ body {
 .add_favorites_btn {
     vertical-align: middle;
 }
+
 .remove_recipe_btn,
 .add_favorites_btn,
 .edit_recipe_btn,
-.add_met_btn{
+.add_met_btn {
     background-color: transparent;
     border-color: transparent;
     outline: none;
@@ -405,11 +406,17 @@ body {
         border-radius: 0%;
     }
     .food-description {
+        position: relative;
+        min-height: 250px;
         text-align: left;
         margin-bottom: 15px;
         margin-left: 0px;
         padding-left: 20px;
         padding-right: 20px;
+    }
+    .like-fav-icons {
+        position: absolute;
+        bottom: 0;
     }
 }
 
@@ -426,5 +433,15 @@ body {
         max-width: 85%;
         margin: auto;
         background-color: #fbecd2;
+    }
+    .food-description {
+        position: relative;
+        min-height: 230px;
+    }
+    .like-fav-icons {
+        position: absolute;
+        bottom: 0;
+        text-align: center;
+        width: 100%;
     }
 }
