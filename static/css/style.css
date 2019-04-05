@@ -13,6 +13,9 @@ body {
     background-color: #fbecd2 !important;
 }
 
+.navbar{
+    padding: 0;
+}
 /* --------Modals-------- */
 
 .modal-content {
@@ -46,6 +49,8 @@ body {
 /* --------Dropdown Content-------- */
 
 .dropdown {
+    margin: 0;
+    padding: 0;
     position: relative;
     display: inline-block;
 }
