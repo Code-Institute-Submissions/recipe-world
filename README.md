@@ -25,21 +25,21 @@ None
 
 ## Technologies Used
 
-HTML, CSS and Javascript
-    Base languages used to create website
-Bootstrap
-    Use Bootstrap to give this project a simple, responsive layout
-JQuery
-    Use JQuery for boostrap and displaying modal
-Ajax
-    Use Ajax for receiving data from forms
-Slick.js
-    Use Slick for carousel on index page
-Python/Flask
-    Use Python language to create a Flask web application.
-    It gives the page the logic
-Git/GitHub
-    Use Git for version control.
+    HTML, CSS and Javascript
+        Base languages used to create website
+    Bootstrap
+        Use Bootstrap to give this project a simple, responsive layout
+    JQuery
+        Use JQuery for boostrap and displaying modal
+    Ajax
+        Use Ajax for receiving data from forms
+    Slick.js
+        Use Slick for carousel on index page
+    Python/Flask
+        Use Python language to create a Flask web application.
+        It gives the page the logic
+    Git/GitHub
+        Use Git for version control.
 
 ## Testing
 
