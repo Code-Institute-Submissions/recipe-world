@@ -8,16 +8,16 @@ This website is made for users to search recipes, upload their owns, edit them a
 
 ## Existing Features
 
-Register        - allows users to register by having them write it in a form and submit it
-Recipes         - allows users to see recipes by clicking on them.
-Search          - allows users to search for recipes by having them write the name of the searched recipe to the search form and submit it
-Filter          - allows users to filter the searched recipes by having them open the ,,Meal Types" menu and choose a type
-New Recipes     - allows users to upload new recipes by having them click on the ,,New Recipe" button
-Users Recipes   - allows users to filter their own recipes by having them click on the ,,My recipes" button
-Edit Recipes    - allows users to edit their own recipes by clicking on the "Blue Pens" next to the name of the meals
-Favoritize      - allows users to favoritize/remove(from favorites) recipes by having them click on the "Heart Icons" under the recipes
-Users Favorites - allows users to filter their favorite recipes by having them click on the ,,My favorites" button
-Sign Out        - allows users to sign out by having them click on ,,Sign Out" button
+    Register        - allows users to register by having them write it in a form and submit it
+    Recipes         - allows users to see recipes by clicking on them.
+    Search          - allows users to search for recipes by having them write the name of the searched recipe to the search form and submit it
+    Filter          - allows users to filter the searched recipes by having them open the ,,Meal Types" menu and choose a type
+    New Recipes     - allows users to upload new recipes by having them click on the ,,New Recipe" button
+    Users Recipes   - allows users to filter their own recipes by having them click on the ,,My recipes" button
+    Edit Recipes    - allows users to edit their own recipes by clicking on the "Blue Pens" next to the name of the meals
+    Favoritize      - allows users to favoritize/remove(from favorites) recipes by having them click on the "Heart Icons" under the recipes
+    Users Favorites - allows users to filter their favorite recipes by having them click on the ,,My favorites" button
+    Sign Out        - allows users to sign out by having them click on ,,Sign Out" button
 
 ## Features Left to Implement
 
@@ -84,11 +84,11 @@ Getting the code up and running
 ## Credits
 ### Content
 
-    The recipes were used in this site were obtained from [BBC Food](https://www.bbc.com/food/) and [Allrecipes](https://www.allrecipes.com/)
+The recipes were used in this site were obtained from [BBC Food](https://www.bbc.com/food/) and [Allrecipes](https://www.allrecipes.com/)
 
 ### Media
 
-    The default picture for recipes was obtained from [KissPNG](https://www.kisspng.com)
+The default picture for recipes was obtained from [KissPNG](https://www.kisspng.com)
 
 ## Acknowledgements
 
