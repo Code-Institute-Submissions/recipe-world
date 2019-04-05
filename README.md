@@ -58,6 +58,11 @@ Automated tests was not written but all of the elements of the page has been tes
     New recipes form:
         Try to submit the empty form, an error message about the required field appears
         Try to submit the form with valid input and you will be forwarded to ,,Your recipes" page
+        Pictures:
+            Try to upload a file with invalid format, the default picture will be shown to recipe
+            Try to upload a picture which is bigger then 2MB, the default picture will be shown to recipe
+            Try to submit the form without picture, the default picture will be shown to recipe
+            Try to submit the form with a picture which is smaller than 2MB, the uploaded picture will be shown to recipe
     Edit recipes form:
         Try to open a recipe to edit it, all the information will be loaded to the corresponding input
         Try to submit the empty form, an error message about the required field appears
