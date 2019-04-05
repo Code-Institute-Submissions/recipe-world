@@ -1,12 +1,12 @@
-#The Recipe World
+# The Recipe World
 
 I'm a student at Code Institute and I've reached my fourth milestone project which was to create this webapplication.
 
-##What does it do?
+## What does it do?
 
 This website is made for users to search recipes, upload their owns, edit them and favoritize them.
 
-##Existing Features
+## Existing Features
 
 Register        - allows users to register by having them write it in a form and submit it
 Recipes         - allows users to see recipes by clicking on them.
@@ -19,11 +19,11 @@ Favoritize      - allows users to favoritize/remove(from favorites) recipes by h
 Users Favorites - allows users to filter their favorite recipes by having them click on the ,,My favorites" button
 Sign Out        - allows users to sign out by having them click on ,,Sign Out" button
 
-##Features Left to Implement
+## Features Left to Implement
 
 None
 
-##Technologies Used
+## Technologies Used
 
 HTML, CSS and Javascript
     Base languages used to create website
@@ -41,7 +41,7 @@ Python/Flask
 Git/GitHub
     Use Git for version control.
 
-##Testing
+## Testing
 
 Automated tests was not written but all of the elements of the page has been tested manually on:
 
@@ -49,7 +49,7 @@ Automated tests was not written but all of the elements of the page has been tes
     Internet Explorer
     Google Chrome
 
-###Scenerios:
+### Scenerios:
 
     Username form:
         Try to submit the empty form, an error message about the required field appears
@@ -69,7 +69,7 @@ Automated tests was not written but all of the elements of the page has been tes
         Try to submit the empty form, an error message about the required field appears
         Try to submit the form with valid input and you will be forwarded to the results
 
-##Deployment
+## Deployment
 
 This project was created on C9.IO and was deployed to GitHub and Heroku.
 Getting the code up and running
@@ -81,15 +81,15 @@ Getting the code up and running
     5. Once http-server is installed run http-server -c-1
     6. The project will now run on [localhost](http://127.0.0.1:8080/)
 
-##Credits
-###Content
+## Credits
+### Content
 
     The recipes were used in this site were obtained from [BBC Food](https://www.bbc.com/food/) and [Allrecipes](https://www.allrecipes.com/)
 
-###Media
+### Media
 
     The default picture for recipes was obtained from [KissPNG](https://www.kisspng.com)
 
-##Acknowledgements
+## Acknowledgements
 
 I received inspiration for this project from Code Institute and Allrecipes
