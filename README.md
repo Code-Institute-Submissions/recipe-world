@@ -86,6 +86,21 @@ Getting the code up and running
     5. Once http-server is installed run http-server -c-1
     6. The project will now run on [localhost](http://127.0.0.1:8080/)
 
+## Database Schema
+
+    | Cuisines     | Meal Types    | Foods         | Users      |
+    |--------------|---------------|---------------|------------|
+    | cuisine_name | mealtype_name | cuisine_name  | username   |
+    | pic_url      |               | mealtype_name | email      |
+    | foods        |               | name          | my_recipes |
+    |              |               | author        | favorites  |
+    |              |               | uploaded_by   |            |
+    |              |               | description   |            |
+    |              |               | pic_url       |            |
+    |              |               | ingredients   |            |
+    |              |               | method        |            |
+    |              |               | favorites     |            |
+
 ## Credits
 ### Content
 
