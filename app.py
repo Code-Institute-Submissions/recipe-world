@@ -121,7 +121,7 @@ def upload_file(foodid):
     try:
         file = request.files['picInput']
         if file.filename == '':
-            pic_url = "/static/images/no_pic.png"
+            pic_url = "static/images/no_pic.png"
             return pic_url
         elif file and allowed_file(file.filename):
             filename_split = file.filename.rsplit(".", 1)
@@ -132,10 +132,10 @@ def upload_file(foodid):
             pic_url = "static/user_images/" + filename
             return pic_url
         else:
-            pic_url = "/static/images/no_pic.png"
+            pic_url = "static/images/no_pic.png"
             return pic_url
     except:
-        pic_url = "/static/images/no_pic.png"
+        pic_url = "static/images/no_pic.png"
         return pic_url
         
         

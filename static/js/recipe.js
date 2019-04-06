@@ -22,7 +22,7 @@ $(document).ready(function() {
                 '<input type="text" class="form-control" name="ingredients2" required>' +
                 '</div>' +
                 '<div class="col-2">' +
-                '<button class="btn edit_recipe_btn remove_field"><i class="material-icons new_line">do_not_disturb_on</i></button>' +
+                '<button type="button" class="btn edit_recipe_btn remove_field"><i class="material-icons new_line">do_not_disturb_on</i></button>' +
                 '</div>' +
                 '</div>');
         }
@@ -50,7 +50,7 @@ $(document).ready(function() {
                 '<textarea class="form-control" name="method2" required></textarea>' +
                 '</div>' +
                 '<div class="col-2">' +
-                '<button class="btn edit_recipe_btn remove_field"><i class="material-icons new_line">do_not_disturb_on</i></button>' +
+                '<button type="button" class="btn edit_recipe_btn remove_field"><i class="material-icons new_line">do_not_disturb_on</i></button>' +
                 '</div>' +
                 '</div>');
         }

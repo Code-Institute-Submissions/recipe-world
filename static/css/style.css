@@ -3,12 +3,6 @@ body {
     background-color: #fbecd2;
 }
 
-/*.page-wrapper {
-    height: 100%;
-    max-width: 100%;
-    background-color: #fbecd2;
-}*/
-
 .bg-light {
     background-color: #fbecd2 !important;
 }
@@ -432,9 +426,6 @@ body {
         background-color: #c8bca8;
     }
     .page-wrapper {
-        display: block;
-        overflow: auto;
-        height: 100%;
         max-width: 85%;
         margin: auto;
         background-color: #fbecd2;
