@@ -109,6 +109,7 @@ The recipes were used in this site were obtained from [BBC Food](https://www.bbc
 ### Media
 
 The default picture for recipes was obtained from [KissPNG](https://www.kisspng.com)
+The pictures of recipes were obtained from [BBC Food](https://www.bbc.com/food/) and [Allrecipes](https://www.allrecipes.com/)
 
 ## Acknowledgements
 

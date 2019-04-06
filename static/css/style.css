@@ -7,12 +7,14 @@ body {
     background-color: #fbecd2 !important;
 }
 
-.navbar{
+.navbar {
     padding: 0;
 }
-.navbar-brand{
+
+.navbar-brand {
     margin: 10px;
 }
+
 /* --------Modals-------- */
 
 .modal-content {
