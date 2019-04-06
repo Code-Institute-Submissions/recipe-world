@@ -3,6 +3,7 @@ from flask import Flask, render_template, redirect, url_for, request, session, j
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.utils import secure_filename
+from operator import itemgetter
 
 
 UPLOAD_FOLDER ="static/user_images"
@@ -22,8 +23,8 @@ mongo = PyMongo(app)
 @app.route("/index")
 def index():
     cuisines=mongo.db.cuisines.find()
-    foods = mongo.db.foods.find()
-    meals = mongo.db.foods.find()
+    foods = sorted(mongo.db.foods.find(),key=itemgetter('favorites'), reverse=True)
+    meals = sorted(mongo.db.foods.find(),key=itemgetter('favorites'), reverse=True)
     if "username" in session:
         return render_template("index.html", cuisines=cuisines, foods=foods, meals=meals, username=session["username"])   
     return render_template("index.html", cuisines=cuisines, foods=foods, meals=meals)
@@ -36,20 +37,20 @@ def food_collect(title, foods, meals):
 
 @app.route("/breakfasts")
 def get_breakfasts():
-    foods=mongo.db.foods.find({"mealtype_name": "breakfast"})
-    meals=mongo.db.foods.find({"mealtype_name": "breakfast"})
+    foods=sorted(mongo.db.foods.find({"mealtype_name": "breakfast"}),key=itemgetter('favorites'), reverse=True)
+    meals=sorted(mongo.db.foods.find({"mealtype_name": "breakfast"}),key=itemgetter('favorites'), reverse=True)
     return food_collect("Breakfasts", foods, meals)
 
 @app.route("/mains")
 def get_mains():
-    foods=mongo.db.foods.find({"mealtype_name": "main"})
-    meals=mongo.db.foods.find({"mealtype_name": "main"})
+    foods=sorted(mongo.db.foods.find({"mealtype_name": "main"}),key=itemgetter('favorites'), reverse=True)
+    meals=sorted(mongo.db.foods.find({"mealtype_name": "main"}),key=itemgetter('favorites'), reverse=True)
     return food_collect("Mains", foods, meals)
     
 @app.route("/desserts")
 def get_desserts():
-    foods=mongo.db.foods.find({"mealtype_name": "dessert"})
-    meals=mongo.db.foods.find({"mealtype_name": "dessert"})
+    foods=sorted(mongo.db.foods.find({"mealtype_name": "dessert"}),key=itemgetter('favorites'), reverse=True)
+    meals=sorted(mongo.db.foods.find({"mealtype_name": "dessert"}),key=itemgetter('favorites'), reverse=True)
     return food_collect("Desserts", foods, meals)
     
 @app.route("/<food_name>")
@@ -62,8 +63,8 @@ def get_food(food_name):
 
 @app.route("/cuisine/<cuis_name>")
 def get_cuis(cuis_name):
-    foods=mongo.db.foods.find({"cuisine_name": cuis_name})
-    meals=mongo.db.foods.find({"cuisine_name": cuis_name})
+    foods=sorted(mongo.db.foods.find({"cuisine_name": cuis_name}),key=itemgetter('favorites'), reverse=True)
+    meals=sorted(mongo.db.foods.find({"cuisine_name": cuis_name}),key=itemgetter('favorites'), reverse=True)
     return food_collect(cuis_name, foods, meals)
 
 @app.route("/my_recipes")
