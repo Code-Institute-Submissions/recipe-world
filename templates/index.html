@@ -24,7 +24,7 @@
             <div class="food-wrapper">
                 <div class="col-12 food-summary">
                     <h2 class="food-name">{{food.name|capitalize}} {% if my_recipe %}
-                        <a href="{{ url_for('edit_recipe', food_id=food._id)}}" class="btn edit_my_recipe_btn"><i class="material-icons edit-icon">edit</i></a> {% endif %}
+                        <button class="btn edit_my_recipe_btn"><a href="{{ url_for('edit_recipe', food_id=food._id)}}"><i class="material-icons edit-icon">edit</i></a></button>{% endif %}
                     </h2>
                     <div class="col-12 limit">
                         <a href="{{ url_for('get_food', food_name=food.name) }}"><img class="img-responsive" src="../{{food.pic_url}}" alt="{{food.name}}"></a>
@@ -55,7 +55,7 @@
         </div>
         <div class="col-12 col-sm-6">
             <h2 class="food-name">{{food.name|capitalize}} {% if my_recipe %}
-                <a href="{{ url_for('edit_recipe', food_id=food._id)}}" class="btn edit_my_recipe_btn"><i class="material-icons edit-icon">edit</i></a> {% endif %}
+                <button class="btn edit_my_recipe_btn"><a href="{{ url_for('edit_recipe', food_id=food._id)}}"><i class="material-icons edit-icon">edit</i></a></button> {% endif %}
             </h2>
             <div class="breakline d-none d-sm-block d-md-block"></div>
             <div class="row d-none d-sm-block d-md-block"> {{food.description|capitalize}}</div>
@@ -79,7 +79,7 @@
     <div class="row">
         <div class="col-12">
             <h2 class="food-name center">{{food.name|capitalize}} {% if my_recipe %}
-                <a href="{{ url_for('edit_recipe', food_id=food._id)}}" class="btn edit_my_recipe_btn"><i class="material-icons edit-icon">edit</i></a> {% endif %}
+                <button class="btn edit_my_recipe_btn"><a href="{{ url_for('edit_recipe', food_id=food._id)}}"><i class="material-icons edit-icon">edit</i></a></button> {% endif %}
             </h2>
             <div class="row center d-none d-sm-block d-md-block">
                 <a href="{{ url_for('get_food', food_name=food.name) }}"><img class="img-responsive" src="../{{food.pic_url}}" alt="{{food.name}}"></a>
@@ -105,7 +105,7 @@
     <div class="row">
         <div class="col-12 col-sm-6">
             <h2 class="food-name">{{food.name|capitalize}} {% if my_recipe %}
-                <a href="{{ url_for('edit_recipe', food_id=food._id)}}" class="btn edit_my_recipe_btn"><i class="material-icons edit-icon">edit</i></a> {% endif %}
+                <button class="btn edit_my_recipe_btn"><a href="{{ url_for('edit_recipe', food_id=food._id)}}"><i class="material-icons edit-icon">edit</i></a></button> {% endif %}
             </h2>
             <div class="breakline d-none d-sm-block d-md-block"></div>
             <div class="row left-space d-none d-sm-block d-md-block"> {{food.description|capitalize}}</div>
