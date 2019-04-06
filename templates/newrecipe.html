@@ -78,6 +78,11 @@
                 <div class="col-10 col-md-6">
                     <input type="text" class="form-control" name="ingredients1" value="{{line}}" required>
                 </div>
+                {% if loop.first and loop.last %}
+                <div class="col-2">
+                    <button type="button" class="pointer edit_recipe_btn add_ing_btn"><i class="material-icons new_line">local_hospital</i></button>
+                </div>
+                {% endif %}
             </div>
             {% elif not loop.first and not loop.last %}
             <div class="row">
@@ -108,15 +113,15 @@
 
         <div class="form-group met-container">
             <div class="row">
-                <label for="method" class="col-12 offset-md-2 col-md-2 form-control-label">Method</label>
-                {% for line in food.method %} {% if loop.first %}
+                <label for="method" class="col-12 offset-md-2 col-md-2 form-control-label">Method</label> {% for line in food.method %} {% if loop.first %}
                 <div class="col-10 col-md-6">
                     <textarea class="form-control" id="method" name="method1" required> {{line}}</textarea>
                 </div>
+
+                {% if loop.first and loop.last %}
                 <div class="col-2">
-                    {% if loop.first and loop.last %}
-                    <button type="button" class="pointer edit_recipe_btn add_met_btn"><i class="material-icons new_line">local_hospital</i></button> {% endif %}
-                </div>
+                    <button type="button" class="pointer edit_recipe_btn add_met_btn"><i class="material-icons new_line">local_hospital</i></button>
+                </div> {% endif %}
             </div>
             {% elif not loop.first and not loop.last %}
             <div class="row">
