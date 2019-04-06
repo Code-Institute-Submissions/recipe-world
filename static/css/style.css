@@ -267,6 +267,7 @@ body {
 }
 
 .food-name {
+    min-height: 50px;
     text-align: center;
     font-size: 20px;
 }
@@ -410,7 +411,7 @@ body {
     }
     .food-description {
         position: relative;
-        min-height: 250px;
+        min-height: 245px;
         text-align: left;
         margin-bottom: 15px;
         margin-left: 0px;
@@ -423,7 +424,7 @@ body {
     }
 }
 
-@media(min-width: 1200px) {
+@media(min-width: 1600px) {
     html,
     body {
         height: 100%;
@@ -437,7 +438,7 @@ body {
     }
     .food-description {
         position: relative;
-        min-height: 230px;
+        min-height: 225px;
     }
     .like-fav-icons {
         position: absolute;
