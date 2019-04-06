@@ -23,8 +23,8 @@ mongo = PyMongo(app)
 @app.route("/index")
 def index():
     cuisines=mongo.db.cuisines.find()
-    foods = sorted(mongo.db.foods.find(),key=itemgetter('favorites'), reverse=True)
-    meals = sorted(mongo.db.foods.find(),key=itemgetter('favorites'), reverse=True)
+    foods = mongo.db.foods.find().sort("favorites", -1)
+    meals = mongo.db.foods.find().sort("favorites", -1)
     if "username" in session:
         return render_template("index.html", cuisines=cuisines, foods=foods, meals=meals, username=session["username"])   
     return render_template("index.html", cuisines=cuisines, foods=foods, meals=meals)
@@ -37,20 +37,20 @@ def food_collect(title, foods, meals):
 
 @app.route("/breakfasts")
 def get_breakfasts():
-    foods=sorted(mongo.db.foods.find({"mealtype_name": "breakfast"}),key=itemgetter('favorites'), reverse=True)
-    meals=sorted(mongo.db.foods.find({"mealtype_name": "breakfast"}),key=itemgetter('favorites'), reverse=True)
+    foods=mongo.db.foods.find({"mealtype_name": "breakfast"}).sort("favorites", -1)
+    meals=mongo.db.foods.find({"mealtype_name": "breakfast"}).sort("favorites", -1)
     return food_collect("Breakfasts", foods, meals)
 
 @app.route("/mains")
 def get_mains():
-    foods=sorted(mongo.db.foods.find({"mealtype_name": "main"}),key=itemgetter('favorites'), reverse=True)
-    meals=sorted(mongo.db.foods.find({"mealtype_name": "main"}),key=itemgetter('favorites'), reverse=True)
+    foods=mongo.db.foods.find({"mealtype_name": "main"}).sort("favorites", -1)
+    meals=mongo.db.foods.find({"mealtype_name": "main"}).sort("favorites", -1)
     return food_collect("Mains", foods, meals)
     
 @app.route("/desserts")
 def get_desserts():
-    foods=sorted(mongo.db.foods.find({"mealtype_name": "dessert"}),key=itemgetter('favorites'), reverse=True)
-    meals=sorted(mongo.db.foods.find({"mealtype_name": "dessert"}),key=itemgetter('favorites'), reverse=True)
+    foods=mongo.db.foods.find({"mealtype_name": "dessert"}).sort("favorites", -1)
+    meals=mongo.db.foods.find({"mealtype_name": "dessert"}).sort("favorites", -1)
     return food_collect("Desserts", foods, meals)
     
 @app.route("/<food_name>")
