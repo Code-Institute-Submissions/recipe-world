@@ -427,6 +427,7 @@ body {
         background-color: #c8bca8;
     }
     .page-wrapper {
+        min-height: 100%;
         max-width: 85%;
         margin: auto;
         background-color: #fbecd2;
