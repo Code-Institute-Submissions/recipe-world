@@ -163,7 +163,14 @@ def edit_recipe(food_id):
         method1.reverse()
         for elem in method1:
             method2.insert(0, elem)
-        
+        cuisine = mongo.db.cuisines.find_one({"foods" : ObjectId(food_id)})
+        searched_cuisine = cuisine["cuisine_name"]
+        if searched_cuisine != cuisine_name:
+            mongo.db.cuisines.update_one({"foods" : ObjectId(food_id)},
+                                        {"$pull" : {"foods" : ObjectId(food_id)}})
+            mongo.db.cuisines.update_one({"cuisine_name": cuisine_name},
+                                        {"$push": {"foods": ObjectId(food_id)}})
+                                        
         mongo.db.foods.update_one(  {"_id" : ObjectId(food_id)},
                                     {"$set": {
                                         "name": foodname,
