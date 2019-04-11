@@ -25,8 +25,8 @@ mongo = PyMongo(app)
 @app.route("/index")
 def index():
     cuisines = mongo.db.cuisines.find()
-    foods = mongo.db.foods.find().sort("favorites", -1)
-    meals = mongo.db.foods.find().sort("favorites", -1)
+    foods = mongo.db.foods.find()
+    meals = mongo.db.foods.find()
     if "username" in session:
         return render_template(
             "index.html",
@@ -54,27 +54,27 @@ def food_collect(title, foods, meals):
 @app.route("/breakfasts")
 def get_breakfasts():
     foods = mongo.db.foods.find(
-        {"mealtype_name": "breakfast"}).sort("favorites", -1)
+        {"mealtype_name": "breakfast"})
     meals = mongo.db.foods.find(
-        {"mealtype_name": "breakfast"}).sort("favorites", -1)
+        {"mealtype_name": "breakfast"})
     return food_collect("Breakfasts", foods, meals)
 
 
 @app.route("/mains")
 def get_mains():
     foods = mongo.db.foods.find(
-        {"mealtype_name": "main"}).sort("favorites", -1)
+        {"mealtype_name": "main"})
     meals = mongo.db.foods.find(
-        {"mealtype_name": "main"}).sort("favorites", -1)
+        {"mealtype_name": "main"})
     return food_collect("Mains", foods, meals)
 
 
 @app.route("/desserts")
 def get_desserts():
     foods = mongo.db.foods.find(
-        {"mealtype_name": "dessert"}).sort("favorites", -1)
+        {"mealtype_name": "dessert"})
     meals = mongo.db.foods.find(
-        {"mealtype_name": "dessert"}).sort("favorites", -1)
+        {"mealtype_name": "dessert"})
     return food_collect("Desserts", foods, meals)
 
 
