@@ -200,10 +200,12 @@ def upload_file(foodid):
 
 @app.route("/edit_recipe/<food_id>", methods=["GET", "POST"])
 def edit_recipe(food_id):
-    username = session["username"]
+    if "username" in session:
+        username = session["username"]
     food_id = food_id
     food = mongo.db.foods.find_one({"_id": ObjectId(food_id)})
-    if request.method == "POST":
+    uploader = mongo.db.users.find_one({"my_recipes": ObjectId(food_id)})
+    if request.method == "POST" and username == uploader["username"]:
         foodname = request.form["foodname"].lower()
         mealtype_name = request.form["mealtypeselect"].lower()
         cuisine_name = request.form["cuisineselect"].lower()
