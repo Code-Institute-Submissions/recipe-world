@@ -6,7 +6,8 @@ $(document).ready(function() {
         infinite: true,
         speed: 300,
         slidesToShow: 5,
-        slidesToScroll: 3,
+        slidesToScroll: 5,
+        swipeToSlide: true,
         centerMode: true,
         responsive: [{
             breakpoint: 1024,

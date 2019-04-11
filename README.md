@@ -21,7 +21,7 @@ This website is made for users to search recipes, upload their owns, edit them a
 
 ## Features Left to Implement
 
-None
+Functionality to resize images uploaded by users.
 
 ## Technologies Used
 

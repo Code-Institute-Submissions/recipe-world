@@ -417,6 +417,9 @@ button {
 
 @media(min-width: 992px) {
     .cuis-image {
+        padding: 1px;
+        border-style: double;
+        border-color: black;
         border-radius: 0%;
     }
     .food-description {

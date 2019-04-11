@@ -15,7 +15,7 @@ $(document).ready(function() {
             else if (favorites_exist == "no_user") {
                 $(given_fav).siblings().children(".like-fav").children(".add_favorites_btn").prop("title", "First you need to sign in to favoritize a recipe");
                 $(given_fav).siblings().children(".like-fav").children(".add_favorites_btn").tooltip();
-                $(".add_favorites_btn").click(function() {
+                $(".add_favorites_btn").mouseleave(function() {
                     $('[data-toggle="tooltip"], .tooltip').tooltip("hide");
                 });
             }
