@@ -1,3 +1,4 @@
+//This script is responsible for the carousel what shows the cuisines on the home page
 $(document).ready(function() {
     $(".carousel").slick({
         arrows: true,

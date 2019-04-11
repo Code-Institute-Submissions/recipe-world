@@ -1,3 +1,4 @@
+/*Check if the given recipe is liked by the user or not by checking it in the database*/
 $(document).ready(function() {
     $(".food_id").each(function(i) {
         var foodid = $(this).html();
@@ -7,6 +8,7 @@ $(document).ready(function() {
             data: { foodid: foodid },
             url: "/check_favorites"
         }).done(function(favorites_exist) {
+            /*Check if the user logged in, or not and depends on it, the "like button" gives a message or change it's color*/
             if (favorites_exist == "favorites_exist") {
                 $(given_fav).siblings().children(".like-fav").children().children().css("color", "red");
             }
@@ -30,7 +32,8 @@ $(document).ready(function() {
             data: { foodid: foodid },
             url: "/add_favorites"
         }).done(function(favorites_exist) {
-            var number_of_favorites = favorites_exist.slice(9);;
+            var number_of_favorites = favorites_exist.slice(9);
+            /*Change the color of the "like" icon depends on it has been liked, or not*/
             if (favorites_exist.includes("favorites")) {
                 $(clicked_fav).children().css("color", "pink");
                 $(clicked_fav).siblings("span").html(number_of_favorites);

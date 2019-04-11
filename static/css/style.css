@@ -1,3 +1,4 @@
+/* --------GENERAL CUSTOMIZATION-------- */
 html,
 body {
     background-color: #fbecd2;
@@ -13,6 +14,30 @@ body {
 
 .navbar-brand {
     margin: 10px;
+}
+
+.breakline {
+    margin-top: 15px;
+}
+
+.new_line {
+    font-size: 30px;
+}
+
+.small-device-search {
+    margin-top: 10px;
+}
+
+.center {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+}
+
+.limit {
+    text-align: center;
+    max-height: 230px;
+    max-width: 400px;
 }
 
 /* --------Modals-------- */
@@ -239,30 +264,6 @@ body {
 
 /*----------------------------------------*/
 
-.breakline {
-    margin-top: 15px;
-}
-
-.new_line {
-    font-size: 30px;
-}
-
-.small-device-search {
-    margin-top: 10px;
-}
-
-.center {
-    width: 100%;
-    justify-content: center;
-    text-align: center;
-}
-
-.limit {
-    text-align: center;
-    max-height: 230px;
-    max-width: 400px;
-}
-
 .limit img {
     max-width: 100%;
     max-height: 80%;
@@ -346,12 +347,11 @@ body {
     margin-top: 20px;
 }
 
+/* --------Carousel (slider) -------- */
 .cuisine-divider {
     background-color: grey;
     margin: 10px 0px 10px 0px;
 }
-
-/* --------Carousel (slider) -------- */
 
 .cuisine-name {
     text-align: center;
