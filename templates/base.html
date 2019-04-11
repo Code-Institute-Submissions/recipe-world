@@ -56,7 +56,7 @@
                                     <a href="{{ url_for('get_my_recipes') }}">My recipes</a>
                                     <a href="{{ url_for('get_my_favorites') }}">My favorites</a>
                                     <div class="dropdown-divider"></div>
-                                    <a type="button" class="pointer" id="sign-out-btn" data-toggle="modal" data-target="#signOutModal">Sign Out</a>
+                                    <a type="button" class="pointer" data-toggle="modal" data-target="#signOutModal">Sign Out</a>
                                 </div>
                             </div>
                             <div class="dropdown d-block d-sm-block d-md-none d-lg-none">
@@ -76,11 +76,11 @@
                                     <a href="{{ url_for('get_my_recipes') }}">My recipes</a>
                                     <a href="{{ url_for('get_my_favorites') }}">My favorites</a>
                                     <div class="dropdown-divider"></div>
-                                    <a type="button" class="pointer" id="sign-out-btn" data-toggle="modal" data-target="#signOutModal">Sign Out</a>
+                                    <a type="button" class="pointer" data-toggle="modal" data-target="#signOutModal">Sign Out</a>
                                 </div>
                             </div>
                             {% else %}
-                            <a type="button" class="pointer nav-link" id="sign-in-btn" data-toggle="modal" data-target="#signInModal">Sign Up</a>
+                            <button type="button" class="pointer nav-link" id="sign-in-btn" data-toggle="modal" data-target="#signInModal">Sign Up</button>
                         </li>
                     </ul>
                     <div class="dropdown d-block d-sm-block d-md-none d-lg-none" style="float:right;">
@@ -115,7 +115,7 @@
                             <form id="signUpForm">
                                 <div class="form-group">
                                     <label for="inputUsername">Username:</label>
-                                    <input type="username" class="form-control" id="inputUsername" required>
+                                    <input type="text" class="form-control" id="inputUsername" required>
                                     <div class="alert alert-danger" role="alert" id="usernameErrorAlert" style="display:none;">
                                         This username is already in use
                                     </div>
@@ -166,12 +166,12 @@
         <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js " integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut " crossorigin="anonymous "></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js " integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k " crossorigin="anonymous "></script>
-        <script type="text/javascript" src="{{ url_for('static', filename='js/signUp.js')}}"></script>
-        <script type="text/javascript" src="{{ url_for('static', filename='js/recipe.js')}}"></script>
-        <script type="text/javascript" src="{{ url_for('static', filename='js/edit_recipe.js')}}"></script>
-        <script type="text/javascript" src="{{ url_for('static', filename='js/addFavLikes.js')}}"></script>
-        <script type="text/javascript" src="{{ url_for('static', filename='slick/slick.min.js')}}"></script>
-        <script type="text/javascript" src="{{ url_for('static', filename='js/my_slick.js')}}"></script>
+        <script src="{{ url_for('static', filename='js/signUp.js')}}"></script>
+        <script src="{{ url_for('static', filename='js/recipe.js')}}"></script>
+        <script src="{{ url_for('static', filename='js/edit_recipe.js')}}"></script>
+        <script src="{{ url_for('static', filename='js/addFavLikes.js')}}"></script>
+        <script src="{{ url_for('static', filename='slick/slick.min.js')}}"></script>
+        <script src="{{ url_for('static', filename='js/my_slick.js')}}"></script>
     </div>
 </body>
 

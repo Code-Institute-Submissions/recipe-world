@@ -1,7 +1,7 @@
 //This function is responsible for checking the given username is either in the database or not
 //It shows a message to the user if username exists and prevent from submitting if username is taken
-$(document).ready(function() {
-	$('#signUpForm').on('submit', function(event) {
+$(document).ready(function () {
+	$('#signUpForm').on('submit', function (event) {
 		$.ajax({
 			data : {
 				username : $('#inputUsername').val(),
