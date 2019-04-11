@@ -13,8 +13,9 @@ You can see how the collections look like:
     |              |               | ingredients   |            |
     |              |               | method        |            |
     |              |               | favorites     |            |
+    |--------------|---------------|---------------|------------|
 
-Explanation of the fields:
+Explanation of the fields of Cuisines:
 
     | Field name   |                   Explanation of the field                 |
     |--------------|------------------------------------------------------------|
@@ -22,6 +23,39 @@ Explanation of the fields:
     | pic_url      | This field contains the url for the picture of cuisine     |
     | foods        | This field contains the IDs of all the food in the cuisine |
     |--------------|------------------------------------------------------------|
+
+Explanation of the fields of Meal Types:
+
+    | Field name    |         Explanation of the field          |
+    |---------------|-------------------------------------------|
+    | mealtype_name | This field contains the name of mealtypes |
+    |---------------|-------------------------------------------|
+    
+Explanation of the fields of Foods:
+
+    |  Field name   | Explanation of the field                                     |
+    |---------------|--------------------------------------------------------------|
+    | cuisine_name  | This field contains the name of the cuisine type of the food |
+    | mealtype_name | This field contains the name of the meal type of the food    |
+    | name          | This field contains the name of the food                     |
+    | author        | This field contains the name of the author of the food       |
+    | uploaded_by   | This field contains the name of the uploader of the food     |
+    | description   | This field contains the short description of the food        |
+    | pic_url       | This field contains the url for the picture of the food      |
+    | ingredients   | This field contains the ingredients of the food              |
+    | method        | This field contains the method of how to make the food       |
+    | favorites     | This field contains the IDs of users how like the food       |
+    |---------------|--------------------------------------------------------------|
+
+Explanation of the fields of Users:   
+
+    |  Field name | Explanation of the field                                  |
+    |-------------|-----------------------------------------------------------|
+    | username    | This field contains the username of the user              |
+    | email       | This field contains the email address of the user         |
+    | my_recipes  | This field contains the IDs of recipes what user uploaded |
+    | favorites   | This field contains the IDs of recipes what user likes    |
+    |-------------|-----------------------------------------------------------|
 
 There are a few relation between them what I write down below.
 
