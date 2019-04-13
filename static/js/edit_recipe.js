@@ -8,14 +8,16 @@ $(document).ready(function() {
     var met_fields_wrap = $(".met_fields_wrap");
     var x;
     var y;
+  	var elem1;
+  	var elem2;
 
     inpCounter("ingredients");
     inpCounter("methods");
 
     function inpCounter(search) {
         if (search == "ingredients") {
-            var elem1 = $("input[name='ingredients1']").length;
-            var elem2 = $("input[name='ingredients2']").length;
+            elem1 = $("input[name='ingredients1']").length;
+            elem2 = $("input[name='ingredients2']").length;
             if (elem1 > 0 && elem2 == 0) {
                 x = elem1;
             }
@@ -27,8 +29,8 @@ $(document).ready(function() {
             }
         }
         else if (search == "methods") {
-            var elem1 = $("textarea[name='method1']").length;
-            var elem2 = $("textarea[name='method2']").length;
+            elem1 = $("textarea[name='method1']").length;
+            elem2 = $("textarea[name='method2']").length;
             if (elem1 > 0 && elem2 == 0) {
                 y = elem1;
             }
@@ -111,5 +113,5 @@ $(document).ready(function() {
         }
         inpCounter("ingredients");
         inpCounter("methods");
-    })
+    });
 });

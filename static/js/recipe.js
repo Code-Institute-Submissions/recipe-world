@@ -38,7 +38,7 @@ $(document).ready(function() {
         if (x <= max_ingredients_fields) {
             $(add_ingredients_button).show();
         }
-    })
+    });
 
     $(add_method_button).click(function(e) {
         e.preventDefault();
@@ -66,5 +66,5 @@ $(document).ready(function() {
         if (x <= max_ingredients_fields) {
             $(add_method_button).show();
         }
-    })
+    });
 });
