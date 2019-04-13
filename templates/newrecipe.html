@@ -6,24 +6,24 @@
     <form enctype="multipart/form-data" method="POST">
         <div class="form-group container">
             <div class="row">
-                <label class="col-12 offset-md-2 col-md-2 form-control-label">Food Name</label>
+                <label for="foodname" class="col-12 offset-md-2 col-md-2 form-control-label">Food Name</label>
                 <div class="col-10 col-md-6">
-                    <input type="text" class="form-control" name="foodname" value="{{food.name|capitalize}}" required>
+                    <input id="foodname" type="text" class="form-control" name="foodname" value="{{food.name|capitalize}}" required>
                 </div>
             </div>
         </div>
         <div class="form-group container">
             <div class="row">
-                <label class="col-12 offset-md-2 col-md-2 form-control-label">Author</label>
+                <label for="author" class="col-12 offset-md-2 col-md-2 form-control-label">Author</label>
                 <div class="col-10 col-md-6">
-                    <input type="text" class="form-control" name="author" value="{{food.author}}" required>
+                    <input id="author" type="text" class="form-control" name="author" value="{{food.author}}" required>
                 </div>
             </div>
         </div>
         <div class="form-group container">
             <div class="row">
-                <label class="col-12 offset-md-2 col-md-2 form-control-label">Select Meal Type</label>
-                <div class="col-10 col-md-6">
+                <label for="mealtype" class="col-12 offset-md-2 col-md-2 form-control-label">Select Meal Type</label>
+                <div id="mealtype" class="col-10 col-md-6">
                     {% if mealtypes %}
                     <select class="form-control" name="mealtypeselect">
                     {% for mealtype in mealtypes %}
@@ -39,8 +39,8 @@
         </div>
         <div class="form-group container">
             <div class="row">
-                <label class="col-12 offset-md-2 col-md-2 form-control-label">Select Cuisine</label>
-                <div class="col-10 col-md-6">
+                <label for="cuisinetype" class="col-12 offset-md-2 col-md-2 form-control-label">Select Cuisine</label>
+                <div id="cuisinetype" class="col-10 col-md-6">
                     {% if cuisines %}
                     <select class="form-control" name="cuisineselect">
                     {% for cuisine in cuisines %}
@@ -56,27 +56,27 @@
         </div>
         <div class="form-group container">
             <div class="row">
-                <label class="col-12 offset-md-2 col-md-2 form-control-label">Short Description</label>
-                <div class="col-10 col-md-6">
+                <label for="shortdesc" class="col-12 offset-md-2 col-md-2 form-control-label">Short Description</label>
+                <div id="shortdesc" class="col-10 col-md-6">
                     <textarea class="form-control" maxlength="150" name="shortdesc" required>{{food.description}}</textarea>
                 </div>
             </div>
         </div>
         <div class="form-group container">
             <div class="row">
-                <label class="col-12 offset-md-2 col-md-2 form-control-label">Picture
+                <label for="fileinput" class="col-12 offset-md-2 col-md-2 form-control-label">Picture
                     <i class="material-icons" data-toggle="tooltip" data-placement="bottom" title="Your file can not be larger than 2 MB">info_outline</i>
                 </label>
                 <div class="col-12 col-md-6">
-                    <input type="file" class="form-control-file" name="picInput">
+                    <input id="fileinput" type="file" class="form-control-file" name="picInput">
                 </div>
             </div>
         </div>
         <div class="form-group ing-container">
             <div class="row">
-                <label class="col-12 offset-md-2 col-md-2 form-control-label">Ingredients</label> {% for line in food.ingredients %} {% if loop.first %}
+                <label for="ingredients" class="col-12 offset-md-2 col-md-2 form-control-label">Ingredients</label> {% for line in food.ingredients %} {% if loop.first %}
                 <div class="col-10 col-md-6">
-                    <input type="text" class="form-control" name="ingredients1" value="{{line}}" required>
+                    <input id="ingredients" type="text" class="form-control" name="ingredients1" value="{{line}}" required>
                 </div>
                 {% if loop.first and loop.last %}
                 <div class="col-2">
@@ -87,16 +87,16 @@
             {% elif not loop.first and not loop.last %}
             <div class="row">
                 <div class="col-10 offset-md-4 col-md-6">
-                    <input type="text" class="form-control" name="ingredients1" value="{{line}}" required>
+                    <input id="ingredients" type="text" class="form-control" name="ingredients1" value="{{line}}" required>
                 </div>
                 <div class="col-2">
-                    <button type="button" class="pointer remove_recipe_btn"><i class="material-icons new_line">do_not_disturb_on</i></button>
+                    <button id="ingredients" type="button" class="pointer remove_recipe_btn"><i class="material-icons new_line">do_not_disturb_on</i></button>
                 </div>
             </div>
             {% elif loop.last %}
             <div class="row">
                 <div class="col-10 offset-md-4 col-md-6">
-                    <input type="text" class="form-control" name="ingredients1" value="{{line}}" required>
+                    <input id="ingredients" type="text" class="form-control" name="ingredients1" value="{{line}}" required>
                 </div>
                 <div class="col-2">
                     <button type="button" class="pointer remove_recipe_btn"><i class="material-icons new_line">do_not_disturb_on</i></button>
@@ -113,9 +113,9 @@
 
         <div class="form-group met-container">
             <div class="row">
-                <label class="col-12 offset-md-2 col-md-2 form-control-label">Method</label> {% for line in food.method %} {% if loop.first %}
+                <label for="method" class="col-12 offset-md-2 col-md-2 form-control-label">Method</label> {% for line in food.method %} {% if loop.first %}
                 <div class="col-10 col-md-6">
-                    <textarea class="form-control" name="method1" required> {{line}}</textarea>
+                    <textarea id="method" class="form-control" name="method1" required> {{line}}</textarea>
                 </div>
 
                 {% if loop.first and loop.last %}
@@ -126,7 +126,7 @@
             {% elif not loop.first and not loop.last %}
             <div class="row">
                 <div class="col-10 offset-md-4 col-md-6">
-                    <textarea class="form-control" name="method1" required>{{line}}</textarea>
+                    <textarea id="method" class="form-control" name="method1" required>{{line}}</textarea>
                 </div>
                 <div class="col-2">
                     <button type="button" class="pointer remove_recipe_btn"><i class="material-icons new_line">do_not_disturb_on</i></button>
@@ -135,7 +135,7 @@
             {% elif loop.last %}
             <div class="row">
                 <div class="col-10 offset-md-4 col-md-6">
-                    <textarea class="form-control" name="method1" required>{{line}}</textarea>
+                    <textarea id="method" class="form-control" name="method1" required>{{line}}</textarea>
                 </div>
                 <div class="col-2">
                     <button type="button" class="pointer remove_recipe_btn"><i class="material-icons new_line">do_not_disturb_on</i></button>
@@ -162,25 +162,25 @@
     <form enctype="multipart/form-data" method="POST">
         <div class="form-group container">
             <div class="row">
-                <label class="col-12 offset-md-2 col-md-2 form-control-label">Food Name</label>
+                <label for="food_name" class="col-12 offset-md-2 col-md-2 form-control-label">Food Name</label>
                 <div class="col-10 col-md-6">
-                    <input type="text" class="form-control" name="foodname" required>
+                    <input id="food_name" type="text" class="form-control" name="foodname" required>
                 </div>
             </div>
         </div>
         <div class="form-group container">
             <div class="row">
-                <label class="col-12 offset-md-2 col-md-2 form-control-label">Author</label>
+                <label for="author2" class="col-12 offset-md-2 col-md-2 form-control-label">Author</label>
                 <div class="col-10 col-md-6">
-                    <input type="text" class="form-control" name="author" value="{{username}}" required>
+                    <input id="author2" type="text" class="form-control" name="author" value="{{username}}" required>
                 </div>
             </div>
         </div>
         <div class="form-group container">
             <div class="row">
-                <label class="col-12 offset-md-2 col-md-2 form-control-label">Select Meal Type</label>
+                <label for="meal_type" class="col-12 offset-md-2 col-md-2 form-control-label">Select Meal Type</label>
                 <div class="col-10 col-md-6">
-                    <select class="form-control" name="mealtypeselect">
+                    <select id="meal_type" class="form-control" name="mealtypeselect">
                       <option>Breakfast</option>
                       <option>Main</option>
                       <option>Dessert</option>
@@ -190,10 +190,10 @@
         </div>
         <div class="form-group container">
             <div class="row">
-                <label class="col-12 offset-md-2 col-md-2 form-control-label">Select Cuisine</label>
+                <label for="cuisine_type" class="col-12 offset-md-2 col-md-2 form-control-label">Select Cuisine</label>
                 <div class="col-10 col-md-6">
                     {% if cuisines %}
-                    <select class="form-control" name="cuisineselect">
+                    <select id="cuisine_type" class="form-control" name="cuisineselect">
                     {% for cuisine in cuisines %}
                       <option>{{cuisine.cuisine_name|capitalize}}</option>
                       {% endfor %}
@@ -203,27 +203,27 @@
         </div>
         <div class="form-group container">
             <div class="row">
-                <label class="col-12 offset-md-2 col-md-2 form-control-label">Short Description</label>
+                <label for="short_desc" class="col-12 offset-md-2 col-md-2 form-control-label">Short Description</label>
                 <div class="col-10 col-md-6">
-                    <textarea class="form-control" maxlength="150" name="shortdesc" placeholder="Make a batch on a Sunday for a quick and easy breakfast on-the-go for the rest of the week." required></textarea>
+                    <textarea id="short_desc" class="form-control" maxlength="150" name="shortdesc" placeholder="Make a batch on a Sunday for a quick and easy breakfast on-the-go for the rest of the week." required></textarea>
                 </div>
             </div>
         </div>
         <div class="form-group container">
             <div class="row">
-                <label class="col-12 offset-md-2 col-md-2 form-control-label">Picture
+                <label for="file_input" class="col-12 offset-md-2 col-md-2 form-control-label">Picture
                 <i class="material-icons" data-toggle="tooltip" data-placement="bottom" title="Your file can not be larger than 2 MB">info_outline</i>
                 </label>
                 <div class="col-12 col-md-6">
-                    <input type="file" class="form-control-file" name="picInput">
+                    <input id="file_input" type="file" class="form-control-file" name="picInput">
                 </div>
             </div>
         </div>
         <div class="form-group container">
             <div class="row">
-                <label class="col-12 offset-md-2 col-md-2 form-control-label">Ingredients</label>
+                <label for="ingredients2" class="col-12 offset-md-2 col-md-2 form-control-label">Ingredients</label>
                 <div class="col-10 col-md-6">
-                    <input type="text" class="form-control" name="ingredients1" placeholder="E.g.: 100g/3½oz butter" required>
+                    <input id="ingredients2" type="text" class="form-control" name="ingredients1" placeholder="E.g.: 100g/3½oz butter" required>
                 </div>
                 <div class="col-1">
                     <button type="button" class="pointer edit_recipe_btn add_ingredients_field_button"><i class="material-icons new_line">local_hospital</i></button>
@@ -233,9 +233,9 @@
         </div>
         <div class="form-group container">
             <div class="row">
-                <label class="col-12 offset-md-2 col-md-2 form-control-label">Method</label>
+                <label for="method2" class="col-12 offset-md-2 col-md-2 form-control-label">Method</label>
                 <div class="col-10 col-md-6">
-                    <textarea class="form-control" name="method1" required placeholder="E.g.: Preheat the oven to 180c/160c fan/gas 4, and line a 24x24cm/9x9in baking tin with greaseproof paper."></textarea>
+                    <textarea id="method2" class="form-control" name="method1" required placeholder="E.g.: Preheat the oven to 180c/160c fan/gas 4, and line a 24x24cm/9x9in baking tin with greaseproof paper."></textarea>
                 </div>
                 <div class="col-1">
                     <button type="button" class="pointer edit_recipe_btn add_method_field_button"><i class="material-icons new_line">local_hospital</i></button>
