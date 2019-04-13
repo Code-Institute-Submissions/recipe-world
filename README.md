@@ -80,11 +80,12 @@ This project was created on C9.IO and was deployed to GitHub and Heroku.
 Getting the code up and running
 
     1. Firstly you will need to clone this repository by running the git clone <project's Github URL> command
-    2. After you've that you'll need to make sure that you have npm installed
-    3. You can get npm by installing Node from [here](https://nodejs.org/en/)
-    4. After those dependencies have been installed you'll need to make sure that you have http-server installed. You can install this by running the following: npm install -g http-server # this also may require sudo on Mac/Linux
-    5. Once http-server is installed run http-server -c-1
-    6. The project will now run on [localhost](http://127.0.0.1:8080/)
+    2. After that you need to set the "app.secret_key". (For example: app.secret_key = '123')
+    3. After you've that you'll need to make sure that you have npm installed
+    4. You can get npm by installing Node from [here](https://nodejs.org/en/)
+    5. After those dependencies have been installed you'll need to make sure that you have http-server installed. You can install this by running the following: npm install -g http-server # this also may require sudo on Mac/Linux
+    6. Once http-server is installed run http-server -c-1
+    7. The project will now run on [localhost](http://127.0.0.1:8080/)
 
 ## Database Schema
 
