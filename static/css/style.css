@@ -272,8 +272,8 @@ button {
 /*----------------------------------------*/
 
 .limit img {
-    max-width: 100%;
-    max-height: 80%;
+    width: 100%;
+    max-height: 194px;
 }
 
 .food-name {
@@ -396,13 +396,6 @@ button {
         left: 50%;
         transform: translatex(-50%);
     }
-    .limit {
-        max-width: 800px;
-        max-height: 460px;
-        padding-bottom: 0px;
-        text-align: center;
-        margin-bottom: 0px;
-    }
     .search-bar {
         margin-left: 50px;
     }
@@ -434,6 +427,10 @@ button {
     .like-fav-icons {
         position: absolute;
         bottom: 0;
+    }
+    .limit img {
+        width: 100%;
+        max-height: 188px;
     }
 }
 

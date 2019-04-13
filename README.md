@@ -14,7 +14,7 @@ This website is made for users to search recipes, upload their owns, edit them a
     Filter          - allows users to filter the searched recipes by having them open the ,,Meal Types" menu and choose a type
     New Recipes     - allows users to upload new recipes by having them click on the ,,New Recipe" button
     Users Recipes   - allows users to filter their own recipes by having them click on the ,,My recipes" button
-    Edit Recipes    - allows users to edit their own recipes by clicking on the "Blue Pens" next to the name of the meals
+    Edit Recipes    - allows users to edit their own recipes by clicking on the "Black Pens" next to the name of the meals
     Favoritize      - allows users to favoritize/remove(from favorites) recipes by having them click on the "Heart Icons" under the recipes
     Users Favorites - allows users to filter their favorite recipes by having them click on the ,,My favorites" button
     Sign Out        - allows users to sign out by having them click on ,,Sign Out" button
@@ -59,10 +59,8 @@ Automated tests was not written but all of the elements of the page has been tes
         Try to submit the empty form, an error message about the required field appears
         Try to submit the form with valid input and you will be forwarded to ,,Your recipes" page
         Pictures:
-            Try to upload a file with invalid format, the default picture will be shown to recipe
-            Try to upload a picture which is bigger then 2MB, the default picture will be shown to recipe
+            Try to link a file with invalid format, the default picture will be shown to recipe
             Try to submit the form without picture, the default picture will be shown to recipe
-            Try to submit the form with a picture which is smaller than 2MB, the uploaded picture will be shown to recipe
     Edit recipes form:
         Try to open a recipe to edit it, all the information will be loaded to the corresponding input
         Try to submit the empty form, an error message about the required field appears
