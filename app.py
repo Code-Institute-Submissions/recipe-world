@@ -3,18 +3,12 @@ from flask import Flask, render_template, redirect
 from flask import url_for, request, session, json, jsonify, flash
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
-from werkzeug.utils import secure_filename
 from operator import itemgetter
 
 
-UPLOAD_FOLDER = "static/user_images"
-ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
-
 app = Flask(__name__)
-app.secret_key = os.getenv('SECRET_KEY')
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-app.config['MAX_CONTENT_LENGTH'] = 2 * 1024 * 1024
-
+app.secret_key = '123'
+#app.secret_key = os.getenv('SECRET_KEY')
 app.config["MONGO_DBNAME"] = "recipeworlddb"
 app.config["MONGO_URI"] = "mongodb://krivan.peter:jel123szo@ds149122.mlab.com:49122/recipeworlddb"
 
@@ -171,31 +165,18 @@ def sign_up():
         return index()
 
 
-def allowed_file(filename):
-    return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
-
 def upload_file(foodid):
-    try:
-        file = request.files['picInput']
-        if file.filename == '':
-            pic_url = "static/images/no_pic.png"
-            return pic_url
-        elif file and allowed_file(file.filename):
-            filename_split = file.filename.rsplit(".", 1)
-            file_name = str(foodid) + "."
-            fileformat = filename_split[1]
-            filename = secure_filename(file_name + fileformat)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            pic_url = "static/user_images/" + filename
-            return pic_url
-        else:
-            pic_url = "static/images/no_pic.png"
-            return pic_url
-    except:
+    formats = ["jpg", "png"]
+    file = request.form["picInput"].lower()
+    filename_split = file.rsplit(".", 1)
+    fileformat = filename_split[1]
+    if file == '':
         pic_url = "static/images/no_pic.png"
-        return pic_url
+    elif fileformat not in formats:
+        pic_url = "static/images/no_pic.png"
+    else:
+        pic_url = file
+    return pic_url
 
 
 @app.route("/edit_recipe/<food_id>", methods=["GET", "POST"])
@@ -224,6 +205,18 @@ def edit_recipe(food_id):
         method1.reverse()
         for elem in method1:
             method2.insert(0, elem)
+            
+        if request.form["picInput"] != "":
+            formats = ["jpg", "png"]
+            file = request.form["picInput"].lower()
+            if "." in file:
+                filename_split = file.rsplit(".", 1)
+                fileformat = filename_split[1]
+                if fileformat in formats:
+                    pic_url = file
+                    mongo.db.foods.update_one({"_id": ObjectId(food_id)},
+                                        {"$set": {"pic_url": pic_url}})
+
         cuisine = mongo.db.cuisines.find_one({"foods": ObjectId(food_id)})
         searched_cuisine = cuisine["cuisine_name"]
         if searched_cuisine != cuisine_name:
@@ -398,4 +391,4 @@ def add_favorites():
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
-            debug=False)
+            debug=True)
